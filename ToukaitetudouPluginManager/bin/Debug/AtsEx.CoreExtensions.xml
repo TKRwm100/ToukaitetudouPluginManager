@@ -1,0 +1,409 @@
+<?xml version="1.0"?>
+<doc>
+    <assembly>
+        <name>AtsEx.CoreExtensions</name>
+    </assembly>
+    <members>
+        <member name="T:AtsEx.Extensions.ConductorPatch.ConductorPatch">
+            <summary>
+            車掌動作を上書きするパッチを表します。
+            </summary>
+        </member>
+        <member name="P:AtsEx.Extensions.ConductorPatch.ConductorPatch.Conductor">
+            <summary>
+            新しい車掌動作を定義した <see cref="T:AtsEx.Extensions.ConductorPatch.ConductorBase"/> を取得します。
+            </summary>
+        </member>
+        <member name="P:AtsEx.Extensions.ConductorPatch.ConductorPatch.Priority">
+            <summary>
+            車掌動作の上書き宣言の優先度を取得します。
+            </summary>
+        </member>
+        <member name="T:AtsEx.Extensions.ConductorPatch.DeclarationPriority">
+            <summary>
+            車掌動作の上書き宣言の優先度を指定します。
+            </summary>
+        </member>
+        <member name="F:AtsEx.Extensions.ConductorPatch.DeclarationPriority.AsDefaultValue">
+            <summary>
+            既定値として宣言することを指定します。他に宣言が存在する場合は無条件に上書きされます。
+            </summary>
+        </member>
+        <member name="F:AtsEx.Extensions.ConductorPatch.DeclarationPriority.Sequentially">
+            <summary>
+            通常の優先度で宣言することを指定します。既になされた優先度 <see cref="F:AtsEx.Extensions.ConductorPatch.DeclarationPriority.Sequentially"/> の宣言を上書きしますが、後に他の優先度 <see cref="F:AtsEx.Extensions.ConductorPatch.DeclarationPriority.Sequentially"/> の宣言がなされた場合は上書きされます。
+            </summary>
+        </member>
+        <member name="F:AtsEx.Extensions.ConductorPatch.DeclarationPriority.TopMost">
+            <summary>
+            最上級の優先度で宣言することを指定します。全ての他の宣言を無条件に上書きします。
+            </summary>
+        </member>
+        <member name="T:AtsEx.Extensions.ConductorPatch.ConductorBase">
+            <summary>
+            車掌動作を上書きするための基本クラスを表します。
+            </summary>
+        </member>
+        <member name="F:AtsEx.Extensions.ConductorPatch.ConductorBase.Original">
+            <summary>
+            オリジナルの車掌動作が定義されている <see cref="T:BveTypes.ClassWrappers.Conductor"/> です。
+            </summary>
+        </member>
+        <member name="E:AtsEx.Extensions.ConductorPatch.ConductorBase.FixStopPositionRequested">
+            <summary>
+            停止位置の修正を要求したことを通知します。
+            </summary>
+        </member>
+        <member name="E:AtsEx.Extensions.ConductorPatch.ConductorBase.StopPositionChecked">
+            <summary>
+            停止位置が良いことを確認したことを通知します。
+            </summary>
+        </member>
+        <member name="E:AtsEx.Extensions.ConductorPatch.ConductorBase.DoorOpening">
+            <summary>
+            ドアスイッチを開方向に扱ったことを通知します。
+            </summary>
+        </member>
+        <member name="E:AtsEx.Extensions.ConductorPatch.ConductorBase.DepartureSoundPlaying">
+            <summary>
+            発車ベルスイッチを扱ったこと、つまり停車場リストで定義した departureSound の再生を開始することを通知します。
+            </summary>
+        </member>
+        <member name="E:AtsEx.Extensions.ConductorPatch.ConductorBase.DoorClosing">
+            <summary>
+            ドアスイッチを閉方向に扱ったことを通知します。
+            </summary>
+        </member>
+        <member name="E:AtsEx.Extensions.ConductorPatch.ConductorBase.DoorClosed">
+            <summary>
+            車側灯の滅灯を確認したこと、つまり全てのドアが閉まりきったことを通知します。
+            </summary>
+        </member>
+        <member name="M:AtsEx.Extensions.ConductorPatch.ConductorBase.#ctor(BveTypes.ClassWrappers.Conductor)">
+            <summary>
+            <see cref="T:AtsEx.Extensions.ConductorPatch.ConductorBase"/> クラスの新しいインスタンスを生成します。
+            </summary>
+            <param name="original">オリジナルの車掌動作が定義されている <see cref="T:BveTypes.ClassWrappers.Conductor"/>。</param>
+        </member>
+        <member name="M:AtsEx.Extensions.ConductorPatch.ConductorBase.OnJumped(System.Int32,System.Boolean)">
+            <summary>
+            自列車がテレポートしたときに呼び出されます。
+            </summary>
+            <param name="nextStationIndex">ジャンプ先の距離程における次駅のインデックス。</param>
+            <param name="isDoorClosed">ドアが閉まっているかどうか。</param>
+            <returns>オリジナルの処理をオーバーライドする方法。</returns>
+        </member>
+        <member name="M:AtsEx.Extensions.ConductorPatch.ConductorBase.OnDoorStateChanged">
+            <summary>
+            ドアの状態が変更されたときに呼び出されます。
+            </summary>
+            <returns>オリジナルの処理をオーバーライドする方法。</returns>
+        </member>
+        <member name="M:AtsEx.Extensions.ConductorPatch.ConductorBase.OnTick">
+            <summary>
+            毎フレーム呼び出されます。
+            </summary>
+            <returns>オリジナルの処理をオーバーライドする方法。</returns>
+        </member>
+        <member name="T:AtsEx.Extensions.ConductorPatch.IConductorPatchFactory">
+            <summary>
+            <see cref="T:AtsEx.Extensions.ConductorPatch.ConductorPatch"/> クラスの新しいインスタンスを初期化するたのファクトリを表します。
+            </summary>
+        </member>
+        <member name="M:AtsEx.Extensions.ConductorPatch.IConductorPatchFactory.BeginPatch(System.Func{BveTypes.ClassWrappers.Conductor,AtsEx.Extensions.ConductorPatch.ConductorBase},AtsEx.Extensions.ConductorPatch.DeclarationPriority,System.Action{AtsEx.Extensions.ConductorPatch.ConductorPatch})">
+            <summary>
+            BVE 本体にて <see cref="T:BveTypes.ClassWrappers.Conductor"/> が初期化された時に車掌の動作を上書きするパッチを適用するよう登録します。
+            </summary>
+            <remarks>
+            <see cref="T:BveTypes.ClassWrappers.Conductor"/> が初期化されるのは <see cref="E:AtsEx.PluginHost.IBveHacker.ScenarioCreated"/> イベントより前です。
+            このメソッドを実行するタイミングによっては、パッチが適用されない場合もあるため注意してください。
+            </remarks>
+            <param name="conductorFactory">上書きする車掌の動作を定義した <see cref="T:AtsEx.Extensions.ConductorPatch.ConductorBase"/> の派生クラスのインスタンスのファクトリデリゲート。</param>
+            <param name="priority">この宣言の優先度。</param>
+            <param name="patchedCallback">この宣言の優先度。</param>
+        </member>
+        <member name="M:AtsEx.Extensions.ConductorPatch.IConductorPatchFactory.Patch(AtsEx.Extensions.ConductorPatch.ConductorBase,AtsEx.Extensions.ConductorPatch.DeclarationPriority)">
+            <summary>
+            車掌の動作を上書きするパッチを適用します。
+            </summary>
+            <param name="conductor">上書きする車掌の動作を定義した <see cref="T:AtsEx.Extensions.ConductorPatch.ConductorBase"/> の派生クラスのインスタンス。</param>
+            <param name="priority">この宣言の優先度。</param>
+        </member>
+        <member name="M:AtsEx.Extensions.ConductorPatch.IConductorPatchFactory.Unpatch(AtsEx.Extensions.ConductorPatch.ConductorPatch)">
+            <summary>
+            指定したパッチを削除します。
+            </summary>
+            <param name="patch">削除するパッチ。</param>
+        </member>
+        <member name="T:AtsEx.Extensions.ContextMenuHacker.ContextMenuItemType">
+            <summary>
+            右クリックメニューの項目の種類を指定します。
+            </summary>
+        </member>
+        <member name="F:AtsEx.Extensions.ContextMenuHacker.ContextMenuItemType.CoreAndExtensions">
+            <summary>
+            AtsEX 本体、または拡張機能によるものであることを指定します。
+            </summary>
+        </member>
+        <member name="F:AtsEx.Extensions.ContextMenuHacker.ContextMenuItemType.Plugins">
+            <summary>
+            プラグイン (拡張機能を除く) によるものであることを指定します。
+            </summary>
+        </member>
+        <member name="T:AtsEx.Extensions.ContextMenuHacker.IContextMenuHacker">
+            <summary>
+            メインフォームの右クリックメニューを編集するための機能を提供します。
+            </summary>
+        </member>
+        <member name="M:AtsEx.Extensions.ContextMenuHacker.IContextMenuHacker.AddItem(System.Windows.Forms.ToolStripItem,AtsEx.Extensions.ContextMenuHacker.ContextMenuItemType)">
+            <summary>
+            メニューに新しい項目を追加します。
+            </summary>
+            <param name="item">追加する項目。</param>
+            <param name="itemType">項目の種類。</param>
+            <returns>追加した項目。</returns>
+        </member>
+        <member name="M:AtsEx.Extensions.ContextMenuHacker.IContextMenuHacker.AddClickableMenuItem(System.String,System.EventHandler,AtsEx.Extensions.ContextMenuHacker.ContextMenuItemType)">
+            <summary>
+            メニューに新しいクリック可能な <see cref="T:System.Windows.Forms.ToolStripMenuItem"/> を追加します。
+            </summary>
+            <param name="text">メニュー項目に表示するテキスト。</param>
+            <param name="click">メニュー項目がクリックされたときに発生する <see cref="T:System.EventHandler"/>。</param>
+            <param name="itemType">項目の種類。</param>
+            <returns>追加した項目。</returns>
+        </member>
+        <member name="M:AtsEx.Extensions.ContextMenuHacker.IContextMenuHacker.AddCheckableMenuItem(System.String,System.EventHandler,AtsEx.Extensions.ContextMenuHacker.ContextMenuItemType)">
+            <summary>
+            メニューに新しいチェック可能な <see cref="T:System.Windows.Forms.ToolStripMenuItem"/> を追加します。
+            </summary>
+            <param name="text">メニュー項目に表示するテキスト。</param>
+            <param name="checkedChanged"><see cref="P:System.Windows.Forms.ToolStripMenuItem.Checked"/> プロパティの値が変化したときに発生する <see cref="T:System.EventHandler"/>。</param>
+            <param name="itemType">項目の種類。</param>
+            <returns>追加した項目。</returns>
+        </member>
+        <member name="M:AtsEx.Extensions.ContextMenuHacker.IContextMenuHacker.AddCheckableMenuItem(System.String,AtsEx.Extensions.ContextMenuHacker.ContextMenuItemType)">
+            <summary>
+            メニューに新しいチェック可能な <see cref="T:System.Windows.Forms.ToolStripMenuItem"/> を追加します。
+            </summary>
+            <param name="text">メニュー項目に表示するテキスト。</param>
+            <param name="itemType">項目の種類。</param>
+            <returns>追加した項目。</returns>
+        </member>
+        <member name="M:AtsEx.Extensions.ContextMenuHacker.IContextMenuHacker.AddSeparator(AtsEx.Extensions.ContextMenuHacker.ContextMenuItemType)">
+            <summary>
+            メニューに新しい区切り線を表す <see cref="T:System.Windows.Forms.ToolStripSeparator"/> を追加します。
+            </summary>
+            <param name="itemType">項目の種類。</param>
+            <returns>追加した項目。</returns>
+        </member>
+        <member name="T:AtsEx.Extensions.DiagramUpdater.IDiagramUpdater">
+            <summary>
+            時刻表、ダイヤグラムなどの行路に関わるオブジェクトの更新機能を提供します。
+            </summary>
+        </member>
+        <member name="M:AtsEx.Extensions.DiagramUpdater.IDiagramUpdater.UpdateDiagram(BveTypes.ClassWrappers.Scenario)">
+            <summary>
+            更新に使用する <see cref="T:BveTypes.ClassWrappers.Scenario"/> を明示的に指定して、時刻表と「時刻と位置」フォーム内のダイヤグラムの表示を最新の設定に更新します。
+            </summary>
+            <remarks>
+            <see cref="E:AtsEx.PluginHost.IBveHacker.ScenarioCreated"/> イベント内で呼び出す場合など、<see cref="P:AtsEx.PluginHost.IBveHacker.Scenario"/> が利用できない場合にこのオーバーロードを使用してください。
+            通常は <see cref="M:AtsEx.Extensions.DiagramUpdater.IDiagramUpdater.UpdateDiagram"/> オーバーロードを使用してください。
+            </remarks>
+            <seealso cref="M:AtsEx.Extensions.DiagramUpdater.IDiagramUpdater.UpdateDiagram"/>
+            <param name="scenario">更新に使用する <see cref="T:BveTypes.ClassWrappers.Scenario"/>。</param>
+        </member>
+        <member name="M:AtsEx.Extensions.DiagramUpdater.IDiagramUpdater.UpdateDiagram">
+            <summary>
+            <see cref="P:AtsEx.PluginHost.IBveHacker.Scenario"/> を使用して、時刻表と「時刻と位置」フォーム内のダイヤグラムの表示を最新の設定に更新します。
+            </summary>
+            <remarks>
+            <see cref="E:AtsEx.PluginHost.IBveHacker.ScenarioCreated"/> イベント内で呼び出す場合など、
+            <see cref="P:AtsEx.PluginHost.IBveHacker.Scenario"/> が利用できない場合は <see cref="M:AtsEx.Extensions.DiagramUpdater.IDiagramUpdater.UpdateDiagram(BveTypes.ClassWrappers.Scenario)"/> オーバーロードを使用してください。
+            </remarks>
+            <seealso cref="M:AtsEx.Extensions.DiagramUpdater.IDiagramUpdater.UpdateDiagram(BveTypes.ClassWrappers.Scenario)"/>
+        </member>
+        <member name="T:AtsEx.Extensions.MethodOverrideMode">
+            <summary>
+            メソッドの処理を上書きする方法を指定します。
+            </summary>
+        </member>
+        <member name="F:AtsEx.Extensions.MethodOverrideMode.SkipOriginal">
+            <summary>
+            上書き定義した処理のみを実行し、オリジナルの処理をスキップすることを指定します。
+            </summary>
+        </member>
+        <member name="F:AtsEx.Extensions.MethodOverrideMode.RunOriginal">
+            <summary>
+            上書き定義した処理に続けて、オリジナルの処理も実行することを指定します。
+            </summary>
+        </member>
+        <member name="T:AtsEx.Extensions.PreTrainPatch.IPreTrainLocationConverter">
+            <summary>
+            先行列車の走行位置の変換機能を提供します。
+            </summary>
+        </member>
+        <member name="M:AtsEx.Extensions.PreTrainPatch.IPreTrainLocationConverter.Convert(AtsEx.Extensions.PreTrainPatch.PreTrainLocation)">
+            <summary>
+            先行列車の走行位置を変換します。
+            </summary>
+            <param name="source">変換元の <see cref="T:AtsEx.Extensions.PreTrainPatch.PreTrainLocation"/>。</param>
+            <returns>変換結果の <see cref="T:AtsEx.Extensions.PreTrainPatch.PreTrainLocation"/>。</returns>
+        </member>
+        <member name="T:AtsEx.Extensions.PreTrainPatch.IPreTrainPatchFactory">
+            <summary>
+            <see cref="T:AtsEx.Extensions.PreTrainPatch.PreTrainPatch"/> クラスの新しいインスタンスを初期化するたのファクトリを表します。
+            </summary>
+        </member>
+        <member name="M:AtsEx.Extensions.PreTrainPatch.IPreTrainPatchFactory.Patch(System.String,BveTypes.ClassWrappers.SectionManager,AtsEx.Extensions.PreTrainPatch.IPreTrainLocationConverter)">
+            <summary>
+            先行列車の走行位置を自由に変更できるようにするパッチを適用します。
+            </summary>
+            <param name="name">パッチの名前。</param>
+            <param name="sectionManager">先行列車の走行位置の変更に使用する <see cref="T:BveTypes.ClassWrappers.SectionManager"/>。</param>
+            <param name="converter">本来の走行位置から、実際に使用する走行位置に変換するためのコンバーター。</param>
+            <returns>パッチを表す <see cref="T:AtsEx.Extensions.PreTrainPatch.PreTrainPatch"/>。</returns>
+        </member>
+        <member name="T:AtsEx.Extensions.PreTrainPatch.PreTrainLocation">
+            <summary>
+            先行列車の走行位置を表します。
+            </summary>
+        </member>
+        <member name="P:AtsEx.Extensions.PreTrainPatch.PreTrainLocation.Location">
+            <summary>
+            距離程 [m] を取得します。
+            </summary>
+        </member>
+        <member name="P:AtsEx.Extensions.PreTrainPatch.PreTrainLocation.SectionIndex">
+            <summary>
+            閉塞のインデックスを取得します。
+            </summary>
+        </member>
+        <member name="M:AtsEx.Extensions.PreTrainPatch.PreTrainLocation.#ctor(System.Double,System.Int32)">
+            <summary>
+            <see cref="T:AtsEx.Extensions.PreTrainPatch.PreTrainLocation"/> クラスの新しいインスタンスを初期化します。
+            </summary>
+            <param name="location">距離程 [m]。</param>
+            <param name="sectionIndex">閉塞のインデックス。</param>
+        </member>
+        <member name="M:AtsEx.Extensions.PreTrainPatch.PreTrainLocation.FromLocation(System.Double,BveTypes.ClassWrappers.SectionManager)">
+            <summary>
+            距離程から走行位置の閉塞を特定し、<see cref="T:AtsEx.Extensions.PreTrainPatch.PreTrainLocation"/> クラスの新しいインスタンスを初期化します。
+            </summary>
+            <param name="location">距離程 [m]。この値は走行位置の閉塞の特定に使用されます。</param>
+            <param name="sectionManager">走行位置の閉塞を計算するのに用いる <see cref="T:BveTypes.ClassWrappers.SectionManager"/>。</param>
+            <returns>生成した <see cref="T:AtsEx.Extensions.PreTrainPatch.PreTrainLocation"/>。</returns>
+        </member>
+        <member name="T:AtsEx.Extensions.PreTrainPatch.PreTrainPatch">
+            <summary>
+            先行列車の走行位置を自由に変更できるようにするパッチを表します。
+            </summary>
+        </member>
+        <member name="M:AtsEx.Extensions.PreTrainPatch.PreTrainPatch.Dispose">
+            <inheritdoc/>
+        </member>
+        <member name="T:AtsEx.Extensions.SignalPatch.ISignalPatchFactory">
+            <summary>
+            <see cref="T:AtsEx.Extensions.SignalPatch.SignalPatch"/> クラスの新しいインスタンスを初期化するたのファクトリを表します。
+            </summary>
+        </member>
+        <member name="M:AtsEx.Extensions.SignalPatch.ISignalPatchFactory.Patch(System.String,BveTypes.ClassWrappers.Section,System.Converter{System.Int32,System.Int32})">
+            <summary>
+            指定した閉塞へ、信号現示を自由に変更できるようにするパッチを適用します。
+            </summary>
+            <param name="name">パッチの名前。</param>
+            <param name="target">パッチを適用する閉塞。</param>
+            <param name="factory"><see cref="P:BveTypes.ClassWrappers.Section.CurrentSignalIndex"/> プロパティの処理をオーバーライドするデリゲート。<see langword="null"/> を返すと本来の値が使用されます。</param>
+            <returns>パッチを表す <see cref="T:AtsEx.Extensions.SignalPatch.SignalPatch"/>。</returns>
+        </member>
+        <member name="M:AtsEx.Extensions.SignalPatch.ISignalPatchFactory.Patch(System.String,BveTypes.ClassWrappers.SectionManager,BveTypes.ClassWrappers.Section,System.Converter{System.Int32,System.Int32})">
+            <summary>
+            指定した閉塞へ、信号現示を自由に変更できるようにするパッチを適用します。
+            </summary>
+            <param name="name">パッチの名前。</param>
+            <param name="_">使用しません。</param>
+            <param name="target">パッチを適用する閉塞。</param>
+            <param name="factory"><see cref="P:BveTypes.ClassWrappers.Section.CurrentSignalIndex"/> プロパティの処理をオーバーライドするデリゲート。<see langword="null"/> を返すと本来の値が使用されます。</param>
+            <returns>パッチを表す <see cref="T:AtsEx.Extensions.SignalPatch.SignalPatch"/>。</returns>
+        </member>
+        <member name="T:AtsEx.Extensions.SignalPatch.SignalPatch">
+            <summary>
+            特定の閉塞の信号現示を自由に変更できるようにするパッチを表します。
+            </summary>
+        </member>
+        <member name="M:AtsEx.Extensions.SignalPatch.SignalPatch.Dispose">
+            <inheritdoc/>
+        </member>
+        <member name="T:AtsEx.Extensions.StructureModelFinder.IStructureModelFinder">
+            <summary>
+            ストラクチャーの 3D モデルを簡単に検索するための機能を提供します。
+            </summary>
+        </member>
+        <member name="M:AtsEx.Extensions.StructureModelFinder.IStructureModelFinder.GetModel(System.String)">
+            <summary>
+            ストラクチャーキーから 3D モデルを検索します。
+            </summary>
+            <param name="structureKey">ストラクチャーキー。</param>
+            <returns><paramref name="structureKey"/> に対応する 3D モデル。</returns>
+        </member>
+        <member name="M:AtsEx.Extensions.StructureModelFinder.IStructureModelFinder.GetStructureKey(BveTypes.ClassWrappers.Model)">
+            <summary>
+            3D モデルからストラクチャーキーを検索します。
+            </summary>
+            <param name="model">3D モデル。</param>
+            <returns><paramref name="model"/> に対応するストラクチャーキー。</returns>
+        </member>
+        <member name="T:AtsEx.Extensions.TrainDrawPatch.ITrainDrawPatchFactory">
+            <summary>
+            <see cref="T:AtsEx.Extensions.TrainDrawPatch.TrainDrawPatch"/> クラスの新しいインスタンスを初期化するたのファクトリを表します。
+            </summary>
+        </member>
+        <member name="M:AtsEx.Extensions.TrainDrawPatch.ITrainDrawPatchFactory.Patch(System.String,BveTypes.ClassWrappers.Train,AtsEx.Extensions.IMatrixConverter)">
+            <summary>
+            指定した他列車に、自由に移動・回転できるようにするパッチを適用します。
+            </summary>
+            <param name="name">パッチの名前。</param>
+            <param name="target">パッチを適用する他列車。</param>
+            <param name="worldMatrixConverter">本来の配置先に設置するワールド変換行列から、実際に使用する行列に変換するためのコンバーター。</param>
+            <returns>パッチを表す <see cref="T:AtsEx.Extensions.TrainDrawPatch.TrainDrawPatch"/>。</returns>
+        </member>
+        <member name="M:AtsEx.Extensions.TrainDrawPatch.ITrainDrawPatchFactory.Patch(System.String,BveTypes.ClassWrappers.Train,AtsEx.Extensions.IMatrixConverter,AtsEx.Extensions.IMatrixConverter)">
+            <summary>
+            指定した他列車に、自由に移動・回転できるようにするパッチを適用します。
+            </summary>
+            <param name="name">パッチの名前。</param>
+            <param name="target">パッチを適用する他列車。</param>
+            <param name="worldMatrixConverter">本来の配置先に設置するワールド変換行列から、実際に使用する行列に変換するためのコンバーター。</param>
+            <param name="viewMatrixConverter">本来の配置先に設置するビュー変換行列から、実際に使用する行列に変換するためのコンバーター。</param>
+            <returns>パッチを表す <see cref="T:AtsEx.Extensions.TrainDrawPatch.TrainDrawPatch"/>。</returns>
+        </member>
+        <member name="M:AtsEx.Extensions.TrainDrawPatch.ITrainDrawPatchFactory.Patch(System.String,BveTypes.ClassWrappers.Train,System.Action{BveTypes.ClassWrappers.Direct3DProvider,SlimDX.Matrix})">
+            <summary>
+            指定した他列車に、自由に移動・回転できるようにするパッチを適用します。
+            </summary>
+            <param name="name">パッチの名前。</param>
+            <param name="target">パッチを適用する他列車。</param>
+            <param name="overrideAction"><see cref="M:BveTypes.ClassWrappers.Train.DrawCars(BveTypes.ClassWrappers.Direct3DProvider,SlimDX.Matrix)"/> メソッドの処理をオーバーライドするデリゲート。</param>
+            <returns>パッチを表す <see cref="T:AtsEx.Extensions.TrainDrawPatch.TrainDrawPatch"/>。</returns>
+        </member>
+        <member name="T:AtsEx.Extensions.TrainDrawPatch.TrainDrawPatch">
+            <summary>
+            他列車を自由に移動・回転できるようにするパッチを表します。
+            </summary>
+        </member>
+        <member name="M:AtsEx.Extensions.TrainDrawPatch.TrainDrawPatch.Dispose">
+            <inheritdoc/>
+        </member>
+        <member name="T:AtsEx.Extensions.IMatrixConverter">
+            <summary>
+            行列の変換機能を提供します。
+            </summary>
+        </member>
+        <member name="M:AtsEx.Extensions.IMatrixConverter.Convert(SlimDX.Matrix)">
+            <summary>
+            行列を変換します。
+            </summary>
+            <param name="source">変換元の行列。</param>
+            <returns>変換結果の行列。</returns>
+        </member>
+    </members>
+</doc>

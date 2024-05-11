@@ -1,0 +1,100 @@
+﻿<?xml version="1.0" encoding="utf-8"?>
+<Project ToolsVersion="15.0" xmlns="http://schemas.microsoft.com/developer/msbuild/2003">
+  <Import Project="$(MSBuildExtensionsPath)\$(MSBuildToolsVersion)\Microsoft.Common.props" Condition="Exists('$(MSBuildExtensionsPath)\$(MSBuildToolsVersion)\Microsoft.Common.props')" />
+  <PropertyGroup>
+    <Configuration Condition=" '$(Configuration)' == '' ">Debug</Configuration>
+    <Platform Condition=" '$(Platform)' == '' ">AnyCPU</Platform>
+    <ProjectGuid>{0850EF61-8183-4468-8395-1D3B629A1288}</ProjectGuid>
+    <OutputType>Library</OutputType>
+    <RootNamespace>Toukaitetudou.AtsEx.ToukaitetudouPluginManager</RootNamespace>
+    <AssemblyName>ToukaitetudouPluginManager</AssemblyName>
+    <TargetFrameworkVersion>v4.8</TargetFrameworkVersion>
+    <FileAlignment>512</FileAlignment>
+    <AutoGenerateBindingRedirects>true</AutoGenerateBindingRedirects>
+    <Deterministic>true</Deterministic>
+  </PropertyGroup>
+  <PropertyGroup Condition=" '$(Configuration)|$(Platform)' == 'Debug|AnyCPU' ">
+    <PlatformTarget>AnyCPU</PlatformTarget>
+    <DebugSymbols>true</DebugSymbols>
+    <DebugType>full</DebugType>
+    <Optimize>false</Optimize>
+    <OutputPath>bin\Debug\</OutputPath>
+    <DefineConstants>DEBUG;TRACE</DefineConstants>
+    <ErrorReport>prompt</ErrorReport>
+    <WarningLevel>4</WarningLevel>
+  </PropertyGroup>
+  <PropertyGroup Condition=" '$(Configuration)|$(Platform)' == 'Release|AnyCPU' ">
+    <PlatformTarget>AnyCPU</PlatformTarget>
+    <DebugType>pdbonly</DebugType>
+    <Optimize>true</Optimize>
+    <OutputPath>bin\Release\</OutputPath>
+    <DefineConstants>TRACE</DefineConstants>
+    <ErrorReport>prompt</ErrorReport>
+    <WarningLevel>4</WarningLevel>
+  </PropertyGroup>
+  <PropertyGroup>
+    <StartupObject />
+  </PropertyGroup>
+  <ItemGroup>
+    <None Include="App.config" />
+    <None Include="packages.config" />
+  </ItemGroup>
+  <ItemGroup>
+    <Compile Include="Functions.cs" />
+    <Compile Include="InstanceStore.cs" />
+    <Compile Include="PluginMain.cs" />
+    <Compile Include="PluginsForm.cs">
+      <SubType>Form</SubType>
+    </Compile>
+    <Compile Include="PluginsForm.Designer.cs">
+      <DependentUpon>PluginsForm.cs</DependentUpon>
+    </Compile>
+    <Compile Include="Properties\AssemblyInfo.cs" />
+  </ItemGroup>
+  <ItemGroup>
+    <Reference Include="0Harmony, Version=2.3.3.0, Culture=neutral, processorArchitecture=MSIL">
+      <HintPath>..\ADCcar\packages\Lib.Harmony.2.3.3\lib\net48\0Harmony.dll</HintPath>
+    </Reference>
+    <Reference Include="AtsEx.CoreExtensions, Version=1.0.40209.1, Culture=neutral, processorArchitecture=MSIL">
+      <HintPath>..\ADCcar\packages\AtsEx.CoreExtensions.1.0.0-rc7\lib\AtsEx.CoreExtensions.dll</HintPath>
+    </Reference>
+    <Reference Include="AtsEx.PluginHost, Version=1.0.40401.1, Culture=neutral, processorArchitecture=MSIL">
+      <HintPath>..\ADCcar\packages\AtsEx.PluginHost.1.0.0-rc8\lib\AtsEx.PluginHost.dll</HintPath>
+    </Reference>
+    <Reference Include="BveTypes, Version=1.0.40401.1, Culture=neutral, processorArchitecture=MSIL">
+      <HintPath>..\ADCcar\packages\AtsEx.PluginHost.1.0.0-rc8\lib\BveTypes.dll</HintPath>
+    </Reference>
+    <Reference Include="FastCaching, Version=1.0.31118.1, Culture=neutral, processorArchitecture=MSIL">
+      <HintPath>..\ADCcar\packages\AtsEx.PluginHost.1.0.0-rc8\lib\FastCaching.dll</HintPath>
+    </Reference>
+    <Reference Include="FastMember, Version=1.0.40401.1, Culture=neutral, processorArchitecture=MSIL">
+      <HintPath>..\ADCcar\packages\AtsEx.PluginHost.1.0.0-rc8\lib\FastMember.dll</HintPath>
+    </Reference>
+    <Reference Include="ObjectiveHarmonyPatch, Version=1.1.40209.1, Culture=neutral, processorArchitecture=MSIL">
+      <HintPath>..\ADCcar\packages\ObjectiveHarmonyPatch.1.1.0\lib\ObjectiveHarmonyPatch.dll</HintPath>
+    </Reference>
+    <Reference Include="SlimDX, Version=4.0.13.43, Culture=neutral, PublicKeyToken=b1b0c32fd1ffe4f9, processorArchitecture=x86">
+      <HintPath>..\ADCcar\packages\SlimDX.4.0.13.44\lib\NET40\SlimDX.dll</HintPath>
+    </Reference>
+    <Reference Include="System" />
+    <Reference Include="System.Data" />
+    <Reference Include="System.Drawing" />
+    <Reference Include="System.Windows.Forms" />
+    <Reference Include="System.Xml" />
+    <Reference Include="TypeWrapping, Version=1.0.40401.1, Culture=neutral, processorArchitecture=MSIL">
+      <HintPath>..\ADCcar\packages\AtsEx.PluginHost.1.0.0-rc8\lib\TypeWrapping.dll</HintPath>
+    </Reference>
+    <Reference Include="UnembeddedResources, Version=1.0.30529.1, Culture=neutral, processorArchitecture=MSIL">
+      <HintPath>..\ADCcar\packages\UnembeddedResources.1.0.0\lib\UnembeddedResources.dll</HintPath>
+    </Reference>
+  </ItemGroup>
+  <ItemGroup>
+    <EmbeddedResource Include="PluginsForm.resx">
+      <DependentUpon>PluginsForm.cs</DependentUpon>
+    </EmbeddedResource>
+  </ItemGroup>
+  <Import Project="$(MSBuildToolsPath)\Microsoft.CSharp.targets" />
+  <PropertyGroup>
+    <PostBuildEvent>copy .\ToukaitetudouPluginManager\obj\Debug\ToukaitetudouPluginManager.dll "C:\Users\Public\Documents\AtsEx\1.0\Extensions\ToukaitetudouPluginManager.dll"</PostBuildEvent>
+  </PropertyGroup>
+</Project>

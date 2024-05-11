@@ -1,0 +1,175 @@
+<?xml version="1.0"?>
+<doc>
+    <assembly>
+        <name>ObjectiveHarmonyPatch</name>
+    </assembly>
+    <members>
+        <member name="T:ObjectiveHarmonyPatch.HarmonyPatch">
+            <summary>
+            オブジェクト (インスタンス) として扱える Harmony パッチのラッパーを提供します。
+            </summary>
+        </member>
+        <member name="P:ObjectiveHarmonyPatch.HarmonyPatch.Name">
+            <summary>
+            パッチの名前を取得します。
+            </summary>
+        </member>
+        <member name="P:ObjectiveHarmonyPatch.HarmonyPatch.Original">
+            <summary>
+            このパッチが適用されているメソッドを取得します。
+            </summary>
+        </member>
+        <member name="P:ObjectiveHarmonyPatch.HarmonyPatch.PatchType">
+            <summary>
+            パッチの種類を取得します。
+            </summary>
+        </member>
+        <member name="E:ObjectiveHarmonyPatch.HarmonyPatch.Invoked">
+            <summary>
+            Harmony パッチが実行されたときに発生します。
+            </summary>
+        </member>
+        <member name="M:ObjectiveHarmonyPatch.HarmonyPatch.Patch(System.String,System.Reflection.MethodBase,ObjectiveHarmonyPatch.PatchType)">
+            <summary>
+            指定したメソッドに Harmony パッチを適用します。
+            </summary>
+            <param name="name">パッチの名前。</param>
+            <param name="original">パッチを適用するメソッド。</param>
+            <param name="patchType">パッチの種類。</param>
+            <returns>パッチを表す <see cref="T:ObjectiveHarmonyPatch.HarmonyPatch"/>。</returns>
+        </member>
+        <member name="M:ObjectiveHarmonyPatch.HarmonyPatch.ToString">
+            <inheritdoc/>
+        </member>
+        <member name="M:ObjectiveHarmonyPatch.HarmonyPatch.Dispose">
+            <inheritdoc/>
+        </member>
+        <member name="T:ObjectiveHarmonyPatch.PatchInvokationResult">
+            <summary>
+            <see cref="E:ObjectiveHarmonyPatch.HarmonyPatch.Invoked"/> イベントの結果を表します。
+            </summary>
+        </member>
+        <member name="P:ObjectiveHarmonyPatch.PatchInvokationResult.ChangeReturnValue">
+            <summary>
+            パッチ先のオリジナルメソッドの戻り値を上書きするかどうかを取得します。
+            </summary>
+        </member>
+        <member name="P:ObjectiveHarmonyPatch.PatchInvokationResult.ReturnValue">
+            <summary>
+            パッチ先のオリジナルメソッドの戻り値を上書きする場合は、そのオブジェクトを取得します。上書きしない場合は <see langword="null"/> を返します。
+            </summary>
+            <remarks>
+            このプロパティが <see langword="null"/> を返す場合でも、戻り値を <see langword="null"/> で上書きしている可能性があることに注意してください。<br/>
+            パッチ先のオリジナルメソッドの戻り値を上書きするかどうかを確認するには <see cref="P:ObjectiveHarmonyPatch.PatchInvokationResult.ChangeReturnValue"/> プロパティを使用してください。
+            </remarks>
+            <seealso cref="P:ObjectiveHarmonyPatch.PatchInvokationResult.ChangeReturnValue"/>
+        </member>
+        <member name="P:ObjectiveHarmonyPatch.PatchInvokationResult.SkipModes">
+            <summary>
+            オリジナルメソッドおよびこれ以降のパッチをスキップするかどうかを取得します。
+            </summary>
+            <seealso cref="P:ObjectiveHarmonyPatch.PatchInvokedEventArgs.SkipOriginal"/>
+        </member>
+        <member name="M:ObjectiveHarmonyPatch.PatchInvokationResult.#ctor(System.Object,ObjectiveHarmonyPatch.SkipModes)">
+            <summary>
+            戻り値の変更を伴う <see cref="T:ObjectiveHarmonyPatch.PatchInvokationResult"/> クラスの新しいインスタンスを初期化します。
+            </summary>
+            <param name="returnValue">上書きする戻り値。</param>
+            <param name="skipModes">オリジナルメソッドおよびこれ以降のパッチをスキップするかどうか。</param>
+            <seealso cref="P:ObjectiveHarmonyPatch.PatchInvokedEventArgs.SkipOriginal"/>
+        </member>
+        <member name="M:ObjectiveHarmonyPatch.PatchInvokationResult.#ctor(ObjectiveHarmonyPatch.SkipModes)">
+            <summary>
+            戻り値の変更を伴わない <see cref="T:ObjectiveHarmonyPatch.PatchInvokationResult"/> クラスの新しいインスタンスを初期化します。
+            </summary>
+            <param name="skipModes">オリジナルメソッドおよびこれ以降のパッチをスキップするかどうか。</param>
+            <seealso cref="P:ObjectiveHarmonyPatch.PatchInvokedEventArgs.SkipOriginal"/>
+        </member>
+        <member name="M:ObjectiveHarmonyPatch.PatchInvokationResult.DoNothing(ObjectiveHarmonyPatch.PatchInvokedEventArgs)">
+            <summary>
+            一切の操作を行わない <see cref="T:ObjectiveHarmonyPatch.PatchInvokationResult"/> クラスの新しいインスタンスを初期化します。
+            </summary>
+            <param name="args">1 つ前のパッチの <see cref="P:ObjectiveHarmonyPatch.PatchInvokationResult.SkipModes"/> を継承するための <see cref="T:ObjectiveHarmonyPatch.PatchInvokedEventArgs"/>。</param>
+            <seealso cref="P:ObjectiveHarmonyPatch.PatchInvokedEventArgs.SkipOriginal"/>
+        </member>
+        <member name="T:ObjectiveHarmonyPatch.PatchInvokedEventArgs">
+            <summary>
+            <see cref="T:ObjectiveHarmonyPatch.PatchInvokedEventHandler"/> イベントのデータを提供します。
+            </summary>
+        </member>
+        <member name="P:ObjectiveHarmonyPatch.PatchInvokedEventArgs.Instance">
+            <summary>
+            パッチ先の型のインスタンスを取得します。通常の Harmony パッチの __instance パラメータに当たります。
+            </summary>
+        </member>
+        <member name="P:ObjectiveHarmonyPatch.PatchInvokedEventArgs.ReturnValue">
+            <summary>
+            パッチ先のオリジナルメソッドの戻り値を取得します。通常の Harmony パッチの __result パラメータに当たります。
+            </summary>
+        </member>
+        <member name="P:ObjectiveHarmonyPatch.PatchInvokedEventArgs.Args">
+            <summary>
+            パッチ先のオリジナルメソッドの引数を取得します。通常の Harmony パッチの __args パラメータに当たります。
+            </summary>
+        </member>
+        <member name="P:ObjectiveHarmonyPatch.PatchInvokedEventArgs.RunOriginal">
+            <summary>
+            パッチ先のオリジナルメソッドが実行されるか、あるいは実行されたかを取得します。通常の Harmony パッチの __runOriginal パラメータに当たります。
+            </summary>
+        </member>
+        <member name="P:ObjectiveHarmonyPatch.PatchInvokedEventArgs.SkipOriginal">
+            <summary>
+            1 つ前の Prefix パッチが <see cref="F:ObjectiveHarmonyPatch.SkipModes.SkipOriginal"/> を指定したかどうかを取得します。
+            </summary>
+            <remarks>
+            Postfix パッチの場合、またはこれ以前に Prefix パッチが実行されていない場合は <see langword="false"/> を返します。
+            </remarks>
+        </member>
+        <member name="T:ObjectiveHarmonyPatch.PatchInvokedEventHandler">
+            <summary>
+            <see cref="!:HarmonyPatch.Prefix"/>、<see cref="!:HarmonyPatch.Postfix"/> イベントを処理するメソッドを表します。
+            </summary>
+            <param name="sender">イベントのソース。</param>
+            <param name="e">イベントのデータ。</param>
+            <returns>イベントの結果。</returns>
+        </member>
+        <member name="T:ObjectiveHarmonyPatch.PatchType">
+            <summary>
+            Harmony パッチの種類を表します。
+            </summary>
+        </member>
+        <member name="F:ObjectiveHarmonyPatch.PatchType.Prefix">
+            <summary>
+            Prefix パッチを表します。
+            </summary>
+        </member>
+        <member name="F:ObjectiveHarmonyPatch.PatchType.Postfix">
+            <summary>
+            Postfix パッチを表します。
+            </summary>
+        </member>
+        <member name="T:ObjectiveHarmonyPatch.SkipModes">
+            <summary>
+            オリジナルメソッドおよびパッチをスキップするモードを指定します。
+            </summary>
+        </member>
+        <member name="F:ObjectiveHarmonyPatch.SkipModes.Continue">
+            <summary>
+            オリジナルメソッドおよびこれ以降のパッチはスキップされません。
+            </summary>
+        </member>
+        <member name="F:ObjectiveHarmonyPatch.SkipModes.SkipPatches">
+            <summary>
+            これ以降のパッチはスキップされます。
+            </summary>
+        </member>
+        <member name="F:ObjectiveHarmonyPatch.SkipModes.SkipOriginal">
+            <summary>
+            オリジナルメソッドはスキップされます。Prefix パッチの場合のみ有効です。
+            </summary>
+            <remarks>
+            <see cref="F:ObjectiveHarmonyPatch.SkipModes.SkipPatches"/> を指定しない場合、これ以降のパッチでの指定が優先されます。
+            </remarks>
+        </member>
+    </members>
+</doc>
