@@ -40,6 +40,7 @@
     <None Include="packages.config" />
   </ItemGroup>
   <ItemGroup>
+    <Compile Include="Attrivute.cs" />
     <Compile Include="Functions.cs" />
     <Compile Include="InstanceStore.cs" />
     <Compile Include="PluginMain.cs" />
@@ -95,6 +96,6 @@
   </ItemGroup>
   <Import Project="$(MSBuildToolsPath)\Microsoft.CSharp.targets" />
   <PropertyGroup>
-    <PostBuildEvent>copy .\ToukaitetudouPluginManager\obj\Debug\ToukaitetudouPluginManager.dll "C:\Users\Public\Documents\AtsEx\1.0\Extensions\ToukaitetudouPluginManager.dll"</PostBuildEvent>
+    <PostBuildEvent>copy $(TargetPath) "C:\Users\Public\Documents\AtsEx\1.0\Extensions\ToukaitetudouPluginManager.dll"</PostBuildEvent>
   </PropertyGroup>
 </Project>

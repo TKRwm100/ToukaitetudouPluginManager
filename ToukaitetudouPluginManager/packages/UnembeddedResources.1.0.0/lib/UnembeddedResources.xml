@@ -1,0 +1,208 @@
+<?xml version="1.0"?>
+<doc>
+    <assembly>
+        <name>UnembeddedResources</name>
+    </assembly>
+    <members>
+        <member name="T:UnembeddedResources.Resource`1">
+            <summary>
+            カルチャに紐付けられた、任意の型のリソースを表します。
+            </summary>
+            <typeparam name="T">リソースの型。</typeparam>
+        </member>
+        <member name="P:UnembeddedResources.Resource`1.Culture">
+            <summary>
+            このリソースが紐付けられたカルチャを取得します。
+            </summary>
+        </member>
+        <member name="P:UnembeddedResources.Resource`1.Value">
+            <summary>
+            リソースの値を取得します。
+            </summary>
+        </member>
+        <member name="M:UnembeddedResources.Resource`1.#ctor(System.Globalization.CultureInfo,`0)">
+            <summary>
+            <see cref="T:UnembeddedResources.Resource`1"/> クラスの新しいインスタンスを初期化します。
+            </summary>
+            <param name="culture">このリソースを紐付けるカルチャ。</param>
+            <param name="value">リソースの値。</param>
+        </member>
+        <member name="T:UnembeddedResources.ResourceLoader">
+            <summary>
+            <see cref="T:UnembeddedResources.ResourceStringHolderAttribute"/> を使用して複数のリソースを簡単に読み込むための機能を提供します。
+            </summary>
+        </member>
+        <member name="M:UnembeddedResources.ResourceLoader.LoadAndSetAll(System.Object,System.Boolean)">
+            <summary>
+            指定したインスタンス内の <see cref="T:UnembeddedResources.ResourceStringHolderAttribute"/> が関連付けられたメンバーに、そのメンバーと同名の <see cref="T:UnembeddedResources.Resource`1"/> を一括で読み込み、設定します。
+            </summary>
+            <param name="targetInstance">読み込む対象のインスタンス。</param>
+            <param name="throwExceptionIfHasUnusedResources">使用されていないリソースを検出した場合に例外をスローするか。</param>
+        </member>
+        <member name="M:UnembeddedResources.ResourceLoader.LoadAndSetAll(System.Type,System.Boolean)">
+            <summary>
+            指定した型内の <see cref="T:UnembeddedResources.ResourceStringHolderAttribute"/> が関連付けられた静的メンバーに、そのメンバーと同名の <see cref="T:UnembeddedResources.Resource`1"/> を一括で読み込み、設定します。
+            </summary>
+            <param name="targetType">読み込む対象の型。</param>
+            <param name="throwExceptionIfHasUnusedResources">使用されていないリソースを検出した場合に例外をスローするか。</param>
+        </member>
+        <member name="T:UnembeddedResources.ResourceLocalizer">
+            <summary>
+            外部のリソースファイルを利用して複数の言語に対応するための機能を提供します。
+            </summary>
+            <remarks>
+            アセンブリに埋め込まれたリソースを利用した多言語対応の方法は .NET が標準で提供していますが、
+            このクラスでは、アセンブリに埋め込まれていないそのままのリソース (.resx) ファイルを参照できます。<br/>
+            リソースファイルをアセンブリに埋め込まないことで、プラグインの作者以外の方も容易に言語パックを開発できるようになります。
+            </remarks>
+        </member>
+        <member name="F:UnembeddedResources.ResourceLocalizer.DefaultGetCurrentCultureFunc">
+            <summary>
+            <see cref="F:UnembeddedResources.ResourceLocalizer.GetCurrentCultureFunc"/> の既定値として使用されるデリゲートを取得します。
+            </summary>
+        </member>
+        <member name="P:UnembeddedResources.ResourceLocalizer.Resources">
+            <summary>
+            リソースの一覧を取得します。
+            </summary>
+        </member>
+        <member name="F:UnembeddedResources.ResourceLocalizer.GetCurrentCultureFunc">
+            <summary>
+            現在のカルチャを取得するデリケートを取得します。
+            </summary>
+        </member>
+        <member name="M:UnembeddedResources.ResourceLocalizer.FromResX(System.String,System.Func{System.Globalization.CultureInfo})">
+            <summary>
+            リソース (.resx) ファイルから新しい <see cref="T:UnembeddedResources.ResourceLocalizer"/> を作成します。
+            </summary>
+            <remarks>
+            <paramref name="neutralResourcePath"/> へ指定した URI を基に、各カルチャ向けのリソースファイルの URI を推測して読み込みます。<br/>
+            例えば、<c>A\B.resx</c> を指定した場合、<c>A\B.ja.resx</c> がカルチャ ja 向け、<c>A\B.ja-JP.resx</c> がカルチャ ja-JP 向けのリソースとして認識されます。
+            </remarks>
+            <param name="neutralResourcePath">ニュートラル カルチャのリソースファイルを参照している URI 文字列。</param>
+            <param name="getCurrentCultureFunc">現在のカルチャを取得するデリケート。</param>
+            <returns>読み込んだリソースを格納している <see cref="T:UnembeddedResources.ResourceLocalizer"/>。</returns>
+        </member>
+        <member name="M:UnembeddedResources.ResourceLocalizer.FromResX(System.String)">
+            <summary>
+            リソース (.resx) ファイルから新しい <see cref="T:UnembeddedResources.ResourceLocalizer"/> を作成します。
+            </summary>
+            <remarks>
+            <paramref name="neutralResourcePath"/> へ指定した URI を基に、各カルチャ向けのリソースファイルの URI を推測して読み込みます
+            (例: <c>A\B\SampleClass.resx</c> を指定した場合、<c>A\V\SampleClass.ja.resx</c> がカルチャ ja 向け、<c>A\B\SampleClass.ja-JP.resx</c> がカルチャ ja-JP 向けのリソースとして認識されます)。
+            </remarks>
+            <param name="neutralResourcePath">ニュートラル カルチャのリソースファイルを参照している URI 文字列。</param>
+            <returns>読み込んだリソースを格納している <see cref="T:UnembeddedResources.ResourceLocalizer"/>。</returns>
+        </member>
+        <member name="M:UnembeddedResources.ResourceLocalizer.FromResXOfType(System.Type,System.String,System.Func{System.Globalization.CultureInfo})">
+            <summary>
+            リソース (.resx) ファイルから新しい <see cref="T:UnembeddedResources.ResourceLocalizer"/> を作成します。
+            </summary>
+            <remarks>
+            <paramref name="targetType"/>、<paramref name="subDirectory"/> へ指定した値を基に、各カルチャ向けのリソースファイルの URI を推測して読み込みます
+            (例: <paramref name="targetType"/> に <c>SampleClass</c>、<paramref name="subDirectory"/> に <c>A\B</c> を指定した場合、
+            <c>A\B\SampleClass.resx</c> がニュートラル カルチャのリソース、<c>A\B\SampleClass.ja-JP.resx</c> がカルチャ ja-JP 向けのリソースとして認識されます)。
+            </remarks>
+            <param name="targetType">対象とする型。</param>
+            <param name="subDirectory"><paramref name="targetType"/> が定義されたアセンブリを格納しているディレクトリから、リソースファイルを格納しているディレクトリへの相対パス。</param>
+            <param name="getCurrentCultureFunc">現在のカルチャを取得するデリケート。</param>
+            <returns>読み込んだリソースを格納している <see cref="T:UnembeddedResources.ResourceLocalizer"/>。</returns>
+        </member>
+        <member name="M:UnembeddedResources.ResourceLocalizer.FromResXOfType(System.Type,System.String)">
+            <summary>
+            リソース (.resx) ファイルから新しい <see cref="T:UnembeddedResources.ResourceLocalizer"/> を作成します。
+            </summary>
+            <remarks>
+            <paramref name="targetType"/>、<paramref name="subDirectory"/> へ指定した値を基に、各カルチャ向けのリソースファイルの URI を推測して読み込みます
+            (例: <paramref name="targetType"/> に <c>SampleClass</c>、<paramref name="subDirectory"/> に <c>A\B</c> を指定した場合、
+            <c>A\B\SampleClass.resx</c> がニュートラル カルチャのリソース、<c>A\B\SampleClass.ja-JP.resx</c> がカルチャ ja-JP 向けのリソースとして認識されます)。
+            </remarks>
+            <param name="targetType">対象とする型。</param>
+            <param name="subDirectory"><paramref name="targetType"/> が定義されたアセンブリを格納しているディレクトリから、リソースファイルを格納しているディレクトリへの相対パス。</param>
+            <returns>読み込んだリソースを格納している <see cref="T:UnembeddedResources.ResourceLocalizer"/>。</returns>
+        </member>
+        <member name="M:UnembeddedResources.ResourceLocalizer.FromResXOfType``1(System.String,System.Func{System.Globalization.CultureInfo})">
+            <summary>
+            リソース (.resx) ファイルから新しい <see cref="T:UnembeddedResources.ResourceLocalizer"/> を作成します。
+            </summary>
+            <remarks>
+            <typeparamref name="TTarget"/>、<paramref name="subDirectory"/> へ指定した値を基に、各カルチャ向けのリソースファイルの URI を推測して読み込みます
+            (例: <typeparamref name="TTarget"/> に <c>SampleClass</c>、<paramref name="subDirectory"/> に <c>A\B</c> を指定した場合、
+            <c>A\B\SampleClass.resx</c> がニュートラル カルチャのリソース、<c>A\B\SampleClass.ja-JP.resx</c> がカルチャ ja-JP 向けのリソースとして認識されます)。
+            </remarks>
+            <typeparam name="TTarget">対象とする型。</typeparam>
+            <param name="subDirectory"><typeparamref name="TTarget"/> が定義されたアセンブリを格納しているディレクトリから、リソースファイルを格納しているディレクトリへの相対パス。</param>
+            <param name="getCurrentCultureFunc">現在のカルチャを取得するデリケート。</param>
+            <returns>読み込んだリソースを格納している <see cref="T:UnembeddedResources.ResourceLocalizer"/>。</returns>
+        </member>
+        <member name="M:UnembeddedResources.ResourceLocalizer.FromResXOfType``1(System.String)">
+            <summary>
+            リソース (.resx) ファイルから新しい <see cref="T:UnembeddedResources.ResourceLocalizer"/> を作成します。
+            </summary>
+            <remarks>
+            <typeparamref name="TTarget"/>、<paramref name="subDirectory"/> へ指定した値を基に、各カルチャ向けのリソースファイルの URI を推測して読み込みます
+            (例: <typeparamref name="TTarget"/> に <c>SampleClass</c>、<paramref name="subDirectory"/> に <c>A\B</c> を指定した場合、
+            <c>A\B\SampleClass.resx</c> がニュートラル カルチャのリソース、<c>A\B\SampleClass.ja-JP.resx</c> がカルチャ ja-JP 向けのリソースとして認識されます)。
+            </remarks>
+            <typeparam name="TTarget">対象とする型。</typeparam>
+            <param name="subDirectory"><typeparamref name="TTarget"/> が定義されたアセンブリを格納しているディレクトリから、リソースファイルを格納しているディレクトリへの相対パス。</param>
+            <returns>読み込んだリソースを格納している <see cref="T:UnembeddedResources.ResourceLocalizer"/>。</returns>
+        </member>
+        <member name="M:UnembeddedResources.ResourceLocalizer.#ctor(System.Collections.Generic.Dictionary{System.String,System.Collections.Generic.Dictionary{System.Globalization.CultureInfo,System.Object}},System.Func{System.Globalization.CultureInfo})">
+            <summary>
+            リソースの一覧と、現在のカルチャを取得する方法を指定して、<see cref="T:UnembeddedResources.ResourceLocalizer"/> クラスの新しいインスタンスを初期化します。
+            </summary>
+            <param name="resources">リソースの一覧。</param>
+            <param name="getCurrentCultureFunc">現在のカルチャを取得するデリゲート。</param>
+        </member>
+        <member name="M:UnembeddedResources.ResourceLocalizer.#ctor(System.Collections.Generic.Dictionary{System.String,System.Collections.Generic.Dictionary{System.Globalization.CultureInfo,System.Object}})">
+            <summary>
+            リソースの一覧を指定して、<see cref="T:UnembeddedResources.ResourceLocalizer"/> クラスの新しいインスタンスを初期化します。
+            </summary>
+            <param name="resources">リソースの一覧。</param>
+        </member>
+        <member name="M:UnembeddedResources.ResourceLocalizer.Get``1(System.String)">
+            <summary>
+            指定されたキーに紐付けられたリソースを取得します。
+            </summary>
+            <typeparam name="T">リソースの型。</typeparam>
+            <param name="key">取得するリソースのキー。</param>
+            <returns>指定されたキーに紐付けられたリソース。</returns>
+        </member>
+        <member name="M:UnembeddedResources.ResourceLocalizer.GetString(System.String)">
+            <summary>
+            指定されたキーに紐付けられた <see cref="T:System.String"/> 型のリソースを取得します。
+            </summary>
+            <param name="key">取得するリソースのキー。</param>
+            <returns>指定されたキーに紐付けられたリソース。</returns>
+        </member>
+        <member name="M:UnembeddedResources.ResourceLocalizer.GetInt32(System.String)">
+            <summary>
+            指定されたキーに紐付けられた <see cref="T:System.Int32"/> 型のリソースを取得します。
+            </summary>
+            <param name="key">取得するリソースのキー。</param>
+            <returns>指定されたキーに紐付けられたリソース。</returns>
+        </member>
+        <member name="M:UnembeddedResources.ResourceLocalizer.ResolveCulture(System.Globalization.CultureInfo,System.Collections.Generic.IEnumerable{System.Globalization.CultureInfo})">
+            <summary>
+            
+            </summary>
+            <param name="culture"></param>
+            <param name="candidates"></param>
+            <returns></returns>
+            <exception cref="T:System.InvalidOperationException"></exception>
+        </member>
+        <member name="T:UnembeddedResources.ResourceStringHolderAttribute">
+            <summary>
+            属性付きメンバーに、読み込んだ同名の <see langword="string"/> 型の <see cref="T:UnembeddedResources.Resource`1"/> を格納することを示します。
+            </summary>
+        </member>
+        <member name="M:UnembeddedResources.ResourceStringHolderAttribute.#ctor(System.String)">
+            <summary>
+            リソースの読込に使用する <see cref="T:UnembeddedResources.ResourceLocalizer"/> を指定して、<see cref="T:UnembeddedResources.ResourceStringHolderAttribute"/> クラスの新しいインスタンスを初期化します。
+            </summary>
+            <param name="resourceType">リソースの型。</param>
+            <param name="localizerMemberName">リソースの読込に使用する <see cref="T:UnembeddedResources.ResourceLocalizer"/> が格納されているメンバー (フィールドまたはプロパティ) の名前。</param>
+        </member>
+    </members>
+</doc>

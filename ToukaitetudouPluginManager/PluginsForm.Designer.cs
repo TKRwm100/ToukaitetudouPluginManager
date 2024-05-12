@@ -31,7 +31,6 @@
             this.tabControl1 = new System.Windows.Forms.TabControl();
             this.label1 = new System.Windows.Forms.Label();
             this.panel1 = new System.Windows.Forms.Panel();
-            this.tabControl1.SuspendLayout();
             this.panel1.SuspendLayout();
             this.SuspendLayout();
             // 
@@ -47,18 +46,18 @@
             // label1
             // 
             this.label1.AutoSize = true;
-            this.label1.Location = new System.Drawing.Point(3, 15);
+            this.label1.Location = new System.Drawing.Point(3, 9);
             this.label1.Name = "label1";
             this.label1.Size = new System.Drawing.Size(64, 15);
             this.label1.TabIndex = 0;
-            this.label1.Text = "Welcome";
+            this.label1.Text = "ToukaitetudouPluginManager Ver."+PluginMain.ver.ToString();
             // 
             // panel1
             // 
             this.panel1.Controls.Add(this.label1);
-            this.panel1.Location = new System.Drawing.Point(61, 129);
+            this.panel1.Location = new System.Drawing.Point(0, 0);
             this.panel1.Name = "panel1";
-            this.panel1.Size = new System.Drawing.Size(200, 100);
+            this.panel1.Size = new System.Drawing.Size(800, 450);
             this.panel1.TabIndex = 1;
             // 
             // PluginsForm
@@ -70,7 +69,6 @@
             this.Controls.Add(this.tabControl1);
             this.Name = "PluginsForm";
             this.Text = "PluginsForm";
-            this.tabControl1.ResumeLayout(false);
             this.panel1.ResumeLayout(false);
             this.panel1.PerformLayout();
             this.ResumeLayout(false);

@@ -32,6 +32,7 @@ namespace Toukaitetudou.AtsEx.ToukaitetudouPluginManager
         private ToolStripMenuItem MenuItem;
         private Dictionary<string,TabPage> tabsMng = new Dictionary<string,TabPage>();
         int index = 0;
+        public static readonly float ver = 0.1f;
         public PluginMain(PluginBuilder builder) : base(builder)
         {
             
@@ -53,7 +54,7 @@ namespace Toukaitetudou.AtsEx.ToukaitetudouPluginManager
             Form = new PluginsForm();
             Form.FormClosing += FormClosing;
             Form.WindowState = FormWindowState.Normal;
-            AddPage(this.Identifier, "Welcome", Form.panel1);
+            AddPage(this.Identifier, "TPM", Form.panel1);
             MenuItem.Checked = true;
             BveHacker.MainFormSource.Focus();
         }
