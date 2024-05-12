@@ -4,9 +4,7 @@ using AtsEx.PluginHost.Plugins;
 using AtsEx.PluginHost.Plugins.Extensions;
 using System;
 using System.Collections.Generic;
-using System.Diagnostics;
 using System.IO;
-using System.Net;
 using System.Reflection;
 using System.Windows.Forms;
 
@@ -58,19 +56,13 @@ namespace Toukaitetudou.AtsEx.ToukaitetudouPluginManager
             Form.WindowState = FormWindowState.Normal;
             AddPage(this.Identifier, "TPM", Form.panel1);
             MenuItem.Checked = true;
-            BveHacker.MainFormSource.Focus(); 
-            ServicePointManager.SecurityProtocol |= SecurityProtocolType.Tls12;
-            System.Net.WebClient wc = new System.Net.WebClient();
-            string filepath =Directory.GetParent(Location)+"\\"+Path.GetFileNameWithoutExtension(Location)+"_1.dll";
-            //wc.DownloadFile("https://github.com/TKRwm100/ToukaitetudouPluginManager/raw/main/ToukaitetudouPluginManager/obj/Debug/ToukaitetudouPluginManager.dll",filepath);
-
-            wc.Dispose();
+            BveHacker.MainFormSource.Focus();
         }
 
         public override void Dispose()
         {
             BveHacker.ScenarioCreated -= OnScenarioCreated;
-            Process.Start(Directory.GetParent(Location)+"\\PluginUpdater.exe");
+
             //DrawObjectsPatch.Dispose();
         }
 
