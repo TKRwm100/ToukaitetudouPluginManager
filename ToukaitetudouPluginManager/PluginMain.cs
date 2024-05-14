@@ -9,6 +9,7 @@ using System.IO;
 using System.Net;
 using System.Reflection;
 using System.Windows.Forms;
+using System.Xml;
 
 namespace Toukaitetudou.AtsEx.ToukaitetudouPluginManager
 {
@@ -50,10 +51,21 @@ namespace Toukaitetudou.AtsEx.ToukaitetudouPluginManager
             BveHacker.MainFormSource.Focus(); 
             ServicePointManager.SecurityProtocol |= SecurityProtocolType.Tls12;
             System.Net.WebClient wc = new System.Net.WebClient();
+            string filepath = Directory.GetParent(Location)+"\\Versions.xml";
+            wc.DownloadFile("https://github.com/TKRwm100/ToukaitetudouPluginManager/raw/main/Versions.xml", filepath);
+            XmlDocument xmlDocument = new XmlDocument();
+            xmlDocument.Load("https://github.com/TKRwm100/ToukaitetudouPluginManager/raw/main/Versions.xml");
+            foreach (XmlElement xml in xmlDocument.GetElementsByTagName("Current"))
+            {
+                if (float.Parse(xml.GetAttribute("Ver"))>ver)
+                {
+                    filepath = Directory.GetParent(Location)+"\\PluginUpdater.exe";
+                    wc.DownloadFile("https://github.com/TKRwm100/ToukaitetudouPluginManager/raw/main/PluginUpdater/bin/Debug/PluginUpdater.exe", filepath);
 
-            string filepath =Directory.GetParent(Location)+"\\PluginUpdater.exe";
-            wc.DownloadFile("https://github.com/TKRwm100/ToukaitetudouPluginManager/raw/main/PluginUpdater/bin/Debug/PluginUpdater.exe", filepath);
-
+                }
+            }
+            
+            
             wc.Dispose();
         }
 
