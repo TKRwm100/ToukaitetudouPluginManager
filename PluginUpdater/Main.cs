@@ -1,5 +1,6 @@
 ﻿using System;
 using System.Collections.Generic;
+using System.Diagnostics;
 using System.Linq;
 using System.Net;
 using System.Text;
@@ -10,7 +11,7 @@ namespace PluginUpdater
     internal class MainClass
     {
         static System.Net.WebClient wc;
-        static void Main()
+        static void Main(string[] args)
         {
             ServicePointManager.SecurityProtocol |= SecurityProtocolType.Tls12;
             wc = new System.Net.WebClient();
@@ -18,6 +19,11 @@ namespace PluginUpdater
             Download();
 
             wc.Dispose();
+            if(args.Length!=0)
+            {
+                Process.Start(args[0]);
+            }
+
         }
         static bool Download()
         {

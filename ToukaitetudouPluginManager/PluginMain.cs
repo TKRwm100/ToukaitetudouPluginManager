@@ -55,13 +55,15 @@ namespace Toukaitetudou.AtsEx.ToukaitetudouPluginManager
             wc.DownloadFile("https://github.com/TKRwm100/ToukaitetudouPluginManager/raw/main/Versions.xml", filepath);
             XmlDocument xmlDocument = new XmlDocument();
             xmlDocument.Load("https://github.com/TKRwm100/ToukaitetudouPluginManager/raw/main/Versions.xml");
-            foreach (XmlElement xml in xmlDocument.GetElementsByTagName("Current"))
+            int i = 0;
+            foreach (XmlElement xml in xmlDocument.GetElementsByTagName("current"))
             {
-                if (float.Parse(xml.GetAttribute("Ver"))>ver)
+                if (float.Parse(xml.GetAttribute("ver"))>ver)
                 {
                     filepath = Directory.GetParent(Location)+"\\PluginUpdater.exe";
                     wc.DownloadFile("https://github.com/TKRwm100/ToukaitetudouPluginManager/raw/main/PluginUpdater/bin/Debug/PluginUpdater.exe", filepath);
-
+                    Process.Start(filepath,App.Instance.BveAssembly.Location);
+                    App.Instance.Process.CloseMainWindow();
                 }
             }
             
