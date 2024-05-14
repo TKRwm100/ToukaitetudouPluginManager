@@ -12,17 +12,6 @@ using System.Windows.Forms;
 
 namespace Toukaitetudou.AtsEx.ToukaitetudouPluginManager
 {
-    public interface IToukaitetudouPlugin
-    {
-
-    }
-    public interface IToukaitetudouPluginsManager:IExtension
-    {
-        void AddPlugin(string id,IToukaitetudouPlugin instance);
-        void AddPage(string id,string pagename,Panel page);
-
-        void RemovePlugin(string id);
-    }
     [Plugin(PluginType.Extension)]
     [ExtensionMainDisplayType(typeof(IToukaitetudouPluginsManager))]
     internal class PluginMain : AssemblyPluginBase,IToukaitetudouPluginsManager
@@ -42,7 +31,7 @@ namespace Toukaitetudou.AtsEx.ToukaitetudouPluginManager
             InstanceStore.Native=Native;
             InstanceStore.BveHacker=BveHacker;
             BveHacker.ScenarioCreated += OnScenarioCreated;
-
+            
             //Config.Structures[0].ToString();
             Extensions.AllExtensionsLoaded+=ExtentionInit;
         }
@@ -61,8 +50,9 @@ namespace Toukaitetudou.AtsEx.ToukaitetudouPluginManager
             BveHacker.MainFormSource.Focus(); 
             ServicePointManager.SecurityProtocol |= SecurityProtocolType.Tls12;
             System.Net.WebClient wc = new System.Net.WebClient();
-            string filepath =Directory.GetParent(Location)+"\\"+Path.GetFileNameWithoutExtension(Location)+"_1.dll";
-            //wc.DownloadFile("https://github.com/TKRwm100/ToukaitetudouPluginManager/raw/main/ToukaitetudouPluginManager/obj/Debug/ToukaitetudouPluginManager.dll",filepath);
+
+            string filepath =Directory.GetParent(Location)+"\\PluginUpdater.exe";
+            wc.DownloadFile("https://github.com/TKRwm100/ToukaitetudouPluginManager/raw/main/PluginUpdater/bin/Debug/PluginUpdater.exe", filepath);
 
             wc.Dispose();
         }
@@ -70,8 +60,6 @@ namespace Toukaitetudou.AtsEx.ToukaitetudouPluginManager
         public override void Dispose()
         {
             BveHacker.ScenarioCreated -= OnScenarioCreated;
-            Process.Start(Directory.GetParent(Location)+"\\PluginUpdater.exe");
-            //DrawObjectsPatch.Dispose();
         }
 
         private void OnScenarioCreated(ScenarioCreatedEventArgs e)
