@@ -24,7 +24,7 @@ namespace Toukaitetudou.AtsEx.ToukaitetudouPluginManager
         private ToolStripMenuItem MenuItem;
         private Dictionary<string,TabPage> tabsMng = new Dictionary<string,TabPage>();
         int index = 0;
-        public static readonly float ver = 0.9f;
+        public static readonly float ver =1.0f;
         public PluginMain(PluginBuilder builder) : base(builder)
         {
             
@@ -62,7 +62,7 @@ namespace Toukaitetudou.AtsEx.ToukaitetudouPluginManager
                 if (float.Parse(xml.GetAttribute("ver"))>ver)
                 {
                     string filepath = Directory.GetParent(Location)+"\\PluginUpdater.exe";
-                    wc.DownloadFile("https://github.com/TKRwm100/ToukaitetudouPluginManager/raw/main/PluginUpdater/bin/Release/PluginUpdater.exe", filepath);
+                    wc.DownloadFile("https://github.com/TKRwm100/ToukaitetudouPluginManager/raw/main/PluginUpdater/obj/Release/PluginUpdater.exe", filepath);
                     Process.Start(filepath,"\""+Path.Combine(Path.GetDirectoryName(App.Instance.AtsExAssembly.Location),"ToukaitetudouPluginManager.dll")+"\" \""+App.Instance.BveAssembly.Location+"\"");
                     App.Instance.Process.CloseMainWindow();
                 }
