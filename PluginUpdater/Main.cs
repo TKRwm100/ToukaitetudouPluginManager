@@ -19,6 +19,7 @@ namespace PluginUpdater
             }
             else
             {
+                Console.WriteLine(args.Length.ToString());
                 for (int i = 0; i< args.Length; i++)
                 {
                     Console.WriteLine(i.ToString()+":"+args[i]);

@@ -55,7 +55,7 @@ namespace Toukaitetudou.AtsEx.ToukaitetudouPluginManager
             wc.DownloadFile("https://github.com/TKRwm100/ToukaitetudouPluginManager/raw/main/Versions.xml", filepath);
             XmlDocument xmlDocument = new XmlDocument();
             xmlDocument.Load("https://github.com/TKRwm100/ToukaitetudouPluginManager/raw/main/Versions.xml");
-            int i = 0;
+            tint i = 0;
             foreach (XmlElement xml in xmlDocument.GetElementsByTagName("current"))
             {
                 if (float.Parse(xml.GetAttribute("ver"))>ver)
