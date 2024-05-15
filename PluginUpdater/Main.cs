@@ -13,6 +13,7 @@ namespace PluginUpdater
         static System.Net.WebClient wc;
         static void Main(string[] args)
         {
+            string path = "";
             if (args is null)
             {
                 Console.WriteLine("null");
@@ -23,6 +24,7 @@ namespace PluginUpdater
                 for (int i = 0; i< args.Length; i++)
                 {
                     Console.WriteLine(i.ToString()+":"+args[i]);
+                    path += args[i];
                 }
             }
             Console.ReadLine();
@@ -32,9 +34,9 @@ namespace PluginUpdater
             Download();
 
             wc.Dispose();
-            if(args.Length!=0)
+            if(path!="")
             {
-                Process.Start(args[0]);
+                Process.Start(path);
             }
 
         }
