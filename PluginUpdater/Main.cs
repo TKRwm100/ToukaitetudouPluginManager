@@ -16,19 +16,19 @@ namespace PluginUpdater
             string path = "";
             if (args is null)
             {
-                Console.WriteLine("null");
+                //Console.WriteLine("null");
             }
             else
             {
-                Console.WriteLine(args.Length.ToString());
+                //Console.WriteLine(args.Length.ToString());
                 for (int i = 0; i< args.Length; i++)
                 {
-                    Console.WriteLine(i.ToString()+":"+args[i]);
+                    //Console.WriteLine(i.ToString()+":"+args[i]);
                     path += args[i];
                 }
             }
-            Console.WriteLine(path);
-            Console.ReadLine();
+            //Console.WriteLine(path);
+            //Console.ReadLine();
             ServicePointManager.SecurityProtocol |= SecurityProtocolType.Tls12;
             wc = new System.Net.WebClient();
 
