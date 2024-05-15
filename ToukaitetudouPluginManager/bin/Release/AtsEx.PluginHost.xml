@@ -1,0 +1,2159 @@
+<?xml version="1.0"?>
+<doc>
+    <assembly>
+        <name>AtsEx.PluginHost</name>
+    </assembly>
+    <members>
+        <member name="P:AtsEx.PluginHost.App.ProductName">
+            <summary>
+            プロダクト名を取得します。
+            </summary>
+        </member>
+        <member name="P:AtsEx.PluginHost.App.ProductShortName">
+            <summary>
+            短いプロダクト名を取得します。
+            </summary>
+        </member>
+        <member name="P:AtsEx.PluginHost.App.Process">
+            <summary>
+            制御対象の BVE を実行している <see cref="T:System.Diagnostics.Process"/> を取得します。
+            </summary>
+        </member>
+        <member name="P:AtsEx.PluginHost.App.BveAssembly">
+            <summary>
+            実行元の BVE の <see cref="T:System.Reflection.Assembly"/> を取得します。
+            </summary>
+        </member>
+        <member name="P:AtsEx.PluginHost.App.AtsExLauncherAssembly">
+            <summary>
+            AtsEX Launcher の <see cref="T:System.Reflection.Assembly"/> を取得します。
+            </summary>
+        </member>
+        <member name="P:AtsEx.PluginHost.App.AtsExAssembly">
+            <summary>
+            AtsEX の <see cref="T:System.Reflection.Assembly"/> を取得します。
+            </summary>
+        </member>
+        <member name="P:AtsEx.PluginHost.App.AtsExPluginHostAssembly">
+            <summary>
+            AtsEX プラグインホストの <see cref="T:System.Reflection.Assembly"/> を取得します。
+            </summary>
+        </member>
+        <member name="P:AtsEx.PluginHost.App.AtsExVersion">
+            <summary>
+            AtsEX のバージョンを取得します。
+            </summary>
+        </member>
+        <member name="P:AtsEx.PluginHost.App.BveVersion">
+            <summary>
+            実行元の BVE のバージョンを取得します。
+            </summary>
+        </member>
+        <member name="P:AtsEx.PluginHost.App.LaunchMode">
+            <summary>
+            AtsEX 本体の呼出モードを取得します。
+            </summary>
+        </member>
+        <member name="T:AtsEx.PluginHost.Binding.BindingMode">
+            <summary>
+            ターゲットとデータソースとのバインディングのデータ同期の方向を指定します。
+            </summary>
+        </member>
+        <member name="F:AtsEx.PluginHost.Binding.BindingMode.OneWay">
+            <summary>
+            「データソース→ターゲット」の方向のみデータを同期することを指定します。
+            </summary>
+        </member>
+        <member name="F:AtsEx.PluginHost.Binding.BindingMode.OneWayToSource">
+            <summary>
+            「ターゲット→データソース」の方向のみデータを同期することを指定します。
+            </summary>
+        </member>
+        <member name="F:AtsEx.PluginHost.Binding.BindingMode.TwoWay">
+            <summary>
+            ターゲット―データソース間で双方向にデータを同期することを指定します。
+            </summary>
+        </member>
+        <member name="T:AtsEx.PluginHost.Binding.IBinding`1">
+            <summary>
+            ターゲットと任意のデータソースを接続するデータバインディングを表します。
+            </summary>
+            <typeparam name="T">バインドするデータの型。</typeparam>
+        </member>
+        <member name="P:AtsEx.PluginHost.Binding.IBinding`1.Value">
+            <summary>
+            バインドソースとして使用するオブジェクトを取得・設定します。
+            </summary>
+        </member>
+        <member name="P:AtsEx.PluginHost.Binding.IBinding`1.Mode">
+            <summary>
+            バインド方向のモードを取得・設定します。
+            </summary>
+        </member>
+        <member name="T:AtsEx.PluginHost.DictionaryExtensions">
+            <summary>
+            <see cref="T:System.Collections.Generic.IDictionary`2"/> の LINQ 操作機能を拡張します。
+            </summary>
+        </member>
+        <member name="M:AtsEx.PluginHost.DictionaryExtensions.TryGetKey``2(System.Collections.Generic.IDictionary{``0,``1},``1,``0@,System.Collections.Generic.IEqualityComparer{``1})">
+            <summary>
+            指定した値に関連付けられているキーを取得します。
+            </summary>
+            <typeparam name="TKey"><paramref name="source"/> のキーの型。</typeparam>
+            <typeparam name="TValue"><paramref name="source"/> の値の型。</typeparam>
+            <param name="source">返されるキーが含まれる <see cref="T:System.Collections.Generic.IDictionary`2"/>。</param>
+            <param name="value">取得するキーの値。</param>
+            <param name="key">このメソッドから制御が戻るときに、値が見つかった場合は、指定した値に関連付けられているキーが格納されます。それ以外の場合は <typeparamref name="TKey"/> 型に対する既定の値。 このパラメーターは初期化せずに渡されます。</param>
+            <param name="comparer">値を比較する等値比較子。</param>
+            <returns>指定した値を持つ要素が <paramref name="source"/> に格納されている場合は <see langword="true"/>。それ以外の場合は <see langword="false"/>。</returns>
+            <exception cref="T:System.ArgumentNullException"><paramref name="source"/>、または <paramref name="comparer"/> が <see langword="null"/> です。</exception>
+        </member>
+        <member name="M:AtsEx.PluginHost.DictionaryExtensions.TryGetKey``2(System.Collections.Generic.IDictionary{``0,``1},``1,``0@)">
+            <summary>
+            指定した値に関連付けられているキーを取得します。
+            </summary>
+            <typeparam name="TKey"><paramref name="source"/> のキーの型。</typeparam>
+            <typeparam name="TValue"><paramref name="source"/> の値の型。</typeparam>
+            <param name="source">返されるキーが含まれる <see cref="T:System.Collections.Generic.IDictionary`2"/>。</param>
+            <param name="value">取得するキーの値。</param>
+            <param name="key">このメソッドから制御が戻るときに、値が見つかった場合は、指定した値に関連付けられているキーが格納されます。それ以外の場合は <typeparamref name="TKey"/> 型に対する既定の値。このパラメーターは初期化せずに渡されます。</param>
+            <returns>指定した値を持つ要素が <paramref name="source"/> に格納されている場合は <see langword="true"/>。それ以外の場合は <see langword="false"/>。</returns>
+            <exception cref="T:System.ArgumentNullException"><paramref name="source"/> が <see langword="null"/> です。</exception>
+        </member>
+        <member name="M:AtsEx.PluginHost.DictionaryExtensions.TryGetKey``2(System.Collections.Generic.IDictionary{``0,``1},``1,System.Collections.Generic.IEqualityComparer{``1})">
+            <summary>
+            指定した値に関連付けられているキーを取得します。
+            </summary>
+            <typeparam name="TKey"><paramref name="source"/> のキーの型。</typeparam>
+            <typeparam name="TValue"><paramref name="source"/> の値の型。</typeparam>
+            <param name="source">返されるキーが含まれる <see cref="T:System.Collections.Generic.IDictionary`2"/>。</param>
+            <param name="value">取得するキーの値。</param>
+            <param name="comparer">値を比較する等値比較子。</param>
+            <returns>値が見つかった場合は、指定した値に関連付けられているキーが格納されます。それ以外の場合は <typeparamref name="TKey"/> 型に対する既定の値。</returns>
+            <exception cref="T:System.ArgumentNullException"><paramref name="source"/>、または <paramref name="comparer"/> が <see langword="null"/> です。</exception>
+        </member>
+        <member name="M:AtsEx.PluginHost.DictionaryExtensions.TryGetKey``2(System.Collections.Generic.IDictionary{``0,``1},``1)">
+            <summary>
+            指定した値に関連付けられているキーを取得します。
+            </summary>
+            <typeparam name="TKey"><paramref name="source"/> のキーの型。</typeparam>
+            <typeparam name="TValue"><paramref name="source"/> の値の型。</typeparam>
+            <param name="source">返されるキーが含まれる <see cref="T:System.Collections.Generic.IDictionary`2"/>。</param>
+            <param name="value">取得するキーの値。</param>
+            <returns>値が見つかった場合は、指定した値に関連付けられているキーが格納されます。それ以外の場合は <typeparamref name="TKey"/> 型に対する既定の値。</returns>
+            <exception cref="T:System.ArgumentNullException"><paramref name="source"/> が <see langword="null"/> です。</exception>
+        </member>
+        <member name="M:AtsEx.PluginHost.DictionaryExtensions.ContainsValue``2(System.Collections.Generic.IDictionary{``0,``1},``1,System.Collections.Generic.IEqualityComparer{``1})">
+            <summary>
+            <see cref="T:System.Collections.Generic.IDictionary`2"/> に特定の値が格納されているかどうかを判断します。
+            </summary>
+            <typeparam name="TKey"><paramref name="source"/> のキーの型。</typeparam>
+            <typeparam name="TValue"><paramref name="source"/> の値の型。</typeparam>
+            <param name="source">返されるキーが含まれる <see cref="T:System.Collections.Generic.IDictionary`2"/>。</param>
+            <param name="value">取得するキーの値。</param>
+            <param name="comparer">値を比較する等値比較子。</param>
+            <returns>指定した値を持つ要素が <paramref name="source"/> に格納されている場合は <see langword="true"/>。それ以外の場合は <see langword="false"/>。</returns>
+            <exception cref="T:System.ArgumentNullException"><paramref name="source"/>、または <paramref name="comparer"/> が <see langword="null"/> です。</exception>
+        </member>
+        <member name="M:AtsEx.PluginHost.DictionaryExtensions.ContainsValue``2(System.Collections.Generic.IDictionary{``0,``1},``1)">
+            <summary>
+            <see cref="T:System.Collections.Generic.IDictionary`2"/> に特定の値が格納されているかどうかを判断します。
+            </summary>
+            <typeparam name="TKey"><paramref name="source"/> のキーの型。</typeparam>
+            <typeparam name="TValue"><paramref name="source"/> の値の型。</typeparam>
+            <param name="source">返されるキーが含まれる <see cref="T:System.Collections.Generic.IDictionary`2"/>。</param>
+            <param name="value">取得するキーの値。</param>
+            <param name="comparer">値を比較する等値比較子。</param>
+            <returns>指定した値を持つ要素が <paramref name="source"/> に格納されている場合は <see langword="true"/>。それ以外の場合は <see langword="false"/>。</returns>
+            <exception cref="T:System.ArgumentNullException"><paramref name="source"/> が <see langword="null"/> です。</exception>
+        </member>
+        <member name="T:AtsEx.PluginHost.ScenarioOpenedEventArgs">
+            <summary>
+            <see cref="E:AtsEx.PluginHost.IBveHacker.ScenarioOpened"/> イベントのデータを提供します。
+            </summary>
+        </member>
+        <member name="P:AtsEx.PluginHost.ScenarioOpenedEventArgs.ScenarioInfo">
+            <summary>
+            読込が開始されたシナリオの情報を格納する <see cref="T:BveTypes.ClassWrappers.ScenarioInfo"/> を取得します。
+            </summary>
+        </member>
+        <member name="M:AtsEx.PluginHost.ScenarioOpenedEventArgs.#ctor(BveTypes.ClassWrappers.ScenarioInfo)">
+            <summary>
+            <see cref="T:AtsEx.PluginHost.ScenarioOpenedEventArgs"/> クラスの新しいインスタンスを初期化します。
+            </summary>
+            <param name="scenarioInfo">読込が開始されたシナリオの情報を格納する <see cref="T:BveTypes.ClassWrappers.ScenarioInfo"/>。</param>
+        </member>
+        <member name="T:AtsEx.PluginHost.ConflictException">
+            <summary>
+            他のプラグインとの競合を検出した場合にスローされます。
+            </summary>
+        </member>
+        <member name="P:AtsEx.PluginHost.ConflictException.SenderName">
+            <summary>
+            <see cref="T:AtsEx.PluginHost.ConflictException"/> の原因となった箇所を表すテキストを取得します。
+            </summary>
+        </member>
+        <member name="M:AtsEx.PluginHost.ConflictException.#ctor(System.String)">
+            <summary>
+            例外を説明するメッセージを指定して、<see cref="T:AtsEx.PluginHost.ConflictException"/> クラスの新しいインスタンスを初期化します。
+            </summary>
+            <param name="message">例外がスローされたときに表示するメッセージ。</param>
+        </member>
+        <member name="M:AtsEx.PluginHost.ConflictException.#ctor(System.String,System.String)">
+            <summary>
+            例外を説明するメッセージとこの例外の原因となった箇所を表すテキストを指定して、<see cref="T:AtsEx.PluginHost.ConflictException"/> クラスの新しいインスタンスを初期化します。
+            </summary>
+            <param name="message">例外がスローされたときに表示するメッセージ。<see langword="null"/> を指定すると既定のメッセージが使用されます。</param>
+            <param name="senderName"><see cref="T:AtsEx.PluginHost.ConflictException"/> の原因となった箇所を表すテキスト。</param>
+        </member>
+        <member name="M:AtsEx.PluginHost.ConflictException.#ctor(System.String,System.Exception)">
+            <summary>
+            例外を説明するメッセージとこの例外の原因となった例外を指定して、<see cref="T:AtsEx.PluginHost.ConflictException"/> クラスの新しいインスタンスを初期化します。
+            </summary>
+            <param name="message">例外がスローされたときに表示するメッセージ。</param>
+            <param name="innerException"><see cref="T:AtsEx.PluginHost.ConflictException"/> の原因となった例外。</param>
+        </member>
+        <member name="T:AtsEx.PluginHost.MemberNotInitializedException">
+            <summary>
+            まだ初期化されておらず取得できないプロパティを取得しようとしたときにスローされる例外です。
+            </summary>
+        </member>
+        <member name="M:AtsEx.PluginHost.MemberNotInitializedException.#ctor(System.String)">
+            <summary>
+            メッセージを指定して、<see cref="T:AtsEx.PluginHost.MemberNotInitializedException"/> クラスの新しいインスタンスを初期化します。
+            </summary>
+            <param name="message">この例外の詳細を説明するメッセージ。</param>
+        </member>
+        <member name="M:AtsEx.PluginHost.MemberNotInitializedException.#ctor">
+            <summary>
+            <see cref="T:AtsEx.PluginHost.MemberNotInitializedException"/> クラスの新しいインスタンスを初期化します。
+            </summary>
+        </member>
+        <member name="T:AtsEx.PluginHost.ITwoWayConverter`2">
+            <summary>
+            双方向に型変換が可能なコンバーターを表します。
+            </summary>
+            <typeparam name="T1">変換元・先として使用する 1 つ目の型。</typeparam>
+            <typeparam name="T2">変換元・先として使用する 2 つ目の型。</typeparam>
+        </member>
+        <member name="M:AtsEx.PluginHost.ITwoWayConverter`2.Convert(`0)">
+            <summary>
+            <typeparamref name="T1"/> 型のオブジェクトを <typeparamref name="T2"/> 型に変換します。
+            </summary>
+            <param name="value">変換するオブジェクト。</param>
+            <returns>変換されたオブジェクト。</returns>
+        </member>
+        <member name="M:AtsEx.PluginHost.ITwoWayConverter`2.ConvertBack(`1)">
+            <summary>
+            <typeparamref name="T2"/> 型のオブジェクトを <typeparamref name="T1"/> 型に変換します。
+            </summary>
+            <param name="value">変換するオブジェクト。</param>
+            <returns>変換されたオブジェクト。</returns>
+        </member>
+        <member name="T:AtsEx.PluginHost.MapStatements.IdentifierToEnumConverter`1">
+            <summary>
+            識別子を、それに対応する <typeparamref name="TEnum"/> 型の値に変換するための機能を提供します。
+            </summary>
+            <typeparam name="TEnum">変換先となる列挙型。</typeparam>
+        </member>
+        <member name="F:AtsEx.PluginHost.MapStatements.IdentifierToEnumConverter`1.Dictionary">
+            <summary>
+            識別子と、それに対応する <typeparamref name="TEnum"/> 型の値のペアを格納します。
+            </summary>
+        </member>
+        <member name="M:AtsEx.PluginHost.MapStatements.IdentifierToEnumConverter`1.#ctor(AtsEx.PluginHost.MapStatements.Identifier)">
+            <summary>
+            <see cref="T:AtsEx.PluginHost.MapStatements.IdentifierToEnumConverter`1"/> クラスの新しいインスタンスを初期化します。
+            </summary>
+            <param name="parent">変換対象の <see cref="T:AtsEx.PluginHost.MapStatements.Identifier"/> の親となる識別子。</param>
+        </member>
+        <member name="M:AtsEx.PluginHost.MapStatements.IdentifierToEnumConverter`1.TryConvert(AtsEx.PluginHost.MapStatements.Identifier,`0@)">
+            <summary>
+            指定した識別子を、それに対応する <typeparamref name="TEnum"/> 型の値に変換します。
+            </summary>
+            <param name="value">変換する識別子。</param>
+            <param name="result">変換に成功した場合は変換結果の値、失敗した場合は <typeparamref name="TEnum"/> 型の既定の値。</param>
+            <returns>変換に成功した場合は <see langword="true"/>、失敗した場合は <see langword="false"/>。</returns>
+        </member>
+        <member name="T:AtsEx.PluginHost.MapStatements.Identifier">
+            <summary>
+            <see cref="T:AtsEx.PluginHost.MapStatements.IHeader"/> や <see cref="T:AtsEx.PluginHost.MapStatements.IStatement"/> を区別するための識別子 (名前) を表します。
+            </summary>
+        </member>
+        <member name="F:AtsEx.PluginHost.MapStatements.Identifier.Null">
+            <summary>
+            null の値を表す識別子を取得します。
+            </summary>
+        </member>
+        <member name="M:AtsEx.PluginHost.MapStatements.Identifier.op_Equality(AtsEx.PluginHost.MapStatements.Identifier,AtsEx.PluginHost.MapStatements.Identifier)">
+            <inheritdoc/>
+        </member>
+        <member name="M:AtsEx.PluginHost.MapStatements.Identifier.op_Inequality(AtsEx.PluginHost.MapStatements.Identifier,AtsEx.PluginHost.MapStatements.Identifier)">
+            <inheritdoc/>
+        </member>
+        <member name="P:AtsEx.PluginHost.MapStatements.Identifier.Namespace">
+            <summary>
+            この識別子の名前空間を取得します。
+            </summary>
+        </member>
+        <member name="P:AtsEx.PluginHost.MapStatements.Identifier.Parent">
+            <summary>
+            この識別子の親となる <see cref="T:AtsEx.PluginHost.MapStatements.Identifier"/> を取得します。名前空間直下に定義されており、親が存在しない場合は <see langword="null"/> となります。
+            </summary>
+        </member>
+        <member name="P:AtsEx.PluginHost.MapStatements.Identifier.Name">
+            <summary>
+            この識別子の名前を取得します。
+            </summary>
+        </member>
+        <member name="P:AtsEx.PluginHost.MapStatements.Identifier.FullName">
+            <summary>
+            この識別子の完全修飾名を取得します。
+            </summary>
+        </member>
+        <member name="M:AtsEx.PluginHost.MapStatements.Identifier.#ctor(AtsEx.PluginHost.MapStatements.Namespace,System.String)">
+            <summary>
+            親の識別子をもたず、名前空間直下に定義される <see cref="T:AtsEx.PluginHost.MapStatements.Identifier"/> クラスの新しいインスタンスを初期化します。
+            </summary>
+            <param name="ns">識別子の名前空間。</param>
+            <param name="name">識別子の名前。</param>
+        </member>
+        <member name="M:AtsEx.PluginHost.MapStatements.Identifier.#ctor(AtsEx.PluginHost.MapStatements.Identifier,System.String)">
+            <summary>
+            親の識別子をもつ <see cref="T:AtsEx.PluginHost.MapStatements.Identifier"/> クラスの新しいインスタンスを初期化します。
+            </summary>
+            <param name="parent">親の識別子。</param>
+            <param name="name">識別子の名前。</param>
+        </member>
+        <member name="M:AtsEx.PluginHost.MapStatements.Identifier.Parse(System.String)">
+            <summary>
+            識別子の完全修飾名形式の文字列を、それと等価な <see cref="T:AtsEx.PluginHost.MapStatements.Identifier"/> に変換します。
+            </summary>
+            <param name="fullName">変換する文字列。</param>
+            <returns>変換結果の識別子。</returns>
+        </member>
+        <member name="M:AtsEx.PluginHost.MapStatements.Identifier.TryParse(System.String,AtsEx.PluginHost.MapStatements.Identifier@)">
+            <summary>
+            識別子の完全修飾名形式の文字列を、それと等価な <see cref="T:AtsEx.PluginHost.MapStatements.Identifier"/> に変換します。戻り値は、変換が成功したかどうかを表します。
+            </summary>
+            <param name="fullName">変換する文字列。</param>
+            <param name="result">変換が成功した場合、このメソッドが返されるときに、変換結果の識別子を格納します。変換に失敗した場合は <see langword="null"/> を格納します。</param>
+            <returns><paramref name="fullName"/> が正常に変換された場合は <see langword="true"/>。それ以外の場合は <see langword="false"/>。</returns>
+        </member>
+        <member name="M:AtsEx.PluginHost.MapStatements.Identifier.Equals(System.Object)">
+            <inheritdoc/>
+        </member>
+        <member name="M:AtsEx.PluginHost.MapStatements.Identifier.GetHashCode">
+            <inheritdoc/>
+        </member>
+        <member name="M:AtsEx.PluginHost.MapStatements.Identifier.ToString">
+            <inheritdoc/>
+        </member>
+        <member name="T:AtsEx.PluginHost.MapStatements.IHeader">
+            <summary>
+            include ステートメントを使用して独自に定義する構文を表します。
+            </summary>
+            <remarks>
+            <see cref="T:AtsEx.PluginHost.MapStatements.IStatement"/> と異なりシナリオの読込完了以前から取得できますが、マップ変数を埋め込んだり、定義した距離程と関連付けたりすることはできません。<br/>
+            何らかの目的でファイルを読み込む際のパス指定など、宣言的な用途にお使いください。
+            </remarks>
+        </member>
+        <member name="P:AtsEx.PluginHost.MapStatements.IHeader.Name">
+            <summary>
+            このヘッダーの名前を表す識別子を取得します。
+            </summary>
+            <remarks>
+            ヘッダーの宣言冒頭の、括弧に囲まれた部分のテキストが該当します (例: <c>include '&lt;AtsEx::SampleHeader&gt;Hello, AtsEX world!';</c> なら <c>AtsEx::SampleHeader</c>)。
+            </remarks>
+        </member>
+        <member name="P:AtsEx.PluginHost.MapStatements.IHeader.Argument">
+            <summary>
+            このヘッダーの引数のテキストを取得します。
+            </summary>
+            <remarks>
+            <see cref="P:AtsEx.PluginHost.MapStatements.IHeader.Name"/> に続く部分のテキストが該当します (例: <c>include '&lt;AtsEx::SampleHeader&gt;Hello, AtsEX world!';</c> なら <c>Hello, AtsEX world!</c>)。
+            </remarks>
+        </member>
+        <member name="T:AtsEx.PluginHost.MapStatements.IStatementSet">
+            <summary>
+            ユーザーが独自に定義したステートメントの一覧を表します。
+            </summary>
+        </member>
+        <member name="M:AtsEx.PluginHost.MapStatements.IStatementSet.GetAll(AtsEx.PluginHost.MapStatements.Identifier)">
+            <summary>
+            指定した識別子 (名前) を持つステートメントの一覧を取得します。
+            </summary>
+            <param name="identifier">ステートメントの識別子。</param>
+            <returns>識別子 <paramref name="identifier"/> を持つステートメントの一覧。</returns>
+        </member>
+        <member name="T:AtsEx.PluginHost.MapStatements.IHeaderSet">
+            <summary>
+            ヘッダーの一覧を表します。
+            </summary>
+        </member>
+        <member name="M:AtsEx.PluginHost.MapStatements.IHeaderSet.GetAll(AtsEx.PluginHost.MapStatements.Identifier)">
+            <summary>
+            指定した識別子 (名前) を持つヘッダーの一覧を取得します。
+            </summary>
+            <param name="identifier">ヘッダーの識別子。</param>
+            <returns>識別子 <paramref name="identifier"/> を持つヘッダーの一覧。</returns>
+        </member>
+        <member name="T:AtsEx.PluginHost.MapStatements.IStatement">
+            <summary>
+            Repeater ステートメントを使用して独自に定義する構文を表します。
+            </summary>
+            <remarks>
+            <see cref="T:AtsEx.PluginHost.MapStatements.IHeader"/> と異なり、シナリオの読込が完了して <see cref="E:AtsEx.PluginHost.IBveHacker.ScenarioCreated"/> イベントが発生するまでは取得できませんが、
+            マップ内の変数を埋め込んだり、定義した距離程と関連付けたりすることが可能です。
+            </remarks>
+        </member>
+        <member name="P:AtsEx.PluginHost.MapStatements.IStatement.Name">
+            <summary>
+            このステートメントの名前を表す識別子を取得します。
+            </summary>
+            <remarks>
+            使用する 1 番目のストラクチャーのキー (structureKey1) が該当します。
+            </remarks>
+        </member>
+        <member name="P:AtsEx.PluginHost.MapStatements.IStatement.AdditionalDeclaration">
+            <summary>
+            このステートメントの宣言の付加情報を表す識別子の一覧を取得します。
+            </summary>
+            <remarks>
+            使用する 2 番目以降のストラクチャーのキー (structureKey2、structureKey3、…、structureKeyN) が該当します。
+            </remarks>
+        </member>
+        <member name="P:AtsEx.PluginHost.MapStatements.IStatement.Argument">
+            <summary>
+            このヘッダーの引数のテキストを取得します。
+            </summary>
+            <remarks>
+            連続ストラクチャー名が該当します。
+            </remarks>
+        </member>
+        <member name="P:AtsEx.PluginHost.MapStatements.IStatement.From">
+            <summary>
+            このステートメントが設置されている範囲の始端の距離程 [m] を取得します。
+            </summary>
+        </member>
+        <member name="P:AtsEx.PluginHost.MapStatements.IStatement.To">
+            <summary>
+            このステートメントが設置されている範囲の終端の距離程 [m] を取得します。
+            </summary>
+        </member>
+        <member name="P:AtsEx.PluginHost.MapStatements.IStatement.DefinedStructure">
+            <summary>
+            このステートメントの定義に使用されている連続ストラクチャーを取得します。
+            </summary>
+        </member>
+        <member name="P:AtsEx.PluginHost.MapStatements.IStatement.TrainsObserving">
+            <summary>
+            <see cref="M:AtsEx.PluginHost.MapStatements.IStatement.ObserveTrain(BveTypes.ClassWrappers.Train)"/> メソッド、あるいは <see cref="M:AtsEx.PluginHost.MapStatements.IStatement.ObserveTrains(System.Collections.Generic.IEnumerable{BveTypes.ClassWrappers.Train})"/> メソッドによって登録された、動作を監視している配置済み他列車のコレクションを取得します。
+            </summary>
+        </member>
+        <member name="M:AtsEx.PluginHost.MapStatements.IStatement.ObserveTrain(BveTypes.ClassWrappers.Train)">
+            <summary>
+            指定した配置済み他列車の動作の監視を開始します。
+            </summary>
+            <remarks>
+            <c>Train.Add</c> ステートメント、あるいは <c>Train[trainKey].Load</c> ステートメントによってマップへ配置されている他列車を表す <see cref="T:BveTypes.ClassWrappers.Train"/> のみ使用可能です。<br />
+            AtsEX プラグインから独自に定義した <see cref="T:BveTypes.ClassWrappers.Train"/> を使用することはできません。
+            </remarks>
+            <param name="train">動作を監視する配置済み他列車。</param>
+        </member>
+        <member name="M:AtsEx.PluginHost.MapStatements.IStatement.ObserveTrains(System.Collections.Generic.IEnumerable{BveTypes.ClassWrappers.Train})">
+            <summary>
+            指定した複数の配置済み他列車の動作の監視を開始します。
+            </summary>
+            <remarks>
+            <c>Train.Add</c> ステートメント、あるいは <c>Train[trainKey].Load</c> ステートメントによってマップへ配置されている他列車を表す <see cref="T:BveTypes.ClassWrappers.Train"/> のみ使用可能です。<br />
+            AtsEX プラグインから独自に定義した <see cref="T:BveTypes.ClassWrappers.Train"/> を使用することはできません。
+            </remarks>
+            <param name="trains">動作を監視する配置済み他列車のコレクション。</param>
+        </member>
+        <member name="E:AtsEx.PluginHost.MapStatements.IStatement.Entered">
+            <summary>
+            このステートメント上へ自列車が進入した瞬間に発生します。
+            </summary>
+        </member>
+        <member name="E:AtsEx.PluginHost.MapStatements.IStatement.PreTrainEntered">
+            <summary>
+            このステートメント上へ先行列車が進入した瞬間に発生します。
+            </summary>
+        </member>
+        <member name="E:AtsEx.PluginHost.MapStatements.IStatement.TrainEntered">
+            <summary>
+            このステートメント上へ他列車が進入した瞬間に発生します。
+            </summary>
+        </member>
+        <member name="E:AtsEx.PluginHost.MapStatements.IStatement.Exited">
+            <summary>
+            このステートメント上から自列車が退出した瞬間に発生します。
+            </summary>
+        </member>
+        <member name="E:AtsEx.PluginHost.MapStatements.IStatement.PreTrainExited">
+            <summary>
+            このステートメント上から先行列車が退出した瞬間に発生します。
+            </summary>
+        </member>
+        <member name="E:AtsEx.PluginHost.MapStatements.IStatement.TrainExited">
+            <summary>
+            このステートメント上から他列車が退出した瞬間に発生します。
+            </summary>
+        </member>
+        <member name="T:AtsEx.PluginHost.MapStatements.Namespace">
+            <summary>
+            名前空間を表します。
+            </summary>
+        </member>
+        <member name="F:AtsEx.PluginHost.MapStatements.Namespace.Root">
+            <summary>
+            ルート名前空間 (親が存在しない、トップレベルの名前空間) を取得します。
+            </summary>
+        </member>
+        <member name="M:AtsEx.PluginHost.MapStatements.Namespace.GetUserNamespace(System.String)">
+            <summary>
+            ユーザー・プロジェクト毎に割り当てる名前空間を作成します。
+            </summary>
+            <remarks>
+            拡張機能・プラグインの開発者は、この名前空間以下にユーザー定義の名前空間を定義してください。<see cref="F:AtsEx.PluginHost.MapStatements.Namespace.Root"/> 以下に直接ユーザー定義の名前空間を定義しないでください。
+            </remarks>
+            <param name="userName">名前空間の名前に使用するユーザー名、またはプロジェクト名。</param>
+            <returns>作成したユーザー名前空間。</returns>
+        </member>
+        <member name="M:AtsEx.PluginHost.MapStatements.Namespace.op_Equality(AtsEx.PluginHost.MapStatements.Namespace,AtsEx.PluginHost.MapStatements.Namespace)">
+            <inheritdoc/>
+        </member>
+        <member name="M:AtsEx.PluginHost.MapStatements.Namespace.op_Inequality(AtsEx.PluginHost.MapStatements.Namespace,AtsEx.PluginHost.MapStatements.Namespace)">
+            <inheritdoc/>
+        </member>
+        <member name="P:AtsEx.PluginHost.MapStatements.Namespace.Name">
+            <summary>
+            この名前空間の名前を取得します。
+            </summary>
+        </member>
+        <member name="P:AtsEx.PluginHost.MapStatements.Namespace.FullName">
+            <summary>
+            この名前空間の完全名を取得します。
+            </summary>
+        </member>
+        <member name="M:AtsEx.PluginHost.MapStatements.Namespace.Parse(System.String)">
+            <summary>
+            名前空間形式の文字列を、それと等価な <see cref="T:AtsEx.PluginHost.MapStatements.Namespace"/> に変換します。
+            </summary>
+            <param name="fullName">変換する文字列。</param>
+            <returns>変換結果の名前空間。</returns>
+        </member>
+        <member name="M:AtsEx.PluginHost.MapStatements.Namespace.TryParse(System.String,AtsEx.PluginHost.MapStatements.Namespace@)">
+            <summary>
+            名前空間形式の文字列を、それと等価な <see cref="T:AtsEx.PluginHost.MapStatements.Namespace"/> に変換します。戻り値は、変換が成功したかどうかを表します。
+            </summary>
+            <param name="fullName">変換する文字列。</param>
+            <param name="result">変換が成功した場合、このメソッドが返されるときに、変換結果の名前空間を格納します。変換に失敗した場合は <see langword="null"/> を格納します。</param>
+            <returns><paramref name="fullName"/> が正常に変換された場合は <see langword="true"/>。それ以外の場合は <see langword="false"/>。</returns>
+        </member>
+        <member name="M:AtsEx.PluginHost.MapStatements.Namespace.Equals(System.Object)">
+            <inheritdoc/>
+        </member>
+        <member name="M:AtsEx.PluginHost.MapStatements.Namespace.GetHashCode">
+            <inheritdoc/>
+        </member>
+        <member name="M:AtsEx.PluginHost.MapStatements.Namespace.ToString">
+            <inheritdoc/>
+        </member>
+        <member name="M:AtsEx.PluginHost.MapStatements.Namespace.IsChildOf(AtsEx.PluginHost.MapStatements.Namespace)">
+            <summary>
+            この名前空間が指定された名前空間の子であるかどうかを取得します。
+            </summary>
+            <remarks>
+            この名前空間と <paramref name="other"/> が等価の場合は <see langword="true"/> を返します。
+            </remarks>
+            <param name="other">この名前空間の親かどうかを検証する名前空間。</param>
+            <returns>この名前空間が <paramref name="other"/> の子であるかどうか。</returns>
+        </member>
+        <member name="M:AtsEx.PluginHost.MapStatements.Namespace.Child(System.String)">
+            <summary>
+            この名前空間の下に名前空間を作成します。
+            </summary>
+            <param name="name">名前空間の名前。</param>
+            <returns>作成したサービス名前空間。</returns>
+        </member>
+        <member name="T:AtsEx.PluginHost.MapStatements.PassedEventArgs">
+            <summary>
+            ユーザー定義ステートメント上を列車が通過したときに発生するイベントのデータを提供します。
+            </summary>
+        </member>
+        <member name="P:AtsEx.PluginHost.MapStatements.PassedEventArgs.Direction">
+            <summary>
+            通過した列車の進行方向を取得します。
+            </summary>
+        </member>
+        <member name="M:AtsEx.PluginHost.MapStatements.PassedEventArgs.#ctor(AtsEx.PluginHost.Direction)">
+            <summary>
+            <see cref="T:AtsEx.PluginHost.MapStatements.PassedEventArgs"/> クラスの新しいインスタンスを初期化します。
+            </summary>
+            <param name="direction">通過した列車の進行方向。</param>
+        </member>
+        <member name="T:AtsEx.PluginHost.MapStatements.TrainPassedEventArgs">
+            <summary>
+            ユーザー定義ステートメント上を他列車が通過したときに発生するイベントのデータを提供します。
+            </summary>
+        </member>
+        <member name="P:AtsEx.PluginHost.MapStatements.TrainPassedEventArgs.SenderTrainName">
+            <summary>
+            通過した他列車の名前を取得します。
+            </summary>
+            <remarks>名前は全て小文字に変換されていることに注意してください。</remarks>
+        </member>
+        <member name="P:AtsEx.PluginHost.MapStatements.TrainPassedEventArgs.SenderTrain">
+            <summary>
+            通過した他列車を表す <see cref="T:BveTypes.ClassWrappers.Train"/> を取得します。
+            </summary>
+        </member>
+        <member name="M:AtsEx.PluginHost.MapStatements.TrainPassedEventArgs.#ctor(System.String,BveTypes.ClassWrappers.Train,AtsEx.PluginHost.Direction)">
+            <summary>
+            <see cref="T:AtsEx.PluginHost.MapStatements.TrainPassedEventArgs"/> クラスの新しいインスタンスを初期化します。
+            </summary>
+            <param name="senderTrainName">通過した他列車の名前。名前は全て小文字としてください。</param>
+            <param name="senderTrain">通過した他列車を表す <see cref="T:BveTypes.ClassWrappers.Train"/>。</param>
+            <param name="direction">通過した列車の進行方向。</param>
+        </member>
+        <member name="T:AtsEx.PluginHost.LoadErrorManager.ILoadErrorManager">
+            <summary>
+            シナリオ読込時のエラーを編集するための機能を提供します。
+            </summary>
+        </member>
+        <member name="P:AtsEx.PluginHost.LoadErrorManager.ILoadErrorManager.Errors">
+            <summary>
+            エラーの一覧を取得します。
+            </summary>
+        </member>
+        <member name="M:AtsEx.PluginHost.LoadErrorManager.ILoadErrorManager.Throw(System.String,System.String,System.Int32,System.Int32)">
+            <summary>
+            エラーをスローします。
+            </summary>
+            <param name="text">エラーの内容を表すテキスト。</param>
+            <param name="senderFileName">エラーの発生元となるファイルのファイル名。</param>
+            <param name="lineIndex">エラーの発生元となる行番号。</param>
+            <param name="charIndex">エラーの発生元となる列番号。</param>
+        </member>
+        <member name="M:AtsEx.PluginHost.LoadErrorManager.ILoadErrorManager.Throw(System.String,System.String,System.Int32)">
+            <summary>
+            エラーをスローします。
+            </summary>
+            <param name="text">エラーの内容を表すテキスト。</param>
+            <param name="senderFileName">エラーの発生元となるファイルのファイル名。</param>
+            <param name="lineIndex">エラーの発生元となる行番号。</param>
+        </member>
+        <member name="M:AtsEx.PluginHost.LoadErrorManager.ILoadErrorManager.Throw(System.String,System.String)">
+            <summary>
+            エラーをスローします。
+            </summary>
+            <param name="text">エラーの内容を表すテキスト。</param>
+            <param name="senderFileName">エラーの発生元となるファイルのファイル名。</param>
+        </member>
+        <member name="M:AtsEx.PluginHost.LoadErrorManager.ILoadErrorManager.Throw(System.String)">
+            <summary>
+            エラーをスローします。
+            </summary>
+            <param name="text">エラーの内容を表すテキスト。</param>
+        </member>
+        <member name="M:AtsEx.PluginHost.LoadErrorManager.ILoadErrorManager.Throw(BveTypes.ClassWrappers.LoadError)">
+            <summary>
+            エラーをスローします。
+            </summary>
+            <param name="error">スローするエラー。</param>
+        </member>
+        <member name="T:AtsEx.PluginHost.Native.BeaconPassedEventArgs">
+            <summary>
+            <see cref="E:AtsEx.PluginHost.INative.BeaconPassed"/> イベントのデータを表します。
+            </summary>
+        </member>
+        <member name="P:AtsEx.PluginHost.Native.BeaconPassedEventArgs.Type">
+            <summary>
+            地上子の種別を表す値を取得します。
+            </summary>
+        </member>
+        <member name="P:AtsEx.PluginHost.Native.BeaconPassedEventArgs.SignalIndex">
+            <summary>
+            対となる閉塞の信号インデックスを取得します。
+            </summary>
+            <seealso cref="T:BveTypes.ClassWrappers.SectionManager"/>
+        </member>
+        <member name="P:AtsEx.PluginHost.Native.BeaconPassedEventArgs.Distance">
+            <summary>
+            対となる閉塞までの距離 [m] を取得します。
+            </summary>
+        </member>
+        <member name="P:AtsEx.PluginHost.Native.BeaconPassedEventArgs.Optional">
+            <summary>
+            地上子に設定された任意の値を取得します。
+            </summary>
+        </member>
+        <member name="M:AtsEx.PluginHost.Native.BeaconPassedEventArgs.#ctor(System.Int32,System.Int32,System.Single,System.Int32)">
+            <summary>
+            <see cref="T:AtsEx.PluginHost.Native.BeaconPassedEventArgs"/> クラスの新しいインスタンスを初期化します。
+            </summary>
+            <param name="type">地上子の種別を表す値。</param>
+            <param name="signalIndex">対となる閉塞の信号インデックス。</param>
+            <param name="distance">対となる閉塞までの距離 [m]。</param>
+            <param name="optional">地上子に設定された任意の値。</param>
+        </member>
+        <member name="T:AtsEx.PluginHost.Native.BeaconPassedEventHandler">
+            <summary>
+            <see cref="E:AtsEx.PluginHost.INative.BeaconPassed"/> イベントを処理するメソッドを表します。
+            </summary>
+            <param name="e">イベントデータを格納している <see cref="T:AtsEx.PluginHost.Native.BeaconPassedEventArgs"/>。</param>
+        </member>
+        <member name="T:AtsEx.PluginHost.Native.DoorEventArgs">
+            <summary>
+            <see cref="E:AtsEx.PluginHost.INative.DoorOpened"/> イベント、<see cref="E:AtsEx.PluginHost.INative.DoorClosed"/> イベントのデータを表します。
+            </summary>
+        </member>
+        <member name="T:AtsEx.PluginHost.Native.DoorEventHandler">
+            <summary>
+            <see cref="E:AtsEx.PluginHost.INative.DoorOpened"/> イベント、<see cref="E:AtsEx.PluginHost.INative.DoorClosed"/> イベントを処理するメソッドを表します。
+            </summary>
+            <param name="e">イベントデータを格納している <see cref="T:AtsEx.PluginHost.Native.DoorEventArgs"/>。</param>
+        </member>
+        <member name="T:AtsEx.PluginHost.Native.StartedEventHandler">
+            <summary>
+            <see cref="E:AtsEx.PluginHost.INative.Started"/> イベントを処理するメソッドを表します。
+            </summary>
+            <param name="e">イベントデータを格納している <see cref="T:AtsEx.PluginHost.Native.StartedEventArgs"/>。</param>
+        </member>
+        <member name="T:AtsEx.PluginHost.Native.VehicleSpec">
+            <summary>
+            車両諸元情報を提供します。
+            </summary>
+        </member>
+        <member name="M:AtsEx.PluginHost.Native.VehicleSpec.#ctor(System.Int32,System.Int32,System.Int32,System.Int32,System.Int32)">
+            <summary>
+            <see cref="T:AtsEx.PluginHost.Native.VehicleSpec"/> クラスの新しいインスタンスを初期化します。
+            </summary>
+            <param name="brakeNotches">ブレーキノッチ数。</param>
+            <param name="powerNotches">力行ノッチ数。</param>
+            <param name="atsNotch">ATS 確認ノッチ。</param>
+            <param name="b67notch">ブレーキ弁 67 度に相当するノッチ。</param>
+            <param name="cars">編成両数。</param>
+        </member>
+        <member name="P:AtsEx.PluginHost.Native.VehicleSpec.BrakeNotches">
+            <summary>
+            ブレーキノッチ数を取得します。
+            </summary>
+        </member>
+        <member name="P:AtsEx.PluginHost.Native.VehicleSpec.PowerNotches">
+            <summary>
+            力行ノッチ数を取得します。
+            </summary>
+        </member>
+        <member name="P:AtsEx.PluginHost.Native.VehicleSpec.AtsNotch">
+            <summary>
+            ATS 確認ノッチを取得します。
+            </summary>
+        </member>
+        <member name="P:AtsEx.PluginHost.Native.VehicleSpec.B67Notch">
+            <summary>
+            ブレーキ弁 67 度に相当するノッチを取得します。
+            </summary>
+        </member>
+        <member name="P:AtsEx.PluginHost.Native.VehicleSpec.Cars">
+            <summary>
+            編成両数を取得します。
+            </summary>
+        </member>
+        <member name="T:AtsEx.PluginHost.Native.VehicleState">
+            <summary>
+            車両の状態量を提供します。
+            </summary>
+        </member>
+        <member name="M:AtsEx.PluginHost.Native.VehicleState.#ctor(System.Double,System.Single,System.TimeSpan,System.Single,System.Single,System.Single,System.Single,System.Single,System.Single)">
+            <summary>
+            <see cref="T:AtsEx.PluginHost.Native.VehicleState"/> クラスの新しいインスタンスを初期化します。
+            </summary>
+            <param name="location">列車位置 [m]。</param>
+            <param name="speed">列車速度 [km/h]。</param>
+            <param name="time">現在時刻。</param>
+            <param name="bcPressure">ブレーキシリンダ圧力 [kPa]。</param>
+            <param name="mrPressure">元空気ダメ圧力 [kPa]。</param>
+            <param name="erPressure">釣り合い空気ダメ圧力 [kPa]。</param>
+            <param name="bpPressure">釣り合い空気ダメ圧力 [kPa]。</param>
+            <param name="sapPressure">直通管圧力 [kPa]。</param>
+            <param name="current">電流 [A]。</param>
+        </member>
+        <member name="P:AtsEx.PluginHost.Native.VehicleState.Location">
+            <summary>
+            列車位置 [m] を取得します。
+            </summary>
+        </member>
+        <member name="P:AtsEx.PluginHost.Native.VehicleState.Speed">
+            <summary>
+            列車速度 [km/h] を取得します。
+            </summary>
+        </member>
+        <member name="P:AtsEx.PluginHost.Native.VehicleState.Time">
+            <summary>
+            現在時刻を取得します。
+            </summary>
+        </member>
+        <member name="P:AtsEx.PluginHost.Native.VehicleState.BcPressure">
+            <summary>
+            ブレーキシリンダ圧力 [kPa] を取得します。
+            </summary>
+        </member>
+        <member name="P:AtsEx.PluginHost.Native.VehicleState.MrPressure">
+            <summary>
+            元空気ダメ圧力 [kPa] を取得します。
+            </summary>
+        </member>
+        <member name="P:AtsEx.PluginHost.Native.VehicleState.ErPressure">
+            <summary>
+            釣り合い空気ダメ圧力 [kPa] を取得します。
+            </summary>
+        </member>
+        <member name="P:AtsEx.PluginHost.Native.VehicleState.BpPressure">
+            <summary>
+            ブレーキ管圧力 [kPa] を取得します。
+            </summary>
+        </member>
+        <member name="P:AtsEx.PluginHost.Native.VehicleState.SapPressure">
+            <summary>
+            直通管圧力 [kPa] を取得します。
+            </summary>
+        </member>
+        <member name="P:AtsEx.PluginHost.Native.VehicleState.Current">
+            <summary>
+            電流 [A] を取得します。
+            </summary>
+        </member>
+        <member name="T:AtsEx.PluginHost.Native.StartedEventArgs">
+            <summary>
+            <see cref="E:AtsEx.PluginHost.INative.Started"/> イベントのデータを表します。
+            </summary>
+        </member>
+        <member name="P:AtsEx.PluginHost.Native.StartedEventArgs.DefaultBrakePosition">
+            <summary>
+            ブレーキハンドルの初期位置を取得します。
+            </summary>
+        </member>
+        <member name="M:AtsEx.PluginHost.Native.StartedEventArgs.#ctor(BveTypes.ClassWrappers.BrakePosition)">
+            <summary>
+            <see cref="T:AtsEx.PluginHost.Native.StartedEventArgs"/> クラスの新しいインスタンスを初期化します。
+            </summary>
+            <param name="defaultBrakePosition">ブレーキハンドルの初期位置。</param>
+        </member>
+        <member name="T:AtsEx.PluginHost.LaunchMode">
+            <summary>
+            AtsEX 本体の呼出モードを表します。
+            </summary>
+        </member>
+        <member name="F:AtsEx.PluginHost.LaunchMode.Ats">
+            <summary>
+            AtsEx.Caller から ATS プラグインとして起動されたことを表します。
+            </summary>
+        </member>
+        <member name="F:AtsEx.PluginHost.LaunchMode.InputDevice">
+            <summary>
+            AtsEx.Caller.InputDevice から入力デバイスプラグインとして起動されたことを表します。
+            </summary>
+        </member>
+        <member name="T:AtsEx.PluginHost.Panels.Native.IAtsPanelValueSet">
+            <summary>
+            ATS プラグインによって制御可能な運転台パネルの状態量 (例えば「ats12」など、subjectKey が「ats」から始まる状態量) を AtsEX プラグインから操作するための機能を提供します。
+            </summary>
+        </member>
+        <member name="M:AtsEx.PluginHost.Panels.Native.IAtsPanelValueSet.Register``1(System.Int32,AtsEx.PluginHost.ITwoWayConverter{``0,System.Int32},``0,AtsEx.PluginHost.Binding.BindingMode)">
+            <summary>
+            インデックスと型を指定して、AtsEX から使用する状態量を登録します。
+            </summary>
+            <typeparam name="TValue">状態量の型。</typeparam>
+            <param name="index">状態量のインデックス。例えばこの値が 12 なら、subjectKey「ats12」の状態量を表します。</param>
+            <param name="valueSerializer"><typeparamref name="TValue"/> 型の状態量を BVE 本体へ渡す整数値に変換するシリアライザ。</param>
+            <param name="initialValue">状態量の初期値。</param>
+            <param name="mode">BVE 本体 (他の ATS プラグイン) とのデータの同期モード。<see cref="F:AtsEx.PluginHost.Binding.BindingMode.OneWay"/> を指定した場合、外部から値が変更されると例外をスローします。</param>
+            <returns>登録した状態量を AtsEX から操作するためのオブジェクト。</returns>
+        </member>
+        <member name="M:AtsEx.PluginHost.Panels.Native.IAtsPanelValueSet.Register``1(System.Int32,System.Converter{``0,System.Int32},``0)">
+            <summary>
+            インデックスと型を指定して、AtsEX から使用する状態量を同期モード <see cref="F:AtsEx.PluginHost.Binding.BindingMode.OneWay"/> として登録します。
+            </summary>
+            <typeparam name="TValue">状態量の型。</typeparam>
+            <param name="index">状態量のインデックス。例えばこの値が 12 なら、subjectKey「ats12」の状態量を表します。</param>
+            <param name="oneWayValueSerializer"><typeparamref name="TValue"/> 型の状態量を BVE 本体へ渡す整数値に変換するシリアライザ。</param>
+            <param name="initialValue">状態量の初期値。</param>
+            <returns>登録した状態量を AtsEX から操作するためのオブジェクト。</returns>
+        </member>
+        <member name="M:AtsEx.PluginHost.Panels.Native.IAtsPanelValueSet.RegisterBoolean(System.Int32,System.Boolean,AtsEx.PluginHost.Binding.BindingMode)">
+            <summary>
+            インデックスを指定して、AtsEX から使用する <see langword="bool"/> 型の状態量を登録します。
+            </summary>
+            <param name="index">状態量のインデックス。例えばこの値が 12 なら、subjectKey「ats12」の状態量を表します。</param>
+            <param name="initialValue">状態量の初期値。</param>
+            <param name="mode">BVE 本体 (他の ATS プラグイン) とのデータの同期モード。<see cref="F:AtsEx.PluginHost.Binding.BindingMode.OneWay"/> を指定した場合、外部から値が変更されると例外をスローします。</param>
+            <returns>登録した状態量を AtsEX から操作するためのオブジェクト。</returns>
+        </member>
+        <member name="M:AtsEx.PluginHost.Panels.Native.IAtsPanelValueSet.RegisterInt32(System.Int32,System.Int32,AtsEx.PluginHost.Binding.BindingMode)">
+            <summary>
+            インデックスを指定して、AtsEX から使用する <see cref="T:System.Int32"/> 型の状態量を登録します。
+            </summary>
+            <param name="index">状態量のインデックス。例えばこの値が 12 なら、subjectKey「ats12」の状態量を表します。</param>
+            <param name="initialValue">状態量の初期値。</param>
+            <param name="mode">BVE 本体 (他の ATS プラグイン) とのデータの同期モード。<see cref="F:AtsEx.PluginHost.Binding.BindingMode.OneWay"/> を指定した場合、外部から値が変更されると例外をスローします。</param>
+            <returns>登録した状態量を AtsEX から操作するためのオブジェクト。</returns>
+        </member>
+        <member name="T:AtsEx.PluginHost.Panels.Native.IAtsPanelValue`1">
+            <summary>
+            ATS プラグインによって制御可能な運転台パネルの状態量 (例えば「ats12」など、subjectKey が「ats」から始まる状態量) を表します。
+            </summary>
+            <typeparam name="T">状態量の型。</typeparam>
+        </member>
+        <member name="P:AtsEx.PluginHost.Panels.Native.IAtsPanelValue`1.Value">
+            <summary>
+            状態量を取得・設定します。
+            </summary>
+        </member>
+        <member name="P:AtsEx.PluginHost.Panels.Native.IAtsPanelValue`1.SerializedValue">
+            <summary>
+            <see cref="P:AtsEx.PluginHost.Panels.Native.IAtsPanelValue`1.Value"/> を BVE 本体へ渡す整数値にシリアライズした結果を取得します。
+            </summary>
+        </member>
+        <member name="P:AtsEx.PluginHost.Panels.Native.IAtsPanelValue`1.Mode">
+            <summary>
+            BVE 本体 (他の ATS プラグイン) とのデータの同期モードを取得・設定します。
+            </summary>
+            <remarks>
+            <see cref="F:AtsEx.PluginHost.Binding.BindingMode.OneWay"/> を指定した場合、外部から値が変更されると例外をスローします。
+            </remarks>
+        </member>
+        <member name="E:AtsEx.PluginHost.Panels.Native.IAtsPanelValue`1.ValueChanged">
+            <summary>
+            <see cref="P:AtsEx.PluginHost.Panels.Native.IAtsPanelValue`1.Value"/> の値が変更されたときに発生します。
+            </summary>
+        </member>
+        <member name="T:AtsEx.PluginHost.Plugins.AllPluginsLoadedEventArgs">
+            <summary>
+            AtsEX プラグインの読込完了を通知するイベントのデータを表します。
+            </summary>
+        </member>
+        <member name="P:AtsEx.PluginHost.Plugins.AllPluginsLoadedEventArgs.Plugins">
+            <summary>
+            読み込まれた AtsEX プラグインの一覧を取得します。
+            </summary>
+        </member>
+        <member name="M:AtsEx.PluginHost.Plugins.AllPluginsLoadedEventArgs.#ctor(AtsEx.PluginHost.Plugins.IPluginSet)">
+            <summary>
+            <see cref="T:AtsEx.PluginHost.Plugins.AllPluginsLoadedEventArgs"/> クラスの新しいインスタンスを初期化します。
+            </summary>
+            <param name="plugins">読み込まれた AtsEX プラグインの一覧。</param>
+        </member>
+        <member name="T:AtsEx.PluginHost.Plugins.AllPluginsLoadedEventHandler">
+            <summary>
+            AtsEX プラグインの読込完了を通知するイベントを処理するメソッドを表します。
+            </summary>
+            <param name="e">イベントデータを格納している <see cref="T:AtsEx.PluginHost.Plugins.AllPluginsLoadedEventArgs"/>。</param>
+        </member>
+        <member name="T:AtsEx.PluginHost.Plugins.AssemblyPluginBase">
+            <summary>
+            アセンブリ (.dll) 形式の AtsEX プラグインを表します。
+            </summary>
+        </member>
+        <member name="P:AtsEx.PluginHost.Plugins.AssemblyPluginBase.Location">
+            <inheritdoc/>
+        </member>
+        <member name="P:AtsEx.PluginHost.Plugins.AssemblyPluginBase.Name">
+            <inheritdoc/>
+        </member>
+        <member name="P:AtsEx.PluginHost.Plugins.AssemblyPluginBase.Title">
+            <inheritdoc/>
+        </member>
+        <member name="P:AtsEx.PluginHost.Plugins.AssemblyPluginBase.Version">
+            <inheritdoc/>
+        </member>
+        <member name="P:AtsEx.PluginHost.Plugins.AssemblyPluginBase.Description">
+            <inheritdoc/>
+        </member>
+        <member name="P:AtsEx.PluginHost.Plugins.AssemblyPluginBase.Copyright">
+            <inheritdoc/>
+        </member>
+        <member name="M:AtsEx.PluginHost.Plugins.AssemblyPluginBase.#ctor(AtsEx.PluginHost.Plugins.PluginBuilder)">
+            <summary>
+            AtsEX プラグインの新しいインスタンスを初期化します。
+            </summary>
+            <remarks>
+            <see cref="T:AtsEx.PluginHost.Plugins.PluginTypeAttribute"/> を付加して、プラグインの種類を指定してください。<br/>
+            AtsEX 拡張機能を利用しないプラグインであることを指定するには、<see cref="T:AtsEx.PluginHost.Plugins.DoNotUseBveHackerAttribute"/> を付加してください。
+            </remarks>
+            <param name="builder">AtsEX から渡される BVE、AtsEX の情報。</param>
+        </member>
+        <member name="T:AtsEx.PluginHost.Plugins.DoNotUseBveHackerAttribute">
+            <summary>
+            使用できません。
+            </summary>
+        </member>
+        <member name="M:AtsEx.PluginHost.Plugins.DoNotUseBveHackerAttribute.#ctor">
+            <summary>
+            <see cref="T:AtsEx.PluginHost.Plugins.DoNotUseBveHackerAttribute"/> クラスの新しいインスタンスを初期化します。
+            </summary>
+        </member>
+        <member name="T:AtsEx.PluginHost.Plugins.Extensions.AllExtensionsLoadedEventArgs">
+            <summary>
+            AtsEX 拡張機能の読込完了を通知するイベントのデータを表します。
+            </summary>
+        </member>
+        <member name="P:AtsEx.PluginHost.Plugins.Extensions.AllExtensionsLoadedEventArgs.Extensions">
+            <summary>
+            読み込まれた AtsEX 拡張機能の一覧を取得します。
+            </summary>
+        </member>
+        <member name="M:AtsEx.PluginHost.Plugins.Extensions.AllExtensionsLoadedEventArgs.#ctor(AtsEx.PluginHost.Plugins.Extensions.IExtensionSet)">
+            <summary>
+            <see cref="T:AtsEx.PluginHost.Plugins.Extensions.AllExtensionsLoadedEventArgs"/> クラスの新しいインスタンスを初期化します。
+            </summary>
+            <param name="extensions">読み込まれた AtsEX 拡張機能の一覧。</param>
+        </member>
+        <member name="T:AtsEx.PluginHost.Plugins.Extensions.AllExtensionsLoadedEventHandler">
+            <summary>
+            AtsEX 拡張機能の読込完了を通知するイベントを処理するメソッドを表します。
+            </summary>
+            <param name="e">イベントデータを格納している <see cref="T:AtsEx.PluginHost.Plugins.Extensions.AllExtensionsLoadedEventArgs"/>。</param>
+        </member>
+        <member name="T:AtsEx.PluginHost.Plugins.Extensions.ExtensionMainDisplayTypeAttribute">
+            <summary>
+            <see cref="M:AtsEx.PluginHost.Plugins.Extensions.IExtensionSet.GetExtension``1"/> メソッドからこの AtsEX 拡張機能のメインクラスを取得する時に使用する型を指定します。
+            </summary>
+            <seealso cref="T:AtsEx.PluginHost.Plugins.Extensions.HideExtensionMainAttribute"/>
+        </member>
+        <member name="P:AtsEx.PluginHost.Plugins.Extensions.ExtensionMainDisplayTypeAttribute.DisplayType">
+            <summary>
+            <see cref="M:AtsEx.PluginHost.Plugins.Extensions.IExtensionSet.GetExtension``1"/> メソッドからこの AtsEX 拡張機能のメインクラスを取得する時に使用する型を取得します。
+            </summary>
+        </member>
+        <member name="M:AtsEx.PluginHost.Plugins.Extensions.ExtensionMainDisplayTypeAttribute.#ctor(System.Type)">
+            <summary>
+            <see cref="T:AtsEx.PluginHost.Plugins.Extensions.ExtensionMainDisplayTypeAttribute"/> クラスの新しいインスタンスを初期化します。
+            </summary>
+            <param name="displayType"><see cref="M:AtsEx.PluginHost.Plugins.Extensions.IExtensionSet.GetExtension``1"/> メソッドからこの AtsEX 拡張機能のメインクラスを取得する時に使用する型。</param>
+        </member>
+        <member name="T:AtsEx.PluginHost.Plugins.Extensions.HideExtensionMainAttribute">
+            <summary>
+            <see cref="M:AtsEx.PluginHost.Plugins.Extensions.IExtensionSet.GetExtension``1"/> メソッドからこの AtsEX 拡張機能のメインクラスを取得できないように指定します。
+            </summary>
+        </member>
+        <member name="M:AtsEx.PluginHost.Plugins.Extensions.HideExtensionMainAttribute.#ctor">
+            <summary>
+            <see cref="T:AtsEx.PluginHost.Plugins.Extensions.HideExtensionMainAttribute"/> クラスの新しいインスタンスを初期化します。
+            </summary>
+        </member>
+        <member name="T:AtsEx.PluginHost.Plugins.Extensions.IExtension">
+            <summary>
+            AtsEX 拡張機能を表します。
+            </summary>
+        </member>
+        <member name="T:AtsEx.PluginHost.Plugins.Extensions.IExtensionSet">
+            <summary>
+            AtsEX 拡張機能の一覧を表します。
+            </summary>
+        </member>
+        <member name="M:AtsEx.PluginHost.Plugins.Extensions.IExtensionSet.GetExtension``1">
+            <summary>
+            指定した型の AtsEX 拡張機能を取得します。
+            </summary>
+            <typeparam name="TExtension">AtsEX 拡張機能の型。</typeparam>
+            <returns><typeparamref name="TExtension"/> 型の AtsEX 拡張機能。</returns>
+        </member>
+        <member name="E:AtsEx.PluginHost.Plugins.Extensions.IExtensionSet.AllExtensionsLoaded">
+            <summary>
+            全ての AtsEX 拡張機能が読み込まれ、<see cref="N:AtsEx.PluginHost.Plugins.Extensions"/> プロパティが取得可能になると発生します。
+            </summary>
+            <remarks>
+            AtsEX 拡張機能以外の AtsEX プラグインの場合 (<see cref="P:AtsEx.PluginHost.Plugins.PluginBase.PluginType"/> が <see cref="F:AtsEx.PluginHost.Plugins.PluginType.Extension"/> 以外の場合)、<see cref="P:AtsEx.PluginHost.Plugins.PluginBase.Extensions"/> プロパティは初めから取得可能です。
+            </remarks>
+        </member>
+        <member name="T:AtsEx.PluginHost.Plugins.Extensions.ExtensionTickResult">
+            <summary>
+            拡張機能の <see cref="M:AtsEx.PluginHost.Plugins.PluginBase.Tick(System.TimeSpan)"/> メソッドの実行結果を表します。
+            </summary>
+        </member>
+        <member name="M:AtsEx.PluginHost.Plugins.Extensions.ExtensionTickResult.#ctor">
+            <summary>
+            <see cref="T:AtsEx.PluginHost.Plugins.Extensions.ExtensionTickResult"/> クラスの新しいインスタンスを初期化します。
+            </summary>
+        </member>
+        <member name="T:AtsEx.PluginHost.Plugins.IPluginSet">
+            <summary>
+            AtsEX プラグインの一覧を表します。
+            </summary>
+        </member>
+        <member name="P:AtsEx.PluginHost.Plugins.IPluginSet.Item(AtsEx.PluginHost.Plugins.PluginType)">
+            <summary>
+            指定した種類の AtsEX プラグインの一覧を取得します。
+            </summary>
+        </member>
+        <member name="E:AtsEx.PluginHost.Plugins.IPluginSet.AllPluginsLoaded">
+            <summary>
+            全ての AtsEX プラグインが読み込まれ、<see cref="N:AtsEx.PluginHost.Plugins"/> プロパティが取得可能になると発生します。
+            </summary>
+        </member>
+        <member name="T:AtsEx.PluginHost.Plugins.PluginAttribute">
+            <summary>
+            AtsEX プラグインの仕様を指定します。
+            </summary>
+        </member>
+        <member name="P:AtsEx.PluginHost.Plugins.PluginAttribute.PluginType">
+            <summary>
+            この AtsEX プラグインの種類を取得します。
+            </summary>
+        </member>
+        <member name="P:AtsEx.PluginHost.Plugins.PluginAttribute.MinRequiredVersion">
+            <summary>
+            この AtsEX プラグインが必要とする AtsEX 本体の最低バージョンを取得します。
+            </summary>
+        </member>
+        <member name="M:AtsEx.PluginHost.Plugins.PluginAttribute.#ctor(AtsEx.PluginHost.Plugins.PluginType,System.String)">
+            <summary>
+            <see cref="T:AtsEx.PluginHost.Plugins.PluginAttribute"/> クラスの新しいインスタンスを初期化します。
+            </summary>
+            <param name="pluginType">AtsEX プラグインの種類。</param>
+            <param name="minRequiredVersion">この AtsEX プラグインが必要とする AtsEX 本体の最低バージョンを表す文字列。
+            テキストは <see cref="T:System.Version"/> クラスのコンストラクタがサポートするフォーマットに則っている必要があります。</param>
+        </member>
+        <member name="T:AtsEx.PluginHost.Plugins.PluginType">
+            <summary>
+            プラグインの種類を指定します。
+            </summary>
+        </member>
+        <member name="F:AtsEx.PluginHost.Plugins.PluginType.Extension">
+            <summary>
+            拡張機能を表します。
+            </summary>
+        </member>
+        <member name="F:AtsEx.PluginHost.Plugins.PluginType.VehiclePlugin">
+            <summary>
+            車両プラグインを表します。
+            </summary>
+        </member>
+        <member name="F:AtsEx.PluginHost.Plugins.PluginType.MapPlugin">
+            <summary>
+            マッププラグインを表します。
+            </summary>
+        </member>
+        <member name="T:AtsEx.PluginHost.Plugins.PluginBase">
+            <summary>
+            全ての AtsEX プラグインの基本クラスを表します。
+            </summary>
+            <remarks>
+            このクラスを直接継承する必要があるのは、特殊な AtsEX プラグインの場合のみです。
+            アセンブリ (.dll) 形式の通常の AtsEX プラグインでは <see cref="T:AtsEx.PluginHost.Plugins.AssemblyPluginBase"/> を継承してください。
+            </remarks>
+        </member>
+        <member name="P:AtsEx.PluginHost.Plugins.PluginBase.PluginType">
+            <summary>
+            この AtsEX プラグインの種類を取得します。
+            </summary>
+        </member>
+        <member name="P:AtsEx.PluginHost.Plugins.PluginBase.MinRequiredVersion">
+            <summary>
+            この AtsEX プラグインが必要とする AtsEX 本体の最低バージョンを取得します。最低バージョンが設定されていない場合は <see langword="null"/> を返します。
+            </summary>
+        </member>
+        <member name="P:AtsEx.PluginHost.Plugins.PluginBase.UseBveHacker">
+            <summary>
+            使用できません。常に <see langword="true"/> を返します。
+            </summary>
+        </member>
+        <member name="P:AtsEx.PluginHost.Plugins.PluginBase.Native">
+            <summary>
+            BVE が標準で提供する ATS プラグイン向けの機能のラッパーを取得します。
+            </summary>
+            <remarks>
+            AtsEX 拡張機能の場合 (<see cref="P:AtsEx.PluginHost.Plugins.PluginBase.PluginType"/> が <see cref="F:AtsEx.PluginHost.Plugins.PluginType.Extension"/> の場合) は取得できません。
+            </remarks>
+        </member>
+        <member name="P:AtsEx.PluginHost.Plugins.PluginBase.Extensions">
+            <summary>
+            読み込まれた AtsEX 拡張機能の一覧を取得します。
+            </summary>
+            <remarks>
+            <list type="bullet">
+            <item>AtsEX 拡張機能の場合 (<see cref="P:AtsEx.PluginHost.Plugins.PluginBase.PluginType"/> が <see cref="F:AtsEx.PluginHost.Plugins.PluginType.Extension"/> の場合)、<see cref="E:AtsEx.PluginHost.Plugins.Extensions.IExtensionSet.AllExtensionsLoaded"/> イベントが発生するまでは項目を取得できません。</item>
+            <item>AtsEX 拡張機能以外の AtsEX プラグインは <see cref="P:AtsEx.PluginHost.Plugins.PluginBase.Plugins"/> プロパティから取得できます。</item>
+            </list>
+            </remarks>
+        </member>
+        <member name="P:AtsEx.PluginHost.Plugins.PluginBase.Plugins">
+            <summary>
+            読み込まれた AtsEX プラグインの一覧を取得します。
+            </summary>
+            <remarks>
+            <list type="bullet">
+            <item>AtsEX 拡張機能の場合 (<see cref="P:AtsEx.PluginHost.Plugins.PluginBase.PluginType"/> が <see cref="F:AtsEx.PluginHost.Plugins.PluginType.Extension"/> の場合) は取得できません。</item>
+            <item>AtsEX 拡張機能は <see cref="P:AtsEx.PluginHost.Plugins.PluginBase.Extensions"/> プロパティから取得できます。</item>
+            </list>
+            </remarks>
+            <seealso cref="P:AtsEx.PluginHost.Plugins.PluginBase.Extensions"/>
+        </member>
+        <member name="P:AtsEx.PluginHost.Plugins.PluginBase.BveHacker">
+            <summary>
+            本来 ATS プラグインからは利用できない BVE 本体の諸機能へアクセスするための <see cref="T:AtsEx.PluginHost.IBveHacker"/> を取得します。
+            </summary>
+        </member>
+        <member name="P:AtsEx.PluginHost.Plugins.PluginBase.Identifier">
+            <summary>
+            PluginUsing ファイルで指定したこの  AtsEX プラグインの識別子を取得します。このプロパティの値は全プラグインにおいて一意であることが保証されています。
+            </summary>
+        </member>
+        <member name="P:AtsEx.PluginHost.Plugins.PluginBase.Location">
+            <summary>
+            この AtsEX プラグインのファイルの完全パスを取得します。
+            </summary>
+        </member>
+        <member name="P:AtsEx.PluginHost.Plugins.PluginBase.Name">
+            <summary>
+            この AtsEX プラグインのファイル名を取得します。
+            </summary>
+            <remarks>
+            通常はプラグイン パッケージ ファイルの名前と拡張子 (例: MyPlugin.dll) を表しますが、<br/>
+            スクリプト プラグインの場合など、ファイル名でプラグインを判別できない場合 (例: Package.xml) は代替の文字列を使用することもできます。
+            </remarks>
+        </member>
+        <member name="P:AtsEx.PluginHost.Plugins.PluginBase.Title">
+            <summary>
+            この AtsEX プラグインのタイトルを取得します。
+            </summary>
+        </member>
+        <member name="P:AtsEx.PluginHost.Plugins.PluginBase.Version">
+            <summary>
+            この AtsEX プラグインのバージョンを表す文字列を取得します。
+            </summary>
+        </member>
+        <member name="P:AtsEx.PluginHost.Plugins.PluginBase.Description">
+            <summary>
+            この AtsEX プラグインの説明を取得します。
+            </summary>
+        </member>
+        <member name="P:AtsEx.PluginHost.Plugins.PluginBase.Copyright">
+            <summary>
+            この AtsEX プラグインの著作権表示を取得します。
+            </summary>
+        </member>
+        <member name="M:AtsEx.PluginHost.Plugins.PluginBase.#ctor(AtsEx.PluginHost.Plugins.PluginBuilder,AtsEx.PluginHost.Plugins.PluginAttribute)">
+            <summary>
+            動的に作成された <see cref="T:AtsEx.PluginHost.Plugins.PluginAttribute"/> 属性を参照して、AtsEX プラグインの新しいインスタンスを初期化します。
+            </summary>
+            <param name="builder">AtsEX から渡される BVE、AtsEX の情報。</param>
+            <param name="info">プラグインの詳細な仕様を指定する <see cref="T:AtsEx.PluginHost.Plugins.PluginAttribute"/>。</param>
+        </member>
+        <member name="M:AtsEx.PluginHost.Plugins.PluginBase.#ctor(AtsEx.PluginHost.Plugins.PluginBuilder,AtsEx.PluginHost.Plugins.PluginType,System.Boolean)">
+            <summary>
+            AtsEX プラグインの新しいインスタンスを初期化します。
+            </summary>
+            <remarks>
+            互換性のために残されているコンストラクタです。パラメータに <see cref="T:AtsEx.PluginHost.Plugins.PluginAttribute"/> を指定するオーバーロードを使用してください。
+            </remarks>
+            <param name="builder">AtsEX から渡される BVE、AtsEX の情報。</param>
+            <param name="pluginType">AtsEX プラグインの種類。</param>
+            <param name="useBveHacker">使用されません。</param>
+        </member>
+        <member name="M:AtsEx.PluginHost.Plugins.PluginBase.#ctor(AtsEx.PluginHost.Plugins.PluginBuilder)">
+            <summary>
+            クラスに付加されている <see cref="T:AtsEx.PluginHost.Plugins.PluginAttribute"/> 属性を参照して、AtsEX プラグインの新しいインスタンスを初期化します。
+            </summary>
+            <remarks>
+            <see cref="T:AtsEx.PluginHost.Plugins.PluginAttribute"/> を付加して、プラグインの詳細な仕様を指定してください。
+            </remarks>
+            <param name="builder">AtsEX から渡される BVE、AtsEX の情報。</param>
+        </member>
+        <member name="M:AtsEx.PluginHost.Plugins.PluginBase.Dispose">
+            <inheritdoc/>
+        </member>
+        <member name="M:AtsEx.PluginHost.Plugins.PluginBase.Tick(System.TimeSpan)">
+            <summary>
+            毎フレーム呼び出されます。ネイティブ ATS プラグインの Elapse(ATS_VEHICLESTATE vehicleState, int[] panel, int[] sound) に当たります。
+            </summary>
+            <param name="elapsed">前フレームから経過した時間。</param>
+            <returns>
+            このメソッドの実行結果を表す <see cref="T:AtsEx.PluginHost.Plugins.TickResult"/>。<br/>
+            拡張機能では <see cref="T:AtsEx.PluginHost.Plugins.Extensions.ExtensionTickResult"/> を、車両プラグインでは <see cref="T:AtsEx.PluginHost.Plugins.VehiclePluginTickResult"/> を、マッププラグインでは <see cref="T:AtsEx.PluginHost.Plugins.MapPluginTickResult"/> を返してください。
+            </returns>
+        </member>
+        <member name="T:AtsEx.PluginHost.Plugins.PluginTypeAttribute">
+            <summary>
+            AtsEX プラグインの種類を指定します。
+            </summary>
+            <remarks>
+            互換性のために残されている旧名のクラスです。<see cref="T:AtsEx.PluginHost.Plugins.PluginAttribute"/> を使用してください。
+            </remarks>
+        </member>
+        <member name="P:AtsEx.PluginHost.Plugins.PluginTypeAttribute.PluginType">
+            <summary>
+            AtsEX プラグインの種類を取得します。
+            </summary>
+        </member>
+        <member name="M:AtsEx.PluginHost.Plugins.PluginTypeAttribute.#ctor(AtsEx.PluginHost.Plugins.PluginType)">
+            <summary>
+            <see cref="T:AtsEx.PluginHost.Plugins.PluginTypeAttribute"/> クラスの新しいインスタンスを初期化します。
+            </summary>
+            <param name="pluginType">AtsEX プラグインの種類。</param>
+        </member>
+        <member name="T:AtsEx.PluginHost.Plugins.ScriptLanguage">
+            <summary>
+            スクリプト言語を指定します。
+            </summary>
+        </member>
+        <member name="F:AtsEx.PluginHost.Plugins.ScriptLanguage.CSharpScript">
+            <summary>
+            C# スクリプトを指定します。
+            </summary>
+        </member>
+        <member name="F:AtsEx.PluginHost.Plugins.ScriptLanguage.IronPython2">
+            <summary>
+            IronPython 2 を指定します。
+            </summary>
+        </member>
+        <member name="T:AtsEx.PluginHost.Plugins.MapPluginTickResult">
+            <summary>
+            マッププラグインの <see cref="M:AtsEx.PluginHost.Plugins.PluginBase.Tick(System.TimeSpan)"/> メソッドの実行結果を表します。
+            </summary>
+        </member>
+        <member name="M:AtsEx.PluginHost.Plugins.MapPluginTickResult.#ctor">
+            <summary>
+            <see cref="T:AtsEx.PluginHost.Plugins.MapPluginTickResult"/> クラスの新しいインスタンスを初期化します。
+            </summary>
+        </member>
+        <member name="T:AtsEx.PluginHost.Plugins.TickResult">
+            <summary>
+            <see cref="M:AtsEx.PluginHost.Plugins.PluginBase.Tick(System.TimeSpan)"/> メソッドの実行結果を表します。
+            </summary>
+        </member>
+        <member name="T:AtsEx.PluginHost.Plugins.VehiclePluginTickResult">
+            <summary>
+            車両プラグインの <see cref="M:AtsEx.PluginHost.Plugins.PluginBase.Tick(System.TimeSpan)"/> メソッドの実行結果を表します。
+            </summary>
+        </member>
+        <member name="P:AtsEx.PluginHost.Plugins.VehiclePluginTickResult.HandleCommandSet">
+            <summary>
+            ハンドルの出力を編集するためのコマンドのセットを取得・設定します。
+            </summary>
+            <remarks>何もしないことを表すには <see cref="F:AtsEx.PluginHost.Handles.HandleCommandSet.DoNothing"/> を指定してください。</remarks>
+        </member>
+        <member name="M:AtsEx.PluginHost.Plugins.VehiclePluginTickResult.#ctor">
+            <summary>
+            <see cref="T:AtsEx.PluginHost.Plugins.VehiclePluginTickResult"/> クラスの新しいインスタンスを初期化します。
+            </summary>
+        </member>
+        <member name="T:AtsEx.PluginHost.Direction">
+            <summary>
+            方向を指定します。
+            </summary>
+        </member>
+        <member name="F:AtsEx.PluginHost.Direction.Forward">
+            <summary>
+            前方を指定します。
+            </summary>
+        </member>
+        <member name="F:AtsEx.PluginHost.Direction.Backward">
+            <summary>
+            後方を指定します。
+            </summary>
+        </member>
+        <member name="T:AtsEx.PluginHost.Handles.IBrakeHandle">
+            <summary>
+            ブレーキハンドルを表します。
+            </summary>
+        </member>
+        <member name="P:AtsEx.PluginHost.Handles.IBrakeHandle.HasHoldingSpeedBrake">
+            <summary>
+            ブレーキハンドルに抑速ブレーキノッチがあるかどうかを取得します。
+            </summary>
+        </member>
+        <member name="P:AtsEx.PluginHost.Handles.IBrakeHandle.HoldingSpeedBrakeNotch">
+            <summary>
+            抑速ブレーキのノッチを取得します。ブレーキハンドルに抑速ブレーキノッチが無い場合は <see cref="T:System.InvalidOperationException"/> をスローします。
+            </summary>
+        </member>
+        <member name="P:AtsEx.PluginHost.Handles.IBrakeHandle.ServiceBrakeNotchCount">
+            <summary>
+            抑速ブレーキノッチを除いた常用ブレーキの段数を取得します。
+            </summary>
+        </member>
+        <member name="P:AtsEx.PluginHost.Handles.IBrakeHandle.MinServiceBrakeNotch">
+            <summary>
+            抑速ブレーキノッチを除いた常用最小ブレーキのノッチを取得します。
+            </summary>
+        </member>
+        <member name="P:AtsEx.PluginHost.Handles.IBrakeHandle.MaxServiceBrakeNotch">
+            <summary>
+            常用最大ブレーキのノッチを取得します。
+            </summary>
+        </member>
+        <member name="P:AtsEx.PluginHost.Handles.IBrakeHandle.EmergencyBrakeNotch">
+            <summary>
+            非常ブレーキのノッチを取得します。
+            </summary>
+        </member>
+        <member name="P:AtsEx.PluginHost.Handles.IBrakeHandle.AtsCancelNotch">
+            <summary>
+            ATS 確認扱いで必要な最小ブレーキノッチを取得します。
+            </summary>
+        </member>
+        <member name="P:AtsEx.PluginHost.Handles.IBrakeHandle.B67Notch">
+            <summary>
+            ブレーキ弁 67 度に相当するノッチを取得します。
+            </summary>
+        </member>
+        <member name="M:AtsEx.PluginHost.Handles.IBrakeHandle.GetCommandToSetToNeutral">
+            <summary>
+            ノッチをニュートラル (ゼロ) に変更するコマンドを取得します。
+            </summary>
+            <returns>ノッチをニュートラルに変更する <see cref="T:AtsEx.PluginHost.Handles.NotchCommandBase"/>。</returns>
+        </member>
+        <member name="T:AtsEx.PluginHost.Handles.IHandle">
+            <summary>
+            ブレーキなどのハンドルを表します。
+            </summary>
+        </member>
+        <member name="P:AtsEx.PluginHost.Handles.IHandle.CanSetNotchOutOfRange">
+            <summary>
+            <see cref="P:AtsEx.PluginHost.Handles.IHandle.MaxNotch"/> を超えたノッチを設定することが許可されているかを取得します。
+            </summary>
+        </member>
+        <member name="P:AtsEx.PluginHost.Handles.IHandle.MinNotch">
+            <summary>
+            最小のノッチを取得します。
+            </summary>
+        </member>
+        <member name="P:AtsEx.PluginHost.Handles.IHandle.MaxNotch">
+            <summary>
+            最大のノッチを取得します。
+            </summary>
+        </member>
+        <member name="P:AtsEx.PluginHost.Handles.IHandle.Notch">
+            <summary>
+            現在のノッチを取得します。
+            </summary>
+        </member>
+        <member name="M:AtsEx.PluginHost.Handles.IHandle.ProhibitNotchesOutOfRange">
+            <summary>
+            <see cref="P:AtsEx.PluginHost.Handles.IHandle.MaxNotch"/> を超えたノッチを設定すると例外をスローするようにします。
+            </summary>
+            <remarks>
+            TASC プラグインなどが <see cref="P:AtsEx.PluginHost.Handles.IHandle.MaxNotch"/> を超えたノッチを設定することを想定して、既定では例外をスローしないようになっています。
+            </remarks>
+        </member>
+        <member name="M:AtsEx.PluginHost.Handles.IHandle.GetCommandToSetNotchTo(System.Int32)">
+            <summary>
+            指定した値にノッチを変更するコマンドを取得します。
+            </summary>
+            <param name="notch">変更先のノッチ。</param>
+            <returns>ノッチを <paramref name="notch"/> で指定した値に変更する <see cref="T:AtsEx.PluginHost.Handles.NotchCommandBase"/>。</returns>
+            <exception cref="T:System.ArgumentOutOfRangeException"><paramref name="notch"/> が <see cref="P:AtsEx.PluginHost.Handles.IHandle.MinNotch"/> 未満か <see cref="P:AtsEx.PluginHost.Handles.IHandle.MaxNotch"/> より大きいです。</exception>
+        </member>
+        <member name="T:AtsEx.PluginHost.Handles.HandleSet">
+            <summary>
+            全てのハンドルのセットを表します。
+            </summary>
+        </member>
+        <member name="P:AtsEx.PluginHost.Handles.HandleSet.Brake">
+            <summary>
+            ブレーキハンドルを表す <see cref="T:AtsEx.PluginHost.Handles.IBrakeHandle"/> を取得します。
+            </summary>
+        </member>
+        <member name="P:AtsEx.PluginHost.Handles.HandleSet.Power">
+            <summary>
+            力行ハンドルを表す <see cref="T:AtsEx.PluginHost.Handles.IPowerHandle"/> を取得します。
+            </summary>
+        </member>
+        <member name="P:AtsEx.PluginHost.Handles.HandleSet.Reverser">
+            <summary>
+            逆転器を表す <see cref="T:AtsEx.PluginHost.Handles.IReverser"/> を取得します。
+            </summary>
+        </member>
+        <member name="M:AtsEx.PluginHost.Handles.HandleSet.#ctor(AtsEx.PluginHost.Handles.IBrakeHandle,AtsEx.PluginHost.Handles.IPowerHandle,AtsEx.PluginHost.Handles.IReverser)">
+            <summary>
+            <see cref="T:AtsEx.PluginHost.Handles.HandleSet"/> クラスの新しいインスタンスを初期化します。
+            </summary>
+            <param name="brake">ブレーキハンドルを表す <see cref="T:AtsEx.PluginHost.Handles.IBrakeHandle"/>。</param>
+            <param name="power">力行ハンドルを表す <see cref="T:AtsEx.PluginHost.Handles.IPowerHandle"/>。</param>
+            <param name="reverser">逆転器を表す <see cref="T:AtsEx.PluginHost.Handles.IReverser"/>。</param>
+        </member>
+        <member name="T:AtsEx.PluginHost.Handles.IReverser">
+            <summary>
+            逆転器を表します。
+            </summary>
+        </member>
+        <member name="P:AtsEx.PluginHost.Handles.IReverser.Position">
+            <summary>
+            現在の位置を取得します。
+            </summary>
+        </member>
+        <member name="T:AtsEx.PluginHost.Handles.HandleCommandSet">
+            <summary>
+            プラグインからハンドルの出力を編集するためのコマンドのセットを表します。
+            </summary>
+        </member>
+        <member name="F:AtsEx.PluginHost.Handles.HandleCommandSet.DoNothing">
+            <summary>
+            ハンドルの出力を一切編集しないことを表す <see cref="T:AtsEx.PluginHost.Handles.HandleCommandSet"/> を取得します。
+            </summary>
+        </member>
+        <member name="P:AtsEx.PluginHost.Handles.HandleCommandSet.PowerCommand">
+            <summary>
+            力行ノッチの出力を編集するための <see cref="T:AtsEx.PluginHost.Handles.NotchCommandBase"/> を取得します。
+            </summary>
+        </member>
+        <member name="P:AtsEx.PluginHost.Handles.HandleCommandSet.BrakeCommand">
+            <summary>
+            ブレーキノッチの出力を編集するための <see cref="T:AtsEx.PluginHost.Handles.NotchCommandBase"/> を取得します。
+            </summary>
+        </member>
+        <member name="P:AtsEx.PluginHost.Handles.HandleCommandSet.ReverserCommand">
+            <summary>
+            逆転器の位置の出力を編集するための <see cref="T:AtsEx.PluginHost.Handles.ReverserPositionCommandBase"/> を取得します。
+            </summary>
+        </member>
+        <member name="P:AtsEx.PluginHost.Handles.HandleCommandSet.ConstantSpeedCommand">
+            <summary>
+            定速制御の状態の出力を編集するための <see cref="T:AtsEx.PluginHost.Handles.ConstantSpeedCommand"/> を取得します。
+            </summary>
+        </member>
+        <member name="M:AtsEx.PluginHost.Handles.HandleCommandSet.#ctor(AtsEx.PluginHost.Handles.NotchCommandBase,AtsEx.PluginHost.Handles.NotchCommandBase,AtsEx.PluginHost.Handles.ReverserPositionCommandBase,System.Nullable{AtsEx.PluginHost.Handles.ConstantSpeedCommand})">
+            <summary>
+            <see cref="T:AtsEx.PluginHost.Handles.HandleCommandSet"/> クラスの新しいインスタンスを初期化します。
+            </summary>
+            <param name="powerCommand">力行ノッチの出力を編集するための <see cref="T:AtsEx.PluginHost.Handles.NotchCommandBase"/>。</param>
+            <param name="brakeCommand">ブレーキノッチの出力を編集するための <see cref="T:AtsEx.PluginHost.Handles.NotchCommandBase"/>。</param>
+            <param name="reverserCommand">逆転器の位置の出力を編集するための <see cref="T:AtsEx.PluginHost.Handles.ReverserPositionCommandBase"/>。</param>
+            <param name="constantSpeedCommand">
+            定速制御の状態の出力を編集するための <see cref="T:AtsEx.PluginHost.Handles.ConstantSpeedCommand"/>。<br/>
+            出力を編集しない場合は <see langword="null"/> を指定します。<see cref="F:AtsEx.PluginHost.Handles.ConstantSpeedCommand.Continue"/> は前フレームと同じ値を指定することを表します。
+            </param>
+        </member>
+        <member name="T:AtsEx.PluginHost.Handles.IPowerHandle">
+            <summary>
+            力行ハンドルを表します。
+            </summary>
+        </member>
+        <member name="P:AtsEx.PluginHost.Handles.IPowerHandle.PowerNotchCount">
+            <summary>
+            力行の段数を取得します。
+            </summary>
+        </member>
+        <member name="P:AtsEx.PluginHost.Handles.IPowerHandle.MaxPowerNotch">
+            <summary>
+            力行の最大ノッチを取得します。
+            </summary>
+        </member>
+        <member name="P:AtsEx.PluginHost.Handles.IPowerHandle.HoldingSpeedNotchCount">
+            <summary>
+            抑速ブレーキの段数を取得します。
+            </summary>
+        </member>
+        <member name="P:AtsEx.PluginHost.Handles.IPowerHandle.MaxHoldingSpeedNotch">
+            <summary>
+            抑速ブレーキの最大ノッチを取得します。
+            </summary>
+        </member>
+        <member name="M:AtsEx.PluginHost.Handles.IPowerHandle.GetCommandToSetToNeutral">
+            <summary>
+            ノッチをニュートラル (ゼロ) に変更するコマンドを取得します。
+            </summary>
+            <returns>ノッチをニュートラルに変更する <see cref="T:AtsEx.PluginHost.Handles.NotchCommandBase"/>。</returns>
+        </member>
+        <member name="M:AtsEx.PluginHost.Handles.IPowerHandle.GetCommandToSetToMaxPowerNotch">
+            <summary>
+            ノッチを力行最大に変更するコマンドを取得します。
+            </summary>
+            <returns>ノッチを力行最大に変更する <see cref="T:AtsEx.PluginHost.Handles.NotchCommandBase"/>。</returns>
+        </member>
+        <member name="T:AtsEx.PluginHost.Handles.ReverserPositionCommandBase">
+            <summary>
+            プラグインから逆転器の位置の出力を編集するためのコマンドを表します。
+            </summary>
+        </member>
+        <member name="F:AtsEx.PluginHost.Handles.ReverserPositionCommandBase.Continue">
+            <summary>
+            逆転器の位置の出力を編集しないコマンドを表す <see cref="T:AtsEx.PluginHost.Handles.ReverserPositionCommandBase.ContinueCommand"/> を取得します。
+            </summary>
+        </member>
+        <member name="M:AtsEx.PluginHost.Handles.ReverserPositionCommandBase.#ctor">
+            <summary>
+            <see cref="T:AtsEx.PluginHost.Handles.ReverserPositionCommandBase"/> クラスの新しいインスタンスを初期化します。
+            </summary>
+        </member>
+        <member name="M:AtsEx.PluginHost.Handles.ReverserPositionCommandBase.GetOverridenPosition(BveTypes.ClassWrappers.ReverserPosition)">
+            <summary>
+            このコマンドによって編集した逆転器の位置の値を取得します。
+            </summary>
+            <param name="position">編集元の逆転器の位置の値。</param>
+            <returns>編集後の逆転器の位置の値。変更しないことを示すには <see langword="null"/> を返します。</returns>
+        </member>
+        <member name="T:AtsEx.PluginHost.Handles.ReverserPositionCommandBase.ContinueCommand">
+            <summary>
+            逆転器の位置の出力を編集しないコマンドを表します。
+            </summary>
+        </member>
+        <member name="M:AtsEx.PluginHost.Handles.ReverserPositionCommandBase.ContinueCommand.#ctor">
+            <summary>
+            <see cref="T:AtsEx.PluginHost.Handles.ReverserPositionCommandBase.ContinueCommand"/> クラスの新しいインスタンスを初期化します。
+            </summary>
+        </member>
+        <member name="M:AtsEx.PluginHost.Handles.ReverserPositionCommandBase.ContinueCommand.GetOverridenPosition(BveTypes.ClassWrappers.ReverserPosition)">
+            <inheritdoc/>
+        </member>
+        <member name="T:AtsEx.PluginHost.Handles.ReverserPositionCommandBase.SetPositionCommand">
+            <summary>
+            指定した値に逆転器の位置の出力を変更するコマンドを表します。
+            </summary>
+        </member>
+        <member name="M:AtsEx.PluginHost.Handles.ReverserPositionCommandBase.SetPositionCommand.#ctor(BveTypes.ClassWrappers.ReverserPosition)">
+            <summary>
+            <see cref="T:AtsEx.PluginHost.Handles.ReverserPositionCommandBase.SetPositionCommand"/> クラスの新しいインスタンスを初期化します。
+            </summary>
+        </member>
+        <member name="M:AtsEx.PluginHost.Handles.ReverserPositionCommandBase.SetPositionCommand.GetOverridenPosition(BveTypes.ClassWrappers.ReverserPosition)">
+            <inheritdoc/>
+        </member>
+        <member name="T:AtsEx.PluginHost.Handles.NotchCommandBase">
+            <summary>
+            プラグインからノッチの出力を編集するためのコマンドを表します。
+            </summary>
+        </member>
+        <member name="F:AtsEx.PluginHost.Handles.NotchCommandBase.Continue">
+            <summary>
+            ノッチの出力を編集しないコマンドを表す <see cref="T:AtsEx.PluginHost.Handles.NotchCommandBase.ContinueCommand"/> を取得します。
+            </summary>
+        </member>
+        <member name="M:AtsEx.PluginHost.Handles.NotchCommandBase.#ctor">
+            <summary>
+            <see cref="T:AtsEx.PluginHost.Handles.NotchCommandBase"/> クラスの新しいインスタンスを初期化します。
+            </summary>
+        </member>
+        <member name="M:AtsEx.PluginHost.Handles.NotchCommandBase.GetOverridenNotch(System.Int32)">
+            <summary>
+            このコマンドによって編集したノッチの値を取得します。
+            </summary>
+            <param name="notch">編集元のノッチの値。</param>
+            <returns>編集後のノッチの値。変更しないことを示すには <see langword="null"/> を返します。</returns>
+        </member>
+        <member name="T:AtsEx.PluginHost.Handles.NotchCommandBase.ContinueCommand">
+            <summary>
+            ノッチの出力を編集しないコマンドを表します。
+            </summary>
+        </member>
+        <member name="M:AtsEx.PluginHost.Handles.NotchCommandBase.ContinueCommand.#ctor">
+            <summary>
+            <see cref="T:AtsEx.PluginHost.Handles.NotchCommandBase.ContinueCommand"/> クラスの新しいインスタンスを初期化します。
+            </summary>
+        </member>
+        <member name="M:AtsEx.PluginHost.Handles.NotchCommandBase.ContinueCommand.GetOverridenNotch(System.Int32)">
+            <inheritdoc/>
+        </member>
+        <member name="T:AtsEx.PluginHost.Handles.NotchCommandBase.SetNotchCommand">
+            <summary>
+            指定した値にノッチの出力を変更するコマンドを表します。
+            </summary>
+        </member>
+        <member name="M:AtsEx.PluginHost.Handles.NotchCommandBase.SetNotchCommand.#ctor(System.Int32)">
+            <summary>
+            <see cref="T:AtsEx.PluginHost.Handles.NotchCommandBase.SetNotchCommand"/> クラスの新しいインスタンスを初期化します。
+            </summary>
+        </member>
+        <member name="M:AtsEx.PluginHost.Handles.NotchCommandBase.SetNotchCommand.GetOverridenNotch(System.Int32)">
+            <inheritdoc/>
+        </member>
+        <member name="T:AtsEx.PluginHost.INative">
+            <summary>
+            BVE が標準で提供する ATS プラグイン向けの機能をラップします。
+            </summary>
+        </member>
+        <member name="P:AtsEx.PluginHost.INative.Handles">
+            <summary>
+            全てのハンドルのセットを取得します。
+            </summary>
+            <remarks>
+            このプロパティに設定されている値は力行ハンドルの抑速ノッチ、ブレーキハンドルの抑速ブレーキノッチを無視したものになります。<br/>
+            正確な値を確実に取得したい場合は <see cref="P:AtsEx.PluginHost.IBveHacker.Handles"/> プロパティを使用してください。
+            </remarks>
+            <seealso cref="P:AtsEx.PluginHost.IBveHacker.Handles"/>
+        </member>
+        <member name="P:AtsEx.PluginHost.INative.AtsPanelValues">
+            <summary>
+            AtsEX プラグインから、ATS プラグインによって制御可能な運転台パネルの状態量 (例えば「ats12」など、subjectKey が「ats」から始まる状態量) を操作するための機能を提供する
+            <see cref="T:AtsEx.PluginHost.Panels.Native.IAtsPanelValueSet"/> を取得します。
+            </summary>
+        </member>
+        <member name="P:AtsEx.PluginHost.INative.AtsSounds">
+            <summary>
+            AtsEX プラグインから ATS サウンドを再生するための機能を提供する <see cref="T:AtsEx.PluginHost.Sound.Native.IAtsSoundSet"/> を取得します。
+            </summary>
+        </member>
+        <member name="P:AtsEx.PluginHost.INative.NativeKeys">
+            <summary>
+            BVE が ATS プラグイン向けに提供するキーの入力情報を取得します。
+            </summary>
+        </member>
+        <member name="P:AtsEx.PluginHost.INative.VehicleSpec">
+            <summary>
+            BVE が ATS プラグイン向けに提供する車両の性能に関する情報を取得します。
+            </summary>
+        </member>
+        <member name="P:AtsEx.PluginHost.INative.VehicleState">
+            <summary>
+            BVE が ATS プラグイン向けに提供する車両の状態に関する情報を取得します。
+            このプロパティの値はフレーム毎に更新されます。
+            </summary>
+        </member>
+        <member name="E:AtsEx.PluginHost.INative.Started">
+            <summary>
+            シナリオ開始時に発生します。ネイティブ ATS プラグインの Initialize(int brake) に当たります。
+            </summary>
+        </member>
+        <member name="E:AtsEx.PluginHost.INative.DoorOpened">
+            <summary>
+            客室ドアが開いた時に発生します。ネイティブ ATS プラグインの DoorOpen() に当たります。
+            </summary>
+        </member>
+        <member name="E:AtsEx.PluginHost.INative.DoorClosed">
+            <summary>
+            客室ドアが閉まった時に発生します。ネイティブ ATS プラグインの DoorClose() に当たります。
+            </summary>
+        </member>
+        <member name="E:AtsEx.PluginHost.INative.BeaconPassed">
+            <summary>
+            地上子上を通過した時に発生します。ネイティブ ATS プラグインの SendBeaconData(ATS_BEACONDATA beaconData) に当たります。
+            </summary>
+        </member>
+        <member name="T:AtsEx.PluginHost.ScenarioCreatedEventArgs">
+            <summary>
+            <see cref="E:AtsEx.PluginHost.IBveHacker.PreviewScenarioCreated"/>、<see cref="E:AtsEx.PluginHost.IBveHacker.ScenarioCreated"/> イベントのデータを提供します。
+            </summary>
+        </member>
+        <member name="P:AtsEx.PluginHost.ScenarioCreatedEventArgs.Scenario">
+            <summary>
+            生成された <see cref="T:BveTypes.ClassWrappers.Scenario"/> クラスのインスタンスを取得します。
+            </summary>
+        </member>
+        <member name="M:AtsEx.PluginHost.ScenarioCreatedEventArgs.#ctor(BveTypes.ClassWrappers.Scenario)">
+            <summary>
+            <see cref="T:AtsEx.PluginHost.ScenarioCreatedEventArgs"/> クラスの新しいインスタンスを初期化します。
+            </summary>
+            <param name="scenario">生成された <see cref="T:BveTypes.ClassWrappers.Scenario"/> クラスのインスタンス。</param>
+        </member>
+        <member name="T:AtsEx.PluginHost.DevelopException">
+            <summary>
+            AtsEX 本体の不具合によるエラーを表します。この例外をキャッチした場合は AtsEX 開発者までご連絡ください。
+            </summary>
+        </member>
+        <member name="T:AtsEx.PluginHost.PropertyNotInitializedException">
+            <summary>
+            まだ初期化されておらず取得できないプロパティを取得しようとしたときにスローされる例外です。
+            </summary>
+        </member>
+        <member name="M:AtsEx.PluginHost.PropertyNotInitializedException.#ctor(System.String)">
+            <summary>
+            <see cref="T:AtsEx.PluginHost.PropertyNotInitializedException"/> クラスの新しいインスタンスを初期化します。
+            </summary>
+            <param name="propertyName">この例外の対象となるプロパティの名前。</param>
+        </member>
+        <member name="T:AtsEx.PluginHost.ScenarioOpenedEventHandler">
+            <summary>
+            <see cref="E:AtsEx.PluginHost.IBveHacker.ScenarioOpened"/> イベントを処理するメソッドを表します。
+            </summary>
+            <param name="e">イベント データを格納している <see cref="T:AtsEx.PluginHost.ScenarioOpenedEventArgs"/>。</param>
+        </member>
+        <member name="T:AtsEx.PluginHost.ScenarioClosedEventHandler">
+            <summary>
+            <see cref="E:AtsEx.PluginHost.IBveHacker.ScenarioClosed"/> イベントを処理するメソッドを表します。
+            </summary>
+            <param name="e">イベント データを格納している <see cref="T:System.EventArgs"/>。</param>
+        </member>
+        <member name="T:AtsEx.PluginHost.ScenarioCreatedEventHandler">
+            <summary>
+            <see cref="E:AtsEx.PluginHost.IBveHacker.ScenarioCreated"/> または <see cref="E:AtsEx.PluginHost.IBveHacker.PreviewScenarioCreated"/> イベントを処理するメソッドを表します。
+            </summary>
+            <param name="e">イベント データを格納している <see cref="T:AtsEx.PluginHost.ScenarioCreatedEventArgs"/>。</param>
+        </member>
+        <member name="T:AtsEx.PluginHost.IBveHacker">
+            <summary>
+            本来 ATS プラグインからは利用できない BVE 本体の諸機能へアクセスするための機能を提供します。
+            </summary>
+        </member>
+        <member name="P:AtsEx.PluginHost.IBveHacker.BveTypes">
+            <summary>
+            クラスラッパーに対応する BVE の型とメンバーの定義を表す <see cref="T:BveTypes.BveTypeSet"/> を取得します。
+            </summary>
+        </member>
+        <member name="P:AtsEx.PluginHost.IBveHacker.MainFormHandle">
+            <summary>
+            BVE のメインフォームのハンドルを取得します。
+            </summary>
+        </member>
+        <member name="P:AtsEx.PluginHost.IBveHacker.MainFormSource">
+            <summary>
+            BVE のメインフォームの <see cref="T:System.Windows.Forms.Form"/> インスタンスを取得します。
+            </summary>
+        </member>
+        <member name="P:AtsEx.PluginHost.IBveHacker.MainForm">
+            <summary>
+            BVE のメインフォームを取得します。
+            </summary>
+        </member>
+        <member name="P:AtsEx.PluginHost.IBveHacker.ScenarioSelectionFormSource">
+            <summary>
+            BVE の「シナリオの選択」フォームの <see cref="T:System.Windows.Forms.Form"/> インスタンスを取得します。
+            </summary>
+        </member>
+        <member name="P:AtsEx.PluginHost.IBveHacker.ScenarioSelectionForm">
+            <summary>
+            BVE の「シナリオの選択」フォームを取得します。
+            </summary>
+        </member>
+        <member name="P:AtsEx.PluginHost.IBveHacker.LoadingProgressFormSource">
+            <summary>
+            BVE の「シナリオを読み込んでいます...」フォームの <see cref="T:System.Windows.Forms.Form"/> インスタンスを取得します。
+            </summary>
+        </member>
+        <member name="P:AtsEx.PluginHost.IBveHacker.LoadingProgressForm">
+            <summary>
+            BVE の「シナリオを読み込んでいます...」フォームを取得します。
+            </summary>
+        </member>
+        <member name="P:AtsEx.PluginHost.IBveHacker.TimePosFormSource">
+            <summary>
+            BVE の「時刻と位置」フォームの <see cref="T:System.Windows.Forms.Form"/> インスタンスを取得します。
+            </summary>
+        </member>
+        <member name="P:AtsEx.PluginHost.IBveHacker.TimePosForm">
+            <summary>
+            BVE の「時刻と位置」フォームを取得します。
+            </summary>
+        </member>
+        <member name="P:AtsEx.PluginHost.IBveHacker.ChartFormSource">
+            <summary>
+            BVE の「車両物理量」フォームの <see cref="T:System.Windows.Forms.Form"/> インスタンスを取得します。
+            </summary>
+        </member>
+        <member name="P:AtsEx.PluginHost.IBveHacker.ChartForm">
+            <summary>
+            BVE の「車両物理量」フォームを取得します。
+            </summary>
+        </member>
+        <member name="P:AtsEx.PluginHost.IBveHacker.Preferences">
+            <summary>
+            BVE の設定が格納された <see cref="T:Mackoy.Bvets.Preferences"/> を取得します。
+            </summary>
+        </member>
+        <member name="P:AtsEx.PluginHost.IBveHacker.KeyProvider">
+            <summary>
+            キー入力を管理する <see cref="T:BveTypes.ClassWrappers.KeyProvider"/> を取得します。
+            </summary>
+        </member>
+        <member name="P:AtsEx.PluginHost.IBveHacker.LoadErrorManager">
+            <summary>
+            シナリオ読込時のエラーを編集するための機能を提供する <see cref="T:AtsEx.PluginHost.LoadErrorManager.ILoadErrorManager"/> を取得します。
+            </summary>
+        </member>
+        <member name="P:AtsEx.PluginHost.IBveHacker.Handles">
+            <summary>
+            全てのハンドルのセットを取得します。
+            </summary>
+            <remarks>
+            <see cref="T:AtsEx.PluginHost.IBveHacker"/> が利用できない場合は <see cref="P:AtsEx.PluginHost.INative.Handles"/> プロパティを使用してください。
+            ただし、<see cref="P:AtsEx.PluginHost.INative.Handles"/> プロパティに設定されている値は力行ハンドルの抑速ノッチ、ブレーキハンドルの抑速ブレーキノッチを無視したものになります。
+            </remarks>
+            <seealso cref="P:AtsEx.PluginHost.INative.Handles"/>
+        </member>
+        <member name="P:AtsEx.PluginHost.IBveHacker.MapHeaders">
+            <summary>
+            マップに定義されているヘッダーの一覧を取得します。
+            </summary>
+            <remarks>
+            シナリオが読み込まれていない時は <see langword="null"/> になります。
+            </remarks>
+        </member>
+        <member name="P:AtsEx.PluginHost.IBveHacker.MapStatements">
+            <summary>
+            マップに定義されているユーザー独自ステートメントの一覧を取得します。
+            </summary>
+            <remarks>
+            シナリオが読み込まれていない時は <see langword="null"/> になります。
+            </remarks>
+        </member>
+        <member name="E:AtsEx.PluginHost.IBveHacker.ScenarioOpened">
+            <summary>
+            シナリオが選択され、読込を開始したときに発生します。
+            </summary>
+            <remarks>
+            このイベントは入力デバイスプラグイン版でのみ発生します。ATS プラグイン版では発生しません。<br/>
+            読み込まれたシナリオを表す <see cref="T:BveTypes.ClassWrappers.Scenario"/> を取得するには、<see cref="E:AtsEx.PluginHost.IBveHacker.ScenarioCreated"/> または <see cref="E:AtsEx.PluginHost.IBveHacker.PreviewScenarioCreated"/> イベントを使用してください。
+            </remarks>
+        </member>
+        <member name="E:AtsEx.PluginHost.IBveHacker.ScenarioClosed">
+            <summary>
+            シナリオが閉じられたときに発生します。
+            </summary>
+            <remarks>
+            このイベントは入力デバイスプラグイン版でのみ発生します。ATS プラグイン版では発生しません。
+            </remarks>
+        </member>
+        <member name="E:AtsEx.PluginHost.IBveHacker.PreviewScenarioCreated">
+            <summary>
+            <see cref="E:AtsEx.PluginHost.IBveHacker.ScenarioCreated"/> が発生する直前に通知します。特に理由がなければ <see cref="E:AtsEx.PluginHost.IBveHacker.ScenarioCreated"/> を使用してください。
+            </summary>
+        </member>
+        <member name="E:AtsEx.PluginHost.IBveHacker.ScenarioCreated">
+            <summary>
+            <see cref="T:BveTypes.ClassWrappers.Scenario"/> のインスタンスが生成されたときに通知します。
+            </summary>
+        </member>
+        <member name="P:AtsEx.PluginHost.IBveHacker.ScenarioInfo">
+            <summary>
+            現在読込中または実行中のシナリオの情報を取得・設定します。
+            </summary>
+        </member>
+        <member name="P:AtsEx.PluginHost.IBveHacker.Scenario">
+            <summary>
+            現在実行中のシナリオを取得します。シナリオの読込中は <see cref="T:System.InvalidOperationException"/> をスローします。
+            シナリオの読込中に <see cref="T:BveTypes.ClassWrappers.Scenario"/> を取得するには <see cref="E:AtsEx.PluginHost.IBveHacker.ScenarioCreated"/> イベントを購読してください。
+            </summary>
+        </member>
+        <member name="P:AtsEx.PluginHost.IBveHacker.IsScenarioCreated">
+            <summary>
+            <see cref="P:AtsEx.PluginHost.IBveHacker.Scenario"/> が取得可能かどうかを取得します。
+            </summary>
+        </member>
+        <member name="T:AtsEx.PluginHost.Input.KeyBase">
+            <summary>
+            すべてのキーの基本クラスを表します。
+            このクラスはスレッド セーフです。
+            </summary>
+        </member>
+        <member name="P:AtsEx.PluginHost.Input.KeyBase.IsPressed">
+            <summary>
+            キーが押されているかを取得します。
+            </summary>
+        </member>
+        <member name="P:AtsEx.PluginHost.Input.KeyBase.ElapsedMillisecondsSincePressed">
+            <summary>
+            キーが押されてから経過した時間 [ms] を取得します。
+            キーが押されていない場合は 0 を返します。
+            </summary>
+        </member>
+        <member name="P:AtsEx.PluginHost.Input.KeyBase.ElapsedTimeSincePressed">
+            <summary>
+            キーが押されてから経過した時間を取得します。
+            キーが押されていない場合は <see cref="F:System.TimeSpan.Zero"/> を返します。
+            </summary>
+        </member>
+        <member name="E:AtsEx.PluginHost.Input.KeyBase.Pressed">
+            <summary>
+            キーが押された瞬間に発生します。
+            </summary>
+        </member>
+        <member name="E:AtsEx.PluginHost.Input.KeyBase.PreviewReleased">
+            <summary>
+            キーが離され、<see cref="P:AtsEx.PluginHost.Input.KeyBase.IsPressed"/> に <see langword="false"/> が設定される直前に発生します。
+            </summary>
+            <remarks>
+            このイベントが発生した時点で経過時間を取得するための <see cref="T:System.Diagnostics.Stopwatch"/> は停止しているため、<br/>
+            <see cref="P:AtsEx.PluginHost.Input.KeyBase.ElapsedMillisecondsSincePressed"/> プロパティ、<see cref="P:AtsEx.PluginHost.Input.KeyBase.ElapsedTimeSincePressed"/> プロパティから取得できる値は常に不変です。
+            </remarks>
+            <seealso cref="E:AtsEx.PluginHost.Input.KeyBase.Released"/>
+        </member>
+        <member name="E:AtsEx.PluginHost.Input.KeyBase.Released">
+            <summary>
+            キーが離された瞬間に発生します。
+            </summary>
+            <remarks>
+            キーが押されてから離されるまでに経過した時間を取得するには、<see cref="E:AtsEx.PluginHost.Input.KeyBase.PreviewReleased"/> イベントを使用してください。
+            </remarks>
+            <seealso cref="E:AtsEx.PluginHost.Input.KeyBase.PreviewReleased"/>
+        </member>
+        <member name="F:AtsEx.PluginHost.Input.KeyBase.Stopwatch">
+            <summary>
+            キーが押されてから経過した時間を提供するための <see cref="T:System.Diagnostics.Stopwatch"/> です。
+            </summary>
+        </member>
+        <member name="F:AtsEx.PluginHost.Input.KeyBase.LockObj">
+            <summary>
+            スレッド セーフを保証するためのロック オブジェクトです。
+            </summary>
+        </member>
+        <member name="M:AtsEx.PluginHost.Input.KeyBase.#ctor">
+            <summary>
+            <see cref="T:AtsEx.PluginHost.Input.KeyBase"/> クラスの新しいインスタンスを初期化します。
+            </summary>
+        </member>
+        <member name="M:AtsEx.PluginHost.Input.KeyBase.LockAndInvoke(System.Action)">
+            <summary>
+            この <see cref="T:AtsEx.PluginHost.Input.KeyBase"/> オブジェクトに対するロックを取得し、指定したデリゲートを実行します。<br/>
+            <see cref="M:AtsEx.PluginHost.Input.KeyBase.NotifyPressed"/>、<see cref="M:AtsEx.PluginHost.Input.KeyBase.NotifyReleased"/> を含むデリゲートを指定するとデッドロックするので注意してください。
+            </summary>
+            <param name="action">実行する <see cref="T:System.Action"/> デリゲート。</param>
+        </member>
+        <member name="M:AtsEx.PluginHost.Input.KeyBase.NotifyPressed">
+            <summary>
+            キーが押されたことをこの <see cref="T:AtsEx.PluginHost.Input.KeyBase"/> オブジェクトに通知します。
+            </summary>
+        </member>
+        <member name="M:AtsEx.PluginHost.Input.KeyBase.NotifyReleased">
+            <summary>
+            キーが離されたことをこの <see cref="T:AtsEx.PluginHost.Input.KeyBase"/> オブジェクトに通知します。
+            </summary>
+        </member>
+        <member name="T:AtsEx.PluginHost.Input.Native.INativeKeySet">
+            <summary>
+            BVE が ATS プラグイン向けに提供するキーの入力情報を表します。
+            </summary>
+        </member>
+        <member name="P:AtsEx.PluginHost.Input.Native.INativeKeySet.AtsKeys">
+            <summary>
+            ATS キーの入力情報を取得します。
+            </summary>
+        </member>
+        <member name="T:AtsEx.PluginHost.Input.Native.NativeAtsKeyName">
+            <summary>
+            BVE が ATS プラグイン向けに提供する ATS キーを表します。
+            </summary>
+        </member>
+        <member name="F:AtsEx.PluginHost.Input.Native.NativeAtsKeyName.S">
+            <summary>ATS S キー (既定: Space)。</summary>
+        </member>
+        <member name="F:AtsEx.PluginHost.Input.Native.NativeAtsKeyName.A1">
+            <summary>ATS A1 キー (既定: Insert)。</summary>
+        </member>
+        <member name="F:AtsEx.PluginHost.Input.Native.NativeAtsKeyName.A2">
+            <summary>ATS A2 キー (既定: Delete)。</summary>
+        </member>
+        <member name="F:AtsEx.PluginHost.Input.Native.NativeAtsKeyName.B1">
+            <summary>ATS B1 キー (既定: Home)。</summary>
+        </member>
+        <member name="F:AtsEx.PluginHost.Input.Native.NativeAtsKeyName.B2">
+            <summary>ATS B2 キー (既定: End)。</summary>
+        </member>
+        <member name="F:AtsEx.PluginHost.Input.Native.NativeAtsKeyName.C1">
+            <summary>ATS C1 キー (既定: PageUp)。</summary>
+        </member>
+        <member name="F:AtsEx.PluginHost.Input.Native.NativeAtsKeyName.C2">
+            <summary>ATS C2 キー (既定: PageDown)。</summary>
+        </member>
+        <member name="F:AtsEx.PluginHost.Input.Native.NativeAtsKeyName.D">
+            <summary>ATS D キー (既定: D2)。</summary>
+        </member>
+        <member name="F:AtsEx.PluginHost.Input.Native.NativeAtsKeyName.E">
+            <summary>ATS E キー (既定: D3)。</summary>
+        </member>
+        <member name="F:AtsEx.PluginHost.Input.Native.NativeAtsKeyName.F">
+            <summary>ATS F キー (既定: D4)。</summary>
+        </member>
+        <member name="F:AtsEx.PluginHost.Input.Native.NativeAtsKeyName.G">
+            <summary>ATS G キー (既定: D5)。</summary>
+        </member>
+        <member name="F:AtsEx.PluginHost.Input.Native.NativeAtsKeyName.H">
+            <summary>ATS H キー (既定: D6)。</summary>
+        </member>
+        <member name="F:AtsEx.PluginHost.Input.Native.NativeAtsKeyName.I">
+            <summary>ATS I キー (既定: D7)。</summary>
+        </member>
+        <member name="F:AtsEx.PluginHost.Input.Native.NativeAtsKeyName.J">
+            <summary>ATS J キー (既定: D8)。</summary>
+        </member>
+        <member name="F:AtsEx.PluginHost.Input.Native.NativeAtsKeyName.K">
+            <summary>ATS K キー (既定: D9)。</summary>
+        </member>
+        <member name="F:AtsEx.PluginHost.Input.Native.NativeAtsKeyName.L">
+            <summary>ATS L キー (既定: D0)。</summary>
+        </member>
+        <member name="T:AtsEx.PluginHost.Sound.ISound">
+            <summary>
+            再生・ループ再生・停止が可能なサウンドを表します。
+            </summary>
+        </member>
+        <member name="P:AtsEx.PluginHost.Sound.ISound.PlayState">
+            <summary>
+            サウンドの再生状態を取得します。
+            </summary>
+        </member>
+        <member name="M:AtsEx.PluginHost.Sound.ISound.Play">
+            <summary>
+            サウンドを再生します。
+            </summary>
+        </member>
+        <member name="M:AtsEx.PluginHost.Sound.ISound.PlayLoop">
+            <summary>
+            サウンドをループ再生します。
+            </summary>
+        </member>
+        <member name="M:AtsEx.PluginHost.Sound.ISound.Stop">
+            <summary>
+            サウンドの再生を停止します。
+            </summary>
+        </member>
+        <member name="M:AtsEx.PluginHost.Sound.ISound.StopAndPlay">
+            <summary>
+            サウンドの再生を一度停止し、その後再度再生します。
+            </summary>
+        </member>
+        <member name="T:AtsEx.PluginHost.Sound.Native.IAtsSoundSet">
+            <summary>
+            AtsEX プラグインから ATS サウンドを再生するための機能を提供します。
+            </summary>
+        </member>
+        <member name="M:AtsEx.PluginHost.Sound.Native.IAtsSoundSet.Register(System.Int32)">
+            <summary>
+            インデックスを指定して、AtsEX から使用する ATS サウンドを登録します。
+            </summary>
+            <param name="index">ATS サウンドのインデックス。</param>
+            <returns>登録した ATS サウンドを AtsEX から再生するためのオブジェクト。</returns>
+        </member>
+        <member name="T:AtsEx.PluginHost.Sound.Native.IAtsSound">
+            <summary>
+            ATS プラグインから制御可能な ATS サウンドを表します。
+            </summary>
+        </member>
+        <member name="M:AtsEx.PluginHost.Sound.Native.IAtsSound.PlayLoop(System.Double)">
+            <summary>
+            音量を指定してサウンドをループ再生します。
+            </summary>
+            <param name="volumeDecibel">下げる音量の符号付き大きさ [dB]。0 または負の値で指定してください。</param>
+        </member>
+        <member name="M:AtsEx.PluginHost.Sound.Native.IAtsSound.PlayLoopRatio(System.Double)">
+            <summary>
+            音量を指定してサウンドをループ再生します。
+            </summary>
+            <param name="volumeRatio">音源の本来の音量に対する、再生する音量の比。0 以上 1 以下の値で指定してください。</param>
+        </member>
+        <member name="T:AtsEx.PluginHost.Sound.PlayState">
+            <summary>
+            サウンドの再生状態を表します。
+            </summary>
+        </member>
+        <member name="F:AtsEx.PluginHost.Sound.PlayState.Stop">
+            <summary>
+            サウンドの再生が停止されていることを表します。
+            </summary>
+        </member>
+        <member name="F:AtsEx.PluginHost.Sound.PlayState.Playing">
+            <summary>
+            サウンドが 1 回再生中であることを表します。
+            </summary>
+        </member>
+        <member name="F:AtsEx.PluginHost.Sound.PlayState.PlayingLoop">
+            <summary>
+            サウンドがループ再生中であることを表します。
+            </summary>
+        </member>
+        <member name="T:AtsEx.PluginHost.Troubleshooting.ITroubleshooter">
+            <summary>
+            トラブルシューティングプラグインを表します。
+            </summary>
+        </member>
+        <member name="M:AtsEx.PluginHost.Troubleshooting.ITroubleshooter.Resolve(System.Exception)">
+            <summary>
+            例外の解決を試みます。
+            </summary>
+            <param name="exception">解決を試みる例外。</param>
+            <returns><paramref name="exception"/> の解決に成功したかどうか。</returns>
+        </member>
+    </members>
+</doc>

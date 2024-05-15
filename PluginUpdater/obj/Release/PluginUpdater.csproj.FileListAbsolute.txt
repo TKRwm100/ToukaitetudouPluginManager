@@ -1,0 +1,7 @@
+C:\Users\localuser\Documents\GitHub\ToukaitetudouPluginManager\PluginUpdater\bin\Release\PluginUpdater.exe.config
+C:\Users\localuser\Documents\GitHub\ToukaitetudouPluginManager\PluginUpdater\bin\Release\PluginUpdater.exe
+C:\Users\localuser\Documents\GitHub\ToukaitetudouPluginManager\PluginUpdater\bin\Release\PluginUpdater.pdb
+C:\Users\localuser\Documents\GitHub\ToukaitetudouPluginManager\PluginUpdater\obj\Release\PluginUpdater.csproj.AssemblyReference.cache
+C:\Users\localuser\Documents\GitHub\ToukaitetudouPluginManager\PluginUpdater\obj\Release\PluginUpdater.csproj.CoreCompileInputs.cache
+C:\Users\localuser\Documents\GitHub\ToukaitetudouPluginManager\PluginUpdater\obj\Release\PluginUpdater.exe
+C:\Users\localuser\Documents\GitHub\ToukaitetudouPluginManager\PluginUpdater\obj\Release\PluginUpdater.pdb

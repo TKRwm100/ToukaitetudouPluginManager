@@ -45,7 +45,7 @@ namespace PluginUpdater
         {
             try
             {
-                wc.DownloadFile("https://github.com/TKRwm100/ToukaitetudouPluginManager/raw/main/ToukaitetudouPluginManager/obj/Debug/ToukaitetudouPluginManager.dll", @"C:\Users\Public\Documents\AtsEx\1.0\Extensions\ToukaitetudouPluginManager.dll"); //AppDomain.CurrentDomain.BaseDirectory+"ToukaitetudouPluginManager.dll");
+                wc.DownloadFile("https://github.com/TKRwm100/ToukaitetudouPluginManager/raw/main/ToukaitetudouPluginManager/obj/Release/ToukaitetudouPluginManager.dll", @"C:\Users\Public\Documents\AtsEx\1.0\Extensions\ToukaitetudouPluginManager.dll"); //AppDomain.CurrentDomain.BaseDirectory+"ToukaitetudouPluginManager.dll");
             }
             catch (Exception ex)
             {

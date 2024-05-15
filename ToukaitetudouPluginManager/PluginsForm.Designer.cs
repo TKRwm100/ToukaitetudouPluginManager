@@ -51,7 +51,7 @@
             this.label1.Name = "label1";
             this.label1.Size = new System.Drawing.Size(238, 15);
             this.label1.TabIndex = 0;
-            this.label1.Text = "ToukaitetudouPluginManager Ver.0.1";
+            this.label1.Text = "ToukaitetudouPluginManager Ver.";
             // 
             // panel1
             // 
@@ -91,7 +91,7 @@
         #endregion
 
         public System.Windows.Forms.TabControl tabControl1;
-        private System.Windows.Forms.Label label1;
+        public System.Windows.Forms.Label label1;
         public System.Windows.Forms.Panel panel1;
         private System.Windows.Forms.LinkLabel linkLabel1;
     }
