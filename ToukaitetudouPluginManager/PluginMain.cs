@@ -63,7 +63,7 @@ namespace Toukaitetudou.AtsEx.ToukaitetudouPluginManager
                 {
                     string filepath = Directory.GetParent(Location)+"\\PluginUpdater.exe";
                     wc.DownloadFile("https://github.com/TKRwm100/ToukaitetudouPluginManager/raw/main/PluginUpdater/bin/Release/PluginUpdater.exe", filepath);
-                    Process.Start(filepath,App.Instance.BveAssembly.Location);
+                    Process.Start(filepath,"\""+Path.Combine(Path.GetDirectoryName(App.Instance.AtsExAssembly.Location),"ToukaitetudouPluginManager.dll")+"\" \""+App.Instance.BveAssembly.Location+"\"");
                     App.Instance.Process.CloseMainWindow();
                 }
             }
