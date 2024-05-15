@@ -13,6 +13,11 @@ namespace PluginUpdater
         static System.Net.WebClient wc;
         static void Main(string[] args)
         {
+            for (int i = 0;i< args.Length; i++)
+            {
+                Console.WriteLine("{1}:"+args[i],i);
+            }
+            Console.ReadLine();
             ServicePointManager.SecurityProtocol |= SecurityProtocolType.Tls12;
             wc = new System.Net.WebClient();
 
