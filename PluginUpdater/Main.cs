@@ -1,4 +1,5 @@
-﻿using System;
+﻿#define DEBUG
+using System;
 using System.Collections.Generic;
 using System.Diagnostics;
 using System.Linq;
@@ -14,8 +15,13 @@ namespace PluginUpdater
         static void Main(string[] args)
         {
             string path = "";
-            //Console.WriteLine(path);
-            //Console.ReadLine();
+#if DEBUG
+            for (int i = 0; i < args.Length; i++)
+            {
+                Console.WriteLine(i.ToString()+":"+args[i]);
+            }
+            Console.ReadLine();
+#endif
             ServicePointManager.SecurityProtocol |= SecurityProtocolType.Tls12;
             wc = new System.Net.WebClient();
 
