@@ -24,7 +24,7 @@ namespace Toukaitetudou.AtsEx.ToukaitetudouPluginManager
         private ToolStripMenuItem MenuItem;
         private Dictionary<string,TabPage> tabsMng = new Dictionary<string,TabPage>();
         int index = 0;
-        public static readonly float ver = 0.1f;
+        public static readonly float ver = 1.0f;
         public PluginMain(PluginBuilder builder) : base(builder)
         {
             
