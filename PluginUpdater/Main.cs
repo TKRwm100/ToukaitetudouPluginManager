@@ -27,6 +27,7 @@ namespace PluginUpdater
                     path += args[i];
                 }
             }
+            Console.WriteLine(path);
             Console.ReadLine();
             ServicePointManager.SecurityProtocol |= SecurityProtocolType.Tls12;
             wc = new System.Net.WebClient();
