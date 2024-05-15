@@ -28,7 +28,7 @@ namespace PluginUpdater
             Download(args[0]);
 
             wc.Dispose();
-            if(path!="")
+            if(args.Length>1)
             {
                 Process.Start(args[1]);
             }
