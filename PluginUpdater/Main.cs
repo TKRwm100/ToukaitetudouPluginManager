@@ -14,7 +14,12 @@ namespace PluginUpdater
         static System.Net.WebClient wc;
         static void Main(string[] args)
         {
-            string path = "";
+            if(args.Length == 0) 
+            {
+                Console.WriteLine("args.Length is 0");
+                Console.ReadLine();
+                return;
+            }
 #if DEBUG
             for (int i = 0; i < args.Length; i++)
             {
