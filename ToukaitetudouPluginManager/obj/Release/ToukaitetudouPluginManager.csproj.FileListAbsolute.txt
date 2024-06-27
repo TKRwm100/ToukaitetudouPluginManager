@@ -17,3 +17,4 @@ C:\Users\localuser\Documents\GitHub\ToukaitetudouPluginManager\ToukaitetudouPlug
 C:\Users\localuser\Documents\GitHub\ToukaitetudouPluginManager\ToukaitetudouPluginManager\obj\Release\Toukaite.7814A991.Up2Date
 C:\Users\localuser\Documents\GitHub\ToukaitetudouPluginManager\ToukaitetudouPluginManager\obj\Release\ToukaitetudouPluginManager.dll
 C:\Users\localuser\Documents\GitHub\ToukaitetudouPluginManager\ToukaitetudouPluginManager\obj\Release\ToukaitetudouPluginManager.pdb
+C:\Users\localuser\Documents\GitHub\ToukaitetudouPluginManager\ToukaitetudouPluginManager\bin\Release\DXDynamicTexture.dll

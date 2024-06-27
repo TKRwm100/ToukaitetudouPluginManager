@@ -36,6 +36,7 @@
     <StartupObject />
   </PropertyGroup>
   <ItemGroup>
+    <None Include=".editorconfig" />
     <None Include="App.config" />
     <None Include="packages.config" />
   </ItemGroup>
@@ -65,6 +66,9 @@
     </Reference>
     <Reference Include="BveTypes, Version=1.0.40401.1, Culture=neutral, processorArchitecture=MSIL">
       <HintPath>packages\AtsEx.PluginHost.1.0.0-rc8\lib\BveTypes.dll</HintPath>
+    </Reference>
+    <Reference Include="DXDynamicTexture">
+      <HintPath>..\..\..\..\..\Public\Documents\AtsEx\1.0\Extensions\DXDynamicTexture.dll</HintPath>
     </Reference>
     <Reference Include="FastCaching, Version=1.0.31118.1, Culture=neutral, processorArchitecture=MSIL">
       <HintPath>packages\AtsEx.PluginHost.1.0.0-rc8\lib\FastCaching.dll</HintPath>

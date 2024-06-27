@@ -2,6 +2,7 @@
 using AtsEx.PluginHost;
 using AtsEx.PluginHost.Plugins;
 using AtsEx.PluginHost.Plugins.Extensions;
+using BveTypes.ClassWrappers;
 using System;
 using System.Collections.Generic;
 using System.Diagnostics;
@@ -10,7 +11,13 @@ using System.Net;
 using System.Reflection;
 using System.Windows.Forms;
 using System.Xml;
+using Zbx1425.DXDynamicTexture;
 
+class test
+{
+
+    
+}
 namespace Toukaitetudou.AtsEx.ToukaitetudouPluginManager
 {
     [Plugin(PluginType.Extension)]
@@ -27,7 +34,6 @@ namespace Toukaitetudou.AtsEx.ToukaitetudouPluginManager
         public static readonly float ver =1.0f;
         public PluginMain(PluginBuilder builder) : base(builder)
         {
-            
             InstanceStore.ManagerInstance=this;
             InstanceStore.Native=Native;
             InstanceStore.BveHacker=BveHacker;
@@ -49,27 +55,29 @@ namespace Toukaitetudou.AtsEx.ToukaitetudouPluginManager
             Form.label1.Text = "ToukaitetudouPluginManager Ver."+ver.ToString("0.00");
             AddPage(this.Identifier, "TPM", Form.panel1);
             MenuItem.Checked = true;
-            BveHacker.MainFormSource.Focus(); 
+            BveHacker.MainFormSource.Focus();  if (false)
+            {
             ServicePointManager.SecurityProtocol |= SecurityProtocolType.Tls12;
             System.Net.WebClient wc = new System.Net.WebClient();
             //string filepath = Directory.GetParent(Location)+"\\Versions.xml";
             //wc.DownloadFile("https://github.com/TKRwm100/ToukaitetudouPluginManager/raw/main/Versions.xml", filepath);
             XmlDocument xmlDocument = new XmlDocument();
-            xmlDocument.Load("https://github.com/TKRwm100/ToukaitetudouPluginManager/raw/main/Versions.xml");
-            int i = 0;
-            foreach (XmlElement xml in xmlDocument.GetElementsByTagName("current"))
-            {
-                if (float.Parse(xml.GetAttribute("ver"))>ver)
+           
+                xmlDocument.Load("https://github.com/TKRwm100/ToukaitetudouPluginManager/raw/main/Versions.xml");
+                int i = 0;
+                foreach (XmlElement xml in xmlDocument.GetElementsByTagName("current"))
                 {
-                    string filepath = Directory.GetParent(Location)+"\\PluginUpdater.exe";
-                    wc.DownloadFile("https://github.com/TKRwm100/ToukaitetudouPluginManager/raw/main/PluginUpdater/obj/Release/PluginUpdater.exe", filepath);
-                    Process.Start(filepath,"\""+Path.Combine(Path.GetDirectoryName(App.Instance.AtsExAssembly.Location),"ToukaitetudouPluginManager.dll")+"\" \""+App.Instance.BveAssembly.Location+"\"");
-                    App.Instance.Process.CloseMainWindow();
+                    if (float.Parse(xml.GetAttribute("ver"))>ver)
+                    {
+                        string filepath = Directory.GetParent(Location)+"\\PluginUpdater.exe";
+                        wc.DownloadFile("https://github.com/TKRwm100/ToukaitetudouPluginManager/raw/main/PluginUpdater/obj/Release/PluginUpdater.exe", filepath);
+                        Process.Start(filepath, "\""+Path.Combine(Path.GetDirectoryName(App.Instance.AtsExAssembly.Location), "ToukaitetudouPluginManager.dll")+"\" \""+App.Instance.BveAssembly.Location+"\"");
+                        App.Instance.Process.CloseMainWindow();
+                    }
                 }
-            }
-            
-            
+
             wc.Dispose();
+            }
         }
 
         public override void Dispose()
