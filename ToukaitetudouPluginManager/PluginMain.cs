@@ -34,6 +34,11 @@ namespace Toukaitetudou.AtsEx.ToukaitetudouPluginManager
         public static readonly float ver =1.0f;
         public PluginMain(PluginBuilder builder) : base(builder)
         {
+            Form = new PluginsForm();
+            Form.FormClosing += FormClosing;
+            Form.WindowState = FormWindowState.Normal;
+            Form.label1.Text = "ToukaitetudouPluginManager Ver."+ver.ToString("0.00");
+            AddPage(this.Identifier, "TPM", Form.panel1);
             InstanceStore.ManagerInstance=this;
             InstanceStore.Native=Native;
             InstanceStore.BveHacker=BveHacker;
@@ -49,11 +54,6 @@ namespace Toukaitetudou.AtsEx.ToukaitetudouPluginManager
 
             MenuItem.Checked = false;
 
-            Form = new PluginsForm();
-            Form.FormClosing += FormClosing;
-            Form.WindowState = FormWindowState.Normal;
-            Form.label1.Text = "ToukaitetudouPluginManager Ver."+ver.ToString("0.00");
-            AddPage(this.Identifier, "TPM", Form.panel1);
             MenuItem.Checked = true;
             BveHacker.MainFormSource.Focus();  if (false)
             {

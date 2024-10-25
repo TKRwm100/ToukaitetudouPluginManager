@@ -42,3 +42,10 @@ C:\Users\localuser\Documents\GitHub\ToukaitetudouPluginManager\ToukaitetudouPlug
 C:\Users\localuser\Documents\GitHub\ToukaitetudouPluginManager\ToukaitetudouPluginManager\obj\Debug\Toukaite.7814A991.Up2Date
 C:\Users\localuser\Documents\GitHub\ToukaitetudouPluginManager\ToukaitetudouPluginManager\obj\Debug\ToukaitetudouPluginManager.dll
 C:\Users\localuser\Documents\GitHub\ToukaitetudouPluginManager\ToukaitetudouPluginManager\obj\Debug\ToukaitetudouPluginManager.pdb
+C:\Users\localuser\Documents\GitHub\ToukaitetudouPluginManager\ToukaitetudouPluginManager\bin\Debug\AtsEx.CoreExtensions.dll
+C:\Users\localuser\Documents\GitHub\ToukaitetudouPluginManager\ToukaitetudouPluginManager\bin\Debug\AtsEx.PluginHost.dll
+C:\Users\localuser\Documents\GitHub\ToukaitetudouPluginManager\ToukaitetudouPluginManager\bin\Debug\BveTypes.dll
+C:\Users\localuser\Documents\GitHub\ToukaitetudouPluginManager\ToukaitetudouPluginManager\bin\Debug\DXDynamicTexture.dll
+C:\Users\localuser\Documents\GitHub\ToukaitetudouPluginManager\ToukaitetudouPluginManager\bin\Debug\FastCaching.dll
+C:\Users\localuser\Documents\GitHub\ToukaitetudouPluginManager\ToukaitetudouPluginManager\bin\Debug\FastMember.dll
+C:\Users\localuser\Documents\GitHub\ToukaitetudouPluginManager\ToukaitetudouPluginManager\bin\Debug\TypeWrapping.dll
