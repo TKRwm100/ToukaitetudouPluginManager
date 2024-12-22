@@ -1,4 +1,4 @@
-﻿namespace Toukaitetudou.AtsEx.ToukaitetudouPluginManager
+﻿namespace Toukaitetudou.BveEx.ToukaitetudouPluginManager
 {
     partial class PluginsForm
     {

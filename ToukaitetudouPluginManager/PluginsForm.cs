@@ -8,7 +8,7 @@ using System.Text;
 using System.Threading.Tasks;
 using System.Windows.Forms;
 
-namespace Toukaitetudou.AtsEx.ToukaitetudouPluginManager
+namespace Toukaitetudou.BveEx.ToukaitetudouPluginManager
 {
     public partial class PluginsForm : Form
     {

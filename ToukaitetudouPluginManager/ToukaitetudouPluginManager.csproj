@@ -58,23 +58,26 @@
     <Reference Include="0Harmony, Version=2.3.3.0, Culture=neutral, processorArchitecture=MSIL">
       <HintPath>..\ADCcar\packages\Lib.Harmony.2.3.3\lib\net48\0Harmony.dll</HintPath>
     </Reference>
-    <Reference Include="AtsEx.CoreExtensions, Version=1.0.40209.1, Culture=neutral, processorArchitecture=MSIL">
-      <HintPath>packages\AtsEx.CoreExtensions.1.0.0-rc7\lib\AtsEx.CoreExtensions.dll</HintPath>
+    <Reference Include="BveEx.CoreExtensions, Version=2.0.41222.1, Culture=neutral, processorArchitecture=MSIL">
+      <HintPath>packages\BveEx.CoreExtensions.2.0.0\lib\BveEx.CoreExtensions.dll</HintPath>
     </Reference>
-    <Reference Include="AtsEx.PluginHost, Version=1.0.40401.1, Culture=neutral, processorArchitecture=MSIL">
-      <HintPath>packages\AtsEx.PluginHost.1.0.0-rc8\lib\AtsEx.PluginHost.dll</HintPath>
+    <Reference Include="BveEx.Diagnostics, Version=2.0.41222.1, Culture=neutral, processorArchitecture=MSIL">
+      <HintPath>packages\BveEx.Diagnostics.2.0.0\lib\BveEx.Diagnostics.dll</HintPath>
     </Reference>
-    <Reference Include="BveTypes, Version=1.0.40401.1, Culture=neutral, processorArchitecture=MSIL">
-      <HintPath>packages\AtsEx.PluginHost.1.0.0-rc8\lib\BveTypes.dll</HintPath>
+    <Reference Include="BveEx.PluginHost, Version=2.0.41222.1, Culture=neutral, processorArchitecture=MSIL">
+      <HintPath>packages\BveEx.PluginHost.2.0.0\lib\BveEx.PluginHost.dll</HintPath>
+    </Reference>
+    <Reference Include="BveTypes, Version=2.0.41222.1, Culture=neutral, processorArchitecture=MSIL">
+      <HintPath>packages\BveEx.PluginHost.2.0.0\lib\BveTypes.dll</HintPath>
     </Reference>
     <Reference Include="DXDynamicTexture">
       <HintPath>..\..\..\..\..\Public\Documents\AtsEx\1.0\Extensions\DXDynamicTexture.dll</HintPath>
     </Reference>
-    <Reference Include="FastCaching, Version=1.0.31118.1, Culture=neutral, processorArchitecture=MSIL">
-      <HintPath>packages\AtsEx.PluginHost.1.0.0-rc8\lib\FastCaching.dll</HintPath>
+    <Reference Include="FastCaching, Version=2.0.41222.1, Culture=neutral, processorArchitecture=MSIL">
+      <HintPath>packages\BveEx.PluginHost.2.0.0\lib\FastCaching.dll</HintPath>
     </Reference>
-    <Reference Include="FastMember, Version=1.0.40401.1, Culture=neutral, processorArchitecture=MSIL">
-      <HintPath>packages\AtsEx.PluginHost.1.0.0-rc8\lib\FastMember.dll</HintPath>
+    <Reference Include="FastMember, Version=2.0.41222.1, Culture=neutral, processorArchitecture=MSIL">
+      <HintPath>packages\BveEx.PluginHost.2.0.0\lib\FastMember.dll</HintPath>
     </Reference>
     <Reference Include="ObjectiveHarmonyPatch, Version=1.1.40209.1, Culture=neutral, processorArchitecture=MSIL">
       <HintPath>..\ADCcar\packages\ObjectiveHarmonyPatch.1.1.0\lib\ObjectiveHarmonyPatch.dll</HintPath>
@@ -87,8 +90,8 @@
     <Reference Include="System.Drawing" />
     <Reference Include="System.Windows.Forms" />
     <Reference Include="System.Xml" />
-    <Reference Include="TypeWrapping, Version=1.0.40401.1, Culture=neutral, processorArchitecture=MSIL">
-      <HintPath>packages\AtsEx.PluginHost.1.0.0-rc8\lib\TypeWrapping.dll</HintPath>
+    <Reference Include="TypeWrapping, Version=2.0.41222.1, Culture=neutral, processorArchitecture=MSIL">
+      <HintPath>packages\BveEx.PluginHost.2.0.0\lib\TypeWrapping.dll</HintPath>
     </Reference>
     <Reference Include="UnembeddedResources, Version=1.0.30529.1, Culture=neutral, processorArchitecture=MSIL">
       <HintPath>..\ADCcar\packages\UnembeddedResources.1.0.0\lib\UnembeddedResources.dll</HintPath>
@@ -101,6 +104,6 @@
   </ItemGroup>
   <Import Project="$(MSBuildToolsPath)\Microsoft.CSharp.targets" />
   <PropertyGroup>
-    <PostBuildEvent>copy $(TargetPath) "C:\Users\Public\Documents\AtsEx\1.0\Extensions\ToukaitetudouPluginManager.dll"</PostBuildEvent>
+    <PostBuildEvent>copy $(TargetPath) "C:\Users\Public\Documents\BveEx\2.0\Extensions\ToukaitetudouPluginManager.dll"</PostBuildEvent>
   </PropertyGroup>
 </Project>

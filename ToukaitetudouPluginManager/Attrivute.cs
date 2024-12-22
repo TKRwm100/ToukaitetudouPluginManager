@@ -4,7 +4,7 @@ using System.Linq;
 using System.Text;
 using System.Threading.Tasks;
 
-namespace Toukaitetudou.AtsEx.ToukaitetudouPluginManager
+namespace Toukaitetudou.BveEx.ToukaitetudouPluginManager
 {
     class PluginData : Attribute
     {

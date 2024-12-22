@@ -1,7 +1,7 @@
-﻿using AtsEx.Extensions.ContextMenuHacker;
-using AtsEx.PluginHost;
-using AtsEx.PluginHost.Plugins;
-using AtsEx.PluginHost.Plugins.Extensions;
+﻿using BveEx.Extensions.ContextMenuHacker;
+using BveEx.PluginHost;
+using BveEx.PluginHost.Plugins;
+using BveEx.PluginHost.Plugins.Extensions;
 using BveTypes.ClassWrappers;
 using System;
 using System.Collections.Generic;
@@ -18,7 +18,7 @@ class test
 
     
 }
-namespace Toukaitetudou.AtsEx.ToukaitetudouPluginManager
+namespace Toukaitetudou.BveEx.ToukaitetudouPluginManager
 {
     [Plugin(PluginType.Extension)]
     [ExtensionMainDisplayType(typeof(IToukaitetudouPluginsManager))]
@@ -40,7 +40,6 @@ namespace Toukaitetudou.AtsEx.ToukaitetudouPluginManager
             Form.label1.Text = "ToukaitetudouPluginManager Ver."+ver.ToString("0.00");
             AddPage(this.Identifier, "TPM", Form.panel1);
             InstanceStore.ManagerInstance=this;
-            InstanceStore.Native=Native;
             InstanceStore.BveHacker=BveHacker;
             BveHacker.ScenarioCreated += OnScenarioCreated;
             
@@ -55,7 +54,8 @@ namespace Toukaitetudou.AtsEx.ToukaitetudouPluginManager
             MenuItem.Checked = false;
 
             MenuItem.Checked = true;
-            BveHacker.MainFormSource.Focus();  if (false)
+            BveHacker.MainFormSource.Focus();  
+            if (false)
             {
             ServicePointManager.SecurityProtocol |= SecurityProtocolType.Tls12;
             System.Net.WebClient wc = new System.Net.WebClient();
@@ -71,7 +71,7 @@ namespace Toukaitetudou.AtsEx.ToukaitetudouPluginManager
                     {
                         string filepath = Directory.GetParent(Location)+"\\PluginUpdater.exe";
                         wc.DownloadFile("https://github.com/TKRwm100/ToukaitetudouPluginManager/raw/main/PluginUpdater/obj/Release/PluginUpdater.exe", filepath);
-                        Process.Start(filepath, "\""+Path.Combine(Path.GetDirectoryName(App.Instance.AtsExAssembly.Location), "ToukaitetudouPluginManager.dll")+"\" \""+App.Instance.BveAssembly.Location+"\"");
+                        Process.Start(filepath, "\""+Path.Combine(Path.GetDirectoryName(App.Instance.BveExAssembly.Location), "ToukaitetudouPluginManager.dll")+"\" \""+App.Instance.BveAssembly.Location+"\"");
                         App.Instance.Process.CloseMainWindow();
                     }
                 }
@@ -91,11 +91,8 @@ namespace Toukaitetudou.AtsEx.ToukaitetudouPluginManager
             return;
         }
 
-        public override TickResult Tick(TimeSpan elapsed)
+        public override void Tick(TimeSpan elapsed)
         {
-            ExtensionTickResult extensionTickResult = new ExtensionTickResult();
-
-            return extensionTickResult;
         }
             private void MenuItemCheckedChanged(object sender, EventArgs e)
         {

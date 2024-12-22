@@ -1,4 +1,4 @@
-﻿using AtsEx.PluginHost.Plugins.Extensions;
+﻿using BveEx.PluginHost.Plugins.Extensions;
 using System;
 using System.Collections.Generic;
 using System.Linq;
@@ -6,7 +6,7 @@ using System.Text;
 using System.Threading.Tasks;
 using System.Windows.Forms;
 
-namespace Toukaitetudou.AtsEx.ToukaitetudouPluginManager
+namespace Toukaitetudou.BveEx.ToukaitetudouPluginManager
 {
     public interface IToukaitetudouPlugin
     {
